@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #EDEBE9;
+  font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+  outline: transparent;
+  position: relative;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: top;
+  padding: 0px 16px;
+  border-radius: 0px;
+  min-width: 80px;
+  height: 32px;
+  background-color: rgb(0, 120, 212);
+  color: rgb(255, 255, 255);
+  user-select: none;
+
+  &:hover {
+    background-color: rgb(16, 110, 190);
+    color: rgb(255, 255, 255);
+  }
+}
+
+.highlighted-text {
+  font-weight: bold;
+  text-decoration: red underline wavy;
+}

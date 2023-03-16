@@ -1,0 +1,4 @@
+<ng-container *ngFor="let paragraph of correctedParagraphs; index as paragraphIndex;">
+    <app-error *ngFor="let e of paragraph.errors; index as errorIndex" [error]="e" [context]="paragraph.text"
+               (highlightEvent)="sendHighlight(paragraphIndex, errorIndex, $event)" (acceptSuggestionEvent)="acceptSuggestion(paragraphIndex, errorIndex, $event)"></app-error>
+</ng-container>

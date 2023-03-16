@@ -3,10 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SpellcheckerComponent } from './spellchecker/spellchecker.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { ErrorsListComponent } from './spellchecker/errors-list/errors-list.component';
+import { ErrorComponent } from './spellchecker/error/error.component';
+import { HighlightPipe } from './pipes/highlight.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SettingsComponent,
+    SpellcheckerComponent,
+    TabsComponent,
+    ErrorsListComponent,
+    ErrorComponent,
+    HighlightPipe
   ],
   imports: [
     BrowserModule,

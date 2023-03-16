@@ -6,7 +6,8 @@
     "types": [
       "node",
       "office-js"
-    ]
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "files": [
     "src/main.ts",

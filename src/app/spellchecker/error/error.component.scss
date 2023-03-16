@@ -1,0 +1,40 @@
+:host {
+
+}
+
+.error-box {
+  border: 1px solid #a4a4a4;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  padding: 10px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+
+    .preview {
+      flex-grow: 1;
+    }
+
+    .toggle {
+      width: 20px;
+
+      &.active {
+        img {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .suggestions {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #a4a4a4;
+
+    button {
+      margin: 5px;
+    }
+  }
+}

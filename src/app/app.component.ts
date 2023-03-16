@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TabType } from "./data/tabs";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'office-angular';
+  selectedTab: TabType = 'spellchecker';
+
+  tabChanged(type: TabType) {
+    this.selectedTab = type;
+  }
 }
