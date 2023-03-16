@@ -1,6 +1,6 @@
 {
-  "name": "office-angular",
-  "version": "0.0.0",
+  "name": "spellchecker-addin-office",
+  "version": "1.0.0",
   "scripts": {
     "build": "ng build --configuration production",
     "build:dev": "ng build",
@@ -17,7 +17,6 @@
     "test:coverage": "ng test --watch false --code-coverage",
     "validate": "office-toolbox validate -m ./src/manifest.xml"
   },
-  "private": true,
   "license": "MIT",
   "config": {
     "app-to-debug": "word",
