@@ -1,8 +1,25 @@
-<select name="language" id="language">
-    <option value="puter">Puter</option>
-    <option value="rumgr">Rumantsch Grischun</option>
-    <option value="surmiran">Surmiran</option>
-    <option value="sursilvan">Sursilvan</option>
-    <option value="sutsilvan">Sutsilvan</option>
-    <option value="vallader">Vallader</option>
-</select>
+Idiom per la correctura:
+<div class="select">
+    <select name="language" id="language" [ngModel]="language" (ngModelChange)="languageSelected($event)">
+        <option value="puter" disabled>Puter</option>
+        <option value="rumgr" disabled>Rumantsch Grischun</option>
+        <option value="surmiran">Surmiran</option>
+        <option value="sursilvan" disabled>Sursilvan</option>
+        <option value="sutsilvan" disabled>Sutsilvan</option>
+        <option value="vallader" disabled>Vallader</option>
+    </select>
+</div>
+
+<br>
+
+<div class="toggle">
+    <div class="toggler">
+        <div class="check-box">
+            <input type="checkbox" [ngModel]="showContext" (ngModelChange)="showContextChanged($event)">
+        </div>
+    </div>
+    <div class="description">
+        Mussar context
+    </div>
+</div>
+

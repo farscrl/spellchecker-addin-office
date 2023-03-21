@@ -13,6 +13,9 @@ body {
   font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
 }
 
+@import "scss/dropdown";
+@import "scss/checkbox.scss";
+
 button {
   outline: transparent;
   position: relative;

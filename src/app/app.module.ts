@@ -12,6 +12,7 @@ import { HighlightPipe } from './pipes/highlight.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { VirtualScrollerModule } from "ngx-virtual-scroller";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VirtualScrollerModule } from "ngx-virtual-scroller";
     BrowserAnimationsModule,
     NgxSpinnerModule,
     VirtualScrollerModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

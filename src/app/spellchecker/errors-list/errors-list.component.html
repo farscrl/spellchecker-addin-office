@@ -1,6 +1,4 @@
-<app-error *ngFor="let e of spellingErrors; index as errorIndex" [error]="e" [context]="paragraphs[e.paragraph]"
-           (highlightEvent)="sendHighlight(e.paragraph, errorIndex, $event)" (acceptSuggestionEvent)="acceptSuggestion(e.paragraph, errorIndex, $event)"></app-error>
 <virtual-scroller #scroll [items]="spellingErrors">
-    <app-error *ngFor="let e of scroll.viewPortItems; index as errorIndex" [error]="e" [context]="paragraphs[e.paragraph]"
+    <app-error *ngFor="let e of scroll.viewPortItems; index as errorIndex" [error]="e" [context]="paragraphs[e.paragraph]" [showContext]="showContext"
                (highlightEvent)="sendHighlight(e.paragraph, errorIndex, $event)" (acceptSuggestionEvent)="acceptSuggestion(e.paragraph, errorIndex, $event)"></app-error>
 </virtual-scroller>

@@ -16,6 +16,9 @@ export class ErrorComponent {
   @Input()
   context?: string;
 
+  @Input()
+  showContext: boolean = true;
+
   @Output()
   highlightEvent = new EventEmitter<{ activate: boolean }>();
 

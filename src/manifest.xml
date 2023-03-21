@@ -2,15 +2,15 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>8df82b91-9c87-48e9-a1bd-2a604df73ad7</Id>
   <Version>1.0.0</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>Pro Svizra Rumantscha / Lia Rumantscha</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Program da correctura rumantsch"/>
-  <Description DefaultValue="A template to get started."/>
+  <Description DefaultValue="In program da correctura per l'ortografia rumantscha."/>
   <IconUrl DefaultValue="https://localhost:4200/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:4200/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <SupportUrl DefaultValue="https://www.pledarigrond.ch/surmiran/spellchecker"/>
   <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
+    <AppDomain>https://www.pledarigrond.ch</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Document"/>

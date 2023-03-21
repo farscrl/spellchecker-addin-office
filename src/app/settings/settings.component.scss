@@ -1,0 +1,15 @@
+.select {
+  width: 100%;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  .toggler {
+    width: 45px;
+  }
+
+  .description {
+    margin-left: 16px;
+  }
+}
