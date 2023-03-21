@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SpellcheckerService } from "../services/spellchecker.service";
 import WordUtils from "../utils/word.utils";
 import { debounceTime, Subject } from "rxjs";
-import { ISpellingError } from "../data/spelling-error";
+import { ISpellingError } from "../data/data-structures";
 
 /* global Word */
 

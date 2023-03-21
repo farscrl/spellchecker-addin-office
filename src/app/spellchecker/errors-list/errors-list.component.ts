@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ISpellingError } from "../../data/spelling-error";
+import { ISpellingError } from "../../data/data-structures";
 
 @Component({
   selector: 'app-errors-list',
