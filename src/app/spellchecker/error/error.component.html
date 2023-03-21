@@ -5,7 +5,7 @@
             <div class="toggle" [class.active]="isOpen" (click)="toggle()"><img src="assets/icons/chevron-down.svg"></div>
         </div>
         <div class="suggestions" *ngIf="isOpen">
-            <div>Suggestions:</div>
+            <div>Propostas:</div>
             <button *ngFor="let suggestion of suggestions" (click)="acceptSuggestion(suggestion)">{{ suggestion }}</button>
         </div>
     </div>
