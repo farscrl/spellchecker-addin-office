@@ -2,7 +2,7 @@
     <div class="error-box" (mouseenter)="sendHighlight(true)" (mouseout)="sendHighlight(false)">
         <div class="header">
             <div class="preview" [innerHTML]="getContext(error.word) | highlight:error.word"></div>
-            <div class="toggle" [class.active]="isOpen" (click)="toggle()"><img src="assets/icons/chevron-down.svg"></div>
+            <div class="toggle" [class.active]="isOpen" (click)="toggle()"><img src="assets/icons/chevron-down.svg" alt="Icon that indicates, if box is open"></div>
         </div>
         <div class="suggestions" *ngIf="isOpen">
             <div>Propostas:</div>

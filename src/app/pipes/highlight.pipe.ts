@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class HighlightPipe implements PipeTransform {
 
   transform(value: any, args: string): unknown {
-    if(!args) return value;
+    if(!value || !args) return value;
     const re = new RegExp("("+args+")", 'igm');
     value= value.replace(re, '<span class="highlighted-text">$1</span>');
     return value;

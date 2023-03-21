@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,9 @@ import { TabsComponent } from './tabs/tabs.component';
 import { ErrorsListComponent } from './spellchecker/errors-list/errors-list.component';
 import { ErrorComponent } from './spellchecker/error/error.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { VirtualScrollerModule } from "ngx-virtual-scroller";
 
 @NgModule({
   declarations: [
@@ -22,9 +25,13 @@ import { HighlightPipe } from './pipes/highlight.pipe';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
+    VirtualScrollerModule,
     AppRoutingModule
   ],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

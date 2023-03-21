@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hunspell, HunspellFactory, loadModule } from "hunspell-asm";
 import tokenize from "@stdlib/nlp-tokenize";
-import { ITextWithPosition } from "../utils/spellchecker.util";
+import { ITextWithPosition } from "../data/text-with-position";
 
 @Injectable({
   providedIn: 'root'

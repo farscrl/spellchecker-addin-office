@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITextWithPosition } from "../../utils/spellchecker.util";
+import { ITextWithPosition } from "../../data/text-with-position";
 import TextUtils from "../../utils/text.utils";
 import { SpellcheckerService } from "../../services/spellchecker.service";
 

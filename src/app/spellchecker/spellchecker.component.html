@@ -1,3 +1,5 @@
 <button (click)="checkGrammar()">Controllar grammatica</button>
 
-<app-errors-list [correctedParagraphs]="correctedParagraphs" (highlightEvent)="highlight($event)" (acceptSuggestionEvent)="acceptSuggestion($event)">
+<app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs" (highlightEvent)="highlight($event)" (acceptSuggestionEvent)="acceptSuggestion($event)"></app-errors-list>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>

@@ -36,6 +36,8 @@
     "@stdlib/nlp-tokenize": "^0.0.11",
     "core-js": "^3.29.1",
     "hunspell-asm": "^4.0.2",
+    "ngx-spinner": "^15.0.1",
+    "ngx-virtual-scroller": "^4.0.3",
     "office-ui-fabric-js": "^1.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.0.0",

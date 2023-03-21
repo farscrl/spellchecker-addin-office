@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ICorrectedParagraph } from "../spellchecker.component";
+import { ISpellingError } from "../../data/spelling-error";
 
 @Component({
   selector: 'app-errors-list',
@@ -9,7 +9,10 @@ import { ICorrectedParagraph } from "../spellchecker.component";
 export class ErrorsListComponent {
 
   @Input()
-  correctedParagraphs: ICorrectedParagraph[] = [];
+  spellingErrors: ISpellingError[] = [];
+
+  @Input()
+  paragraphs: string[] = [];
 
   @Output()
   highlightEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, activate: boolean }>();
