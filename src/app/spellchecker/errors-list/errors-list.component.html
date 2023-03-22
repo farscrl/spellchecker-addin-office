@@ -1,4 +1,4 @@
-<virtual-scroller #scroll [items]="spellingErrors">
+<virtual-scroller #scroll [items]="spellingErrors" [enableUnequalChildrenSizes]="true">
     <app-error *ngFor="let e of scroll.viewPortItems; index as errorIndex" [error]="e" [context]="paragraphs[e.paragraph]" [showContext]="showContext"
-               (highlightEvent)="sendHighlight(e.paragraph, errorIndex, $event)" (acceptSuggestionEvent)="acceptSuggestion(e.paragraph, errorIndex, $event)"></app-error>
+               (highlightEvent)="sendHighlight(e.paragraph, scroll.viewPortInfo.startIndexWithBuffer + errorIndex, $event)" (acceptSuggestionEvent)="acceptSuggestion(e.paragraph, errorIndex, $event)"></app-error>
 </virtual-scroller>
