@@ -1,5 +1,8 @@
 <button (click)="checkGrammar()">Controllar grammatica</button>
 
+<div *ngIf="spellingErrors.length > 0" class="number-spelling-errors">
+    Chattà {{ spellingErrors.length }} propostas:
+</div>
 <app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs" (highlightEvent)="highlight($event)" (acceptSuggestionEvent)="acceptSuggestion($event)"></app-errors-list>
 
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>
