@@ -97,21 +97,29 @@ export class SpellcheckerService {
   }
 
   private normalizeString(tkn: string) {
+    if (tkn === "") {
+      return "";
+    }
+
     let didChange = false;
 
     do {
       didChange = false;
       const first = tkn.charAt(0);
-      if (this.punctuation.includes(first)) {
+      if (tkn !== "" && this.punctuation.includes(first)) {
         tkn = tkn.slice(1, tkn.length);
         didChange = true;
       }
     } while (didChange);
 
+    if (tkn === "") {
+      return "";
+    }
+
     do {
       didChange = false;
       const last = tkn.slice(-1);
-      if (this.punctuation.includes(last)) {
+      if (tkn !== "" && this.punctuation.includes(last)) {
         tkn = tkn.slice(0, tkn.length - 1);
         didChange = true;
       }
