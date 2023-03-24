@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "ng build --configuration production",
+    "build:test": "ng build --configuration test",
     "build:dev": "ng build",
     "dev-server": "bash -c \"ng serve --ssl --ssl-key ~/.office-addin-dev-certs/localhost.key --ssl-cert ~/.office-addin-dev-certs/localhost.crt\"",
     "e2e": "ng e2e",
@@ -15,7 +16,8 @@
     "stop": "office-addin-debugging stop ./src/manifest.xml",
     "test": "ng test",
     "test:coverage": "ng test --watch false --code-coverage",
-    "validate": "office-toolbox validate -m ./src/manifest.xml"
+    "validate": "office-toolbox validate -m ./src/manifest.xml",
+    "validate:prod": "office-toolbox validate -m ./src/manifest-prod.xml"
   },
   "license": "MIT",
   "config": {
