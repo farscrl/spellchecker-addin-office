@@ -33,8 +33,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.xml"
+              "src/assets"
             ],
             "styles": [
               "node_modules/ngx-spinner/animations/line-scale.css",
