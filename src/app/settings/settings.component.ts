@@ -22,12 +22,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.languageSubscription = this.settingsService.getLanguageObservable().subscribe(lng => {
-      console.log("load settings: " + lng);
       this.language = lng;
     });
 
     this.showContextSubscription = this.settingsService.getShowContextObservable().subscribe(ctx => {
-      console.log("load settings: " + ctx);
       this.showContext = ctx;
     });
   }

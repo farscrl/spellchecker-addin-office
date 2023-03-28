@@ -59,7 +59,6 @@ export class SpellcheckerComponent {
         console.error(e.message, e.debugInfo);
       } finally {
         this.isSpellchecking = false;
-        console.log(this.spellingErrors)
       }
     });
   }

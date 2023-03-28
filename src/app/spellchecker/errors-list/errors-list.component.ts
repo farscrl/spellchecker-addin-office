@@ -32,7 +32,6 @@ export class ErrorsListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.settingsServiceSubscription = this.settingsService.getShowContextObservable().subscribe(value => {
       this.showContext = value;
-      console.log(value);
     });
   }
 

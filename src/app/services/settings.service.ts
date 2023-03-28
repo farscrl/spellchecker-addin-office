@@ -17,13 +17,11 @@ export class SettingsService {
   constructor() {
     const lng = this.load(this.LANGUAGE_KEY);
     if (!!lng) {
-      console.log(lng);
       this.languageSubject.next(lng);
     }
 
     const showCtx = this.loadBoolean(this.SHOW_CONTEXT_KEY);
     if (showCtx !== undefined) {
-      console.log(showCtx);
       this.showContext.next(showCtx);
     }
   }
