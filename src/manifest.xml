@@ -7,9 +7,9 @@
   <Id>f1f7b009-6c3f-4431-90d8-141cf47757a1</Id>
   <Version>1.0.0</Version>
   <ProviderName>Pro Svizra Rumantscha / Lia Rumantscha</ProviderName>
-  <DefaultLocale>rm</DefaultLocale>
-  <DisplayName DefaultValue="Program da correctura rumantsch (BETA)"/>
-  <Description DefaultValue="In program da correctura per l'ortografia rumantscha."/>
+  <DefaultLocale>de</DefaultLocale>
+  <DisplayName DefaultValue="Controlla ortografica (BETA)"/>
+  <Description DefaultValue="In program da controlla ortografica rumantscha."/>
   <IconUrl DefaultValue="https://localhost:4200/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:4200/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.pledarigrond.ch/surmiran/spellchecker"/>
@@ -74,13 +74,13 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:4200/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Curregia tes texts en Word"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Rumantsch"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Correctura rumantscha"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Curreger texts en Word"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Correctura"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Ortografia rumantscha"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Il program da correctura rumantsch è installà correctamain. Sil il tab 'HOME' da Word vesas ti ussa in nov butttun 'Correctura rumantscha'."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Cliccar per mussar la correctura rumantscha"/>
+        <bt:String id="GetStarted.Description" DefaultValue="La controlla ortografica rumantscha è installada correctamain. En il tab «Start» da Word datti ussa in nov butttun «Ortografia rumantscha»."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Cliccar per mussar il program da controlla rumantsch"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

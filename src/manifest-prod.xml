@@ -7,11 +7,11 @@
   <Id>281eac74-e8cf-4ad3-956d-3ca77a96f756</Id>
   <Version>1.0.0</Version>
   <ProviderName>Pro Svizra Rumantscha / Lia Rumantscha</ProviderName>
-  <DefaultLocale>rm</DefaultLocale>
-  <DisplayName DefaultValue="Program da correctura rumantsch (BETA)"/>
-  <Description DefaultValue="In program da correctura per l'ortografia rumantscha."/>
-  <IconUrl DefaultValue="https://addin.pre.far.ch/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://addin.pre.far.ch/assets/icon-64.png"/>
+  <DefaultLocale>de</DefaultLocale>
+  <DisplayName DefaultValue="Controlla ortografica (BETA)"/>
+  <Description DefaultValue="In program da controlla ortografica rumantscha."/>
+  <IconUrl DefaultValue="https://addin.pledarigrond.ch/addin/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://addin.pledarigrond.ch/addin/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.pledarigrond.ch/surmiran/spellchecker"/>
   <AppDomains>
     <AppDomain>https://www.pledarigrond.ch</AppDomain>
@@ -20,7 +20,7 @@
     <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://addin.pre.far.ch/index.html"/>
+    <SourceLocation DefaultValue="https://addin.pledarigrond.ch/addin/index.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -65,22 +65,22 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://addin.pre.far.ch/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://addin.pre.far.ch/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://addin.pre.far.ch/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://addin.pledarigrond.ch/addin/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://addin.pledarigrond.ch/addin/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://addin.pledarigrond.ch/addin/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://www.pledarigrond.ch/surmiran/spellchecker"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://addin.pre.far.ch/index.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://addin.pledarigrond.ch/addin/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Curregia tes texts en Word"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Rumantsch"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Correctura rumantscha"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Curreger texts en Word"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Correctura"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Ortografia rumantscha"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Il program da correctura rumantsch è installà correctamain. Sil il tab 'HOME' da Word vesas ti ussa in nov butttun 'Correctura rumantscha'."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Cliccar per mussar la correctura rumantscha"/>
+        <bt:String id="GetStarted.Description" DefaultValue="La controlla ortografica rumantscha è installada correctamain. En il tab «Start» da Word datti ussa in nov butttun «Ortografia rumantscha»."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Cliccar per mussar il program da controlla rumantsch"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
