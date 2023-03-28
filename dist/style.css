@@ -1,0 +1,15 @@
+body {
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+    background-color: #d5d5d5;
+}
+
+#main {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 30px;
+}
+
+h1 {
+    margin-top: 0;
+}
