@@ -9,11 +9,6 @@ if (environment.production) {
 }
 
 Office.initialize = () => {
-  const sideloadMessage = document.getElementById("sideload-msg");
-  if (sideloadMessage) {
-    sideloadMessage.style.display = 'none';
-  }
-
   // Bootstrap the app
   platformBrowserDynamic()
     .bootstrapModule(AppModule)
