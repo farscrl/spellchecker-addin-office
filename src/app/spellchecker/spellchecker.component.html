@@ -1,11 +1,16 @@
-<p style="margin-bottom: 8px;">
-    Cliccar sin «Controllar l’ortografica», lura vegnan eventuals sbagls ortografics mussads en ina gliesta. Cliccar per als surprender.
-</p>
 <button (click)="checkGrammar()">Controllar l'ortografia</button>
 
 <div *ngIf="spellingErrors.length > 0" class="number-spelling-errors">
     Chattà {{ spellingErrors.length }} propostas:
 </div>
-<app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs" (highlightEvent)="highlight($event)" (acceptSuggestionEvent)="acceptSuggestion($event)"></app-errors-list>
+<app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs" (highlightEvent)="highlight($event)" (acceptSuggestionEvent)="acceptSuggestion($event)" *ngIf="!isFirstRun && spellingErrors.length > 0"></app-errors-list>
+
+<div class="full-size-notification" *ngIf="isFirstRun">
+    <span>Cliccar sin «Controllar l’ortografica», lura vegnan eventuals sbagls ortografics mussads en ina gliesta. Cliccar per als surprender.</span>
+</div>
+
+<div class="full-size-notification" *ngIf="!isFirstRun && spellingErrors.length === 0">
+    <span>Chattà nagins sbagls.</span>
+</div>
 
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>

@@ -15,6 +15,8 @@ export class SpellcheckerComponent {
 
   isSpellchecking = false;
 
+  isFirstRun = true;
+
   paragraphs: string[] = [];
 
   spellingErrors: ISpellingError[] = [];
@@ -29,6 +31,7 @@ export class SpellcheckerComponent {
   }
 
   async checkGrammar(): Promise<void> {
+    this.isFirstRun = false;
     this.isSpellchecking = true;
 
     return Word.run(async (context) => {

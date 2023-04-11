@@ -2,3 +2,10 @@
   font-weight: bold;
   margin-top: 16px;
 }
+
+.full-size-notification {
+  height: calc(100vh - 155px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
