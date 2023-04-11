@@ -13,6 +13,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { VirtualScrollerModule } from "ngx-virtual-scroller";
 import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormsModule } from "@angular/forms";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     NgxSpinnerModule,
     VirtualScrollerModule,
     AppRoutingModule,

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SettingsService } from "../services/settings.service";
 import { Language } from "../data/language";
 import { Subscription } from "rxjs";
+import { SpellcheckerService } from "../services/spellchecker.service";
 
 @Component({
   selector: 'app-settings',
@@ -17,7 +18,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   private languageSubscription?: Subscription;
   private showContextSubscription?: Subscription;
 
-  constructor(private settingsService: SettingsService) {
+  constructor(private settingsService: SettingsService, public spellcheckerService: SpellcheckerService) {
   }
 
   ngOnInit() {

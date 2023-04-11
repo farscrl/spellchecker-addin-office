@@ -5,6 +5,7 @@ import { ITextWithPosition } from "../data/data-structures";
 import { SettingsService } from "./settings.service";
 import { Language } from "../data/language";
 import LanguageUtils from "../utils/language.utils";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,9 @@ export class SpellcheckerService {
   punctuation = ['.', '©', '', ':', ';', '!', '+', ',', '(', ')', '{', '}', '[', ']', '?', '|', "«", "»", "/", "%", "–", "…"];
   isLoaded = false;
 
-  constructor(private settingsService: SettingsService) {
+  version = '';
+
+  constructor(private settingsService: SettingsService, private http: HttpClient,) {
     settingsService.getLanguageObservable().subscribe(l => {
       this.loadDictionary(l);
     });
@@ -56,12 +59,19 @@ export class SpellcheckerService {
     this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `${langCode}.dic`);
 
     this.hunspell = this.hunspellFactory.create(this.affFile, this.dictFile);
-    this.onDictLoaded();
+    this.onDictLoaded(langCode);
   }
 
-  private onDictLoaded() {
+  private onDictLoaded(langCode: string) {
     this.isLoaded = true;
-    console.log("loading spellchecker finished");
+    this.loadVersion(langCode);
+    console.log("loading spellchecker finished: " + langCode);
+  }
+
+  private loadVersion(langCode: string) {
+    this.http.get(`assets/hunspell/${langCode}/${langCode}_version.txt`, {responseType: 'text'}).subscribe(version => {
+      this.version = version;
+    });
   }
 
   private tokenizeString(text: string): ITextWithPosition[] {
