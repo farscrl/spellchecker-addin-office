@@ -17,6 +17,19 @@
   <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
 </head>
 <body class="ms-font-m ms-welcome">
+<div id="ie-warn" style="display: none;margin: 20px;padding: 20px;background-color: #1ebbee;color: white;font-size: 16px;">
+  Quest add-in na funcziuna betg cun questa versiun dad Office. Per plaschair actualisar ad ina versiun actuala dal program.
+</div>
 <app-root></app-root>
+
+<script>
+  // Show update message for old Office versions that base on IE / Edge legacy
+  if (navigator.userAgent.indexOf("Trident") !== -1 || navigator.userAgent.indexOf("Edge") !== -1) {
+    const ieMessage = document.getElementById("ie-warn");
+    if (ieMessage) {
+      ieMessage.style.display = 'block';
+    }
+  }
+</script>
 </body>
 </html>
