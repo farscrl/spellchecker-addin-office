@@ -1,5 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+}
 .select {
-  width: 100%;
+  width: calc(100% - 2px);
 }
 
 .toggle {
@@ -11,5 +18,17 @@
 
   .description {
     margin-left: 16px;
+  }
+}
+
+.preferences {
+  margin-bottom: 40px;
+}
+.impressum {
+  border-top: 1px solid grey;
+
+  p {
+    margin-top: 16px;
+    font-size: 13px;
   }
 }
