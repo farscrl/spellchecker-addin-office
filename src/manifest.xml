@@ -8,11 +8,11 @@
   <Version>1.0.0</Version>
   <ProviderName>Pro Svizra Rumantscha / Lia Rumantscha</ProviderName>
   <DefaultLocale>de</DefaultLocale>
-  <DisplayName DefaultValue="Controlla ortografica (BETA)"/>
+  <DisplayName DefaultValue="Controlla ortografica"/>
   <Description DefaultValue="In program da controlla ortografica rumantscha."/>
   <IconUrl DefaultValue="https://localhost:4200/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:4200/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.pledarigrond.ch/surmiran/spellchecker"/>
+  <SupportUrl DefaultValue="https://addin.pledarigrond.ch/help.html"/>
   <AppDomains>
     <AppDomain>https://www.pledarigrond.ch</AppDomain>
   </AppDomains>
@@ -70,7 +70,7 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://localhost:4200/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://www.pledarigrond.ch/surmiran/spellchecker"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://addin.pledarigrond.ch/help.html"/>
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:4200/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
