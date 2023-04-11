@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Hunspell, HunspellFactory, loadModule } from "hunspell-asm";
 import tokenize from "@stdlib/nlp-tokenize";
 import { ITextWithPosition } from "../data/data-structures";
+import { SettingsService } from "./settings.service";
+import { Language } from "../data/language";
+import LanguageUtils from "../utils/language.utils";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +19,10 @@ export class SpellcheckerService {
   punctuation = ['.', '©', '', ':', ';', '!', '+', ',', '(', ')', '{', '}', '[', ']', '?', '|', "«", "»", "/", "%", "–", "…"];
   isLoaded = false;
 
-  constructor() {
-    this.loadDictionary();
+  constructor(private settingsService: SettingsService) {
+    settingsService.getLanguageObservable().subscribe(l => {
+      this.loadDictionary(l);
+    });
   }
 
   proofreadText(sentence: string): Promise<ITextWithPosition[]> {
@@ -37,16 +42,18 @@ export class SpellcheckerService {
     return Promise.resolve(this.hunspell!.suggest(this.removeSpecialChars(word)));
   }
 
-  private async loadDictionary() {
+  private async loadDictionary(language: Language) {
     this.hunspellFactory = await loadModule();
 
-    const aff = await fetch('assets/hunspell/rm-surmiran/rm-surmiran.aff');
-    const affBuffer = new Uint8Array(await aff.arrayBuffer());
-    this.affFile = this.hunspellFactory.mountBuffer(affBuffer, 'rm-surmiran.aff');
+    const langCode = LanguageUtils.getLangCodeFromLanguage(language);
 
-    const dic = await fetch('assets/hunspell/rm-surmiran/rm-surmiran.dic');
+    const aff = await fetch(`assets/hunspell/${langCode}/${langCode}.aff`);
+    const affBuffer = new Uint8Array(await aff.arrayBuffer());
+    this.affFile = this.hunspellFactory.mountBuffer(affBuffer, `${langCode}.aff`);
+
+    const dic = await fetch(`assets/hunspell/${langCode}/${langCode}.dic`);
     const dicBuffer = new Uint8Array(await dic.arrayBuffer());
-    this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, 'rm-surmiran.dic');
+    this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `${langCode}.dic`);
 
     this.hunspell = this.hunspellFactory.create(this.affFile, this.dictFile);
     this.onDictLoaded();
