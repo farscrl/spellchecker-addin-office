@@ -33,8 +33,13 @@
     padding-top: 16px;
     border-top: 1px solid #a4a4a4;
 
+    .suggestion-title {
+      margin-bottom: 8px;
+    }
+
     button {
-      margin: 5px;
+      margin-right: 10px;
+      margin-bottom: 10px;
     }
   }
 }
