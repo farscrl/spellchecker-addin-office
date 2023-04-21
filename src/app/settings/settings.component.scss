@@ -24,13 +24,17 @@
 .preferences {
   margin-bottom: 40px;
 }
-.impressum {
-  border-top: 1px solid grey;
+.impressum, .version {
+  border-top: 1px solid #595959;
 
   p {
     margin-top: 16px;
-    font-size: 13px;
+    font-size: 12px;
   }
+}
+
+.impressum {
+  margin-bottom: 20px;
 }
 
 .spellchecker-version {

@@ -3,6 +3,10 @@ import { SettingsService } from "../services/settings.service";
 import { Language } from "../data/language";
 import { Subscription } from "rxjs";
 import { SpellcheckerService } from "../services/spellchecker.service";
+// this loads package.json
+// then you destructure that object and take out the 'version' property from it
+// and finally with ': appVersion' you rename it to const appVersion
+const { version: appVersion } = require('../../../package.json');
 
 @Component({
   selector: 'app-settings',
@@ -15,6 +19,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   showContext: boolean = true;
 
+  public appVersion = '-';
+
   private languageSubscription?: Subscription;
   private showContextSubscription?: Subscription;
 
@@ -22,6 +28,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.appVersion = appVersion;
     this.languageSubscription = this.settingsService.getLanguageObservable().subscribe(lng => {
       this.language = lng;
     });
