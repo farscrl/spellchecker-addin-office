@@ -11,6 +11,7 @@ body {
   padding: 0;
   background-color: #EDEBE9;
   font-family: "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  user-select: none;
 }
 
 @import "scss/dropdown";
