@@ -21,13 +21,7 @@ export class SpellcheckerComponent {
 
   spellingErrors: ISpellingError[] = [];
 
-  private highlightSubject = new Subject<{paragraphIndex: number, errorIndex: number, activate: boolean}>();
-  highlightSource = this.highlightSubject.pipe(debounceTime(150));
-
   constructor(private spellcheckerService: SpellcheckerService) {
-    this.highlightSource.subscribe(obj => {
-     this.highlightDirectly(obj);
-    });
   }
 
   async checkGrammar(): Promise<void> {
@@ -66,18 +60,14 @@ export class SpellcheckerComponent {
     });
   }
 
-  highlight(obj: {paragraphIndex: number, errorIndex: number, activate: boolean}) {
-    this.highlightSubject.next(obj);
-  }
-
-  highlightDirectly(obj: {paragraphIndex: number, errorIndex: number, activate: boolean}) {
+  highlight(obj: {paragraphIndex: number, errorIndex: number }) {
     Word.run(async (context) => {
       try {
         const paragraphText = this.getLineText(obj.paragraphIndex);
         const errorText = this.getGrammarErrorText(obj.errorIndex);
         const errorRange = await WordUtils.getRange(context, paragraphText, errorText);
 
-        errorRange.select(obj.activate ? 'Start' : 'Select');
+        errorRange.select('Select');
         await context.sync();
       } catch (e) {
         // @ts-ignore

@@ -17,7 +17,7 @@ export class ErrorsListComponent implements OnInit, OnDestroy {
   paragraphs: string[] = [];
 
   @Output()
-  highlightEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, activate: boolean }>();
+  highlightEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number }>();
 
   @Output()
   acceptSuggestionEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, suggestion: string }>();
@@ -41,8 +41,8 @@ export class ErrorsListComponent implements OnInit, OnDestroy {
     }
   }
 
-  sendHighlight(paragraphIndex: number, errorIndex: number, childObj: { activate: boolean}) {
-    this.highlightEvent.emit({ paragraphIndex, errorIndex, activate: childObj.activate });
+  sendHighlight(paragraphIndex: number, errorIndex: number) {
+    this.highlightEvent.emit({ paragraphIndex, errorIndex });
   }
 
   acceptSuggestion(paragraphIndex: number, errorIndex: number, childObj: { suggestion: string }) {

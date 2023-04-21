@@ -12,6 +12,7 @@
   .header {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 
     .preview {
       flex-grow: 1;

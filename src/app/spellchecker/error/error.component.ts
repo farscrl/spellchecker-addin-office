@@ -20,7 +20,7 @@ export class ErrorComponent {
   showContext: boolean = true;
 
   @Output()
-  highlightEvent = new EventEmitter<{ activate: boolean }>();
+  highlightEvent = new EventEmitter();
 
   @Output()
   acceptSuggestionEvent = new EventEmitter<{ suggestion: string }>();
@@ -41,13 +41,14 @@ export class ErrorComponent {
     if (!this.isOpen) {
       this.isOpen = true;
       this.suggestions = await this.spellcheckerService.getSuggestions(this.error!.word);
+      this.sendHighlight()
     } else {
       this.isOpen = false;
     }
   }
 
-  sendHighlight(activate: boolean) {
-    this.highlightEvent.emit({ activate });
+  sendHighlight() {
+    this.highlightEvent.emit();
   }
 
   acceptSuggestion(suggestion: string) {
