@@ -6,7 +6,8 @@
 <app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs" (highlightEvent)="highlight($event)" (acceptSuggestionEvent)="acceptSuggestion($event)" *ngIf="!isFirstRun && spellingErrors.length > 0"></app-errors-list>
 
 <div class="full-size-notification" *ngIf="isFirstRun">
-    <span>Cliccar sin «Controllar l’ortografica», lura vegnan eventuals sbagls ortografics mussads en ina gliesta. Cliccar per als surprender.</span>
+    <span>Cliccar sin «Controllar l’ortografia», lura vegnan eventuals sbagls ortografics mussads en ina glista. <br><br>
+        Cun in clic sin in pled en la glista vegn quel selecziunà en il document ed il program fa propostas da correctura. Cliccar sin ina proposta per l'acceptar.</span>
 </div>
 
 <div class="full-size-notification" *ngIf="!isFirstRun && spellingErrors.length === 0">
