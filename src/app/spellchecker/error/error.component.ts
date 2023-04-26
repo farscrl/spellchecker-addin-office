@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITextWithPosition } from "../../data/data-structures";
-import TextUtils from "../../utils/text.utils";
+import { ISpellError } from "../../data/data-structures";
 import { SpellcheckerService } from "../../services/spellchecker.service";
 
 @Component({
@@ -11,13 +10,7 @@ import { SpellcheckerService } from "../../services/spellchecker.service";
 export class ErrorComponent {
 
   @Input()
-  error?: ITextWithPosition;
-
-  @Input()
-  context?: string;
-
-  @Input()
-  showContext: boolean = true;
+  error?: ISpellError;
 
   @Output()
   highlightEvent = new EventEmitter();
@@ -33,14 +26,10 @@ export class ErrorComponent {
   constructor(private spellcheckerService: SpellcheckerService) {
   }
 
-  getContext(word: string) {
-    return TextUtils.getContext(word, (this.context)!);
-  }
-
   async toggle(): Promise<void> {
     if (!this.isOpen) {
       this.isOpen = true;
-      this.suggestions = await this.spellcheckerService.getSuggestions(this.error!.word);
+      this.suggestions = await this.spellcheckerService.getSuggestions(this.error!.error);
       this.sendHighlight()
     } else {
       this.isOpen = false;

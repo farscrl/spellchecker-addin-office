@@ -1,8 +1,7 @@
-<ng-container *ngIf="error && context">
+<ng-container *ngIf="error">
     <div class="error-box">
         <div class="header" (click)="toggle()">
-            <div class="preview" *ngIf="showContext" [innerHTML]="getContext(error.word) | highlight:error.word"></div>
-            <div class="preview" *ngIf="!showContext">{{ error.word }}</div>
+            <div class="preview">{{ error.error }}</div>
             <div class="toggle" [class.active]="isOpen"><img src="assets/icons/chevron-down.svg" alt="Icon that indicates, if box is open"></div>
         </div>
         <div class="suggestions" *ngIf="isOpen">

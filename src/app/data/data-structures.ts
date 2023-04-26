@@ -12,3 +12,8 @@ export interface ITextWithPosition {
     length: number;
     word: string;
 }
+
+export interface ISpellError {
+    id: any;
+    error: string;
+}

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { ISpellingError } from "../../data/data-structures";
+import { ISpellError } from "../../data/data-structures";
 import { SettingsService } from "../../services/settings.service";
 import { Subscription } from "rxjs";
 
@@ -11,16 +11,16 @@ import { Subscription } from "rxjs";
 export class ErrorsListComponent implements OnInit, OnDestroy {
 
   @Input()
-  spellingErrors: ISpellingError[] = [];
+  spellingErrors: ISpellError[] = [];
 
   @Input()
   paragraphs: string[] = [];
 
   @Output()
-  highlightEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number }>();
+  highlightEvent = new EventEmitter<{ error: ISpellError, errorIndex: number }>();
 
   @Output()
-  acceptSuggestionEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, suggestion: string }>();
+  acceptSuggestionEvent = new EventEmitter<{ error: ISpellError, errorIndex: number, suggestion: string }>();
 
   showContext = true;
 
@@ -41,11 +41,11 @@ export class ErrorsListComponent implements OnInit, OnDestroy {
     }
   }
 
-  sendHighlight(paragraphIndex: number, errorIndex: number) {
-    this.highlightEvent.emit({ paragraphIndex, errorIndex });
+  sendHighlight(error: ISpellError, errorIndex: number) {
+    this.highlightEvent.emit({ error, errorIndex });
   }
 
-  acceptSuggestion(paragraphIndex: number, errorIndex: number, childObj: { suggestion: string }) {
-    this.acceptSuggestionEvent.emit({ paragraphIndex, errorIndex, suggestion: childObj.suggestion });
+  acceptSuggestion(error: ISpellError, errorIndex: number, childObj: { suggestion: string }) {
+    this.acceptSuggestionEvent.emit({ error, errorIndex, suggestion: childObj.suggestion });
   }
 }

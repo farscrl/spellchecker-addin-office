@@ -41,6 +41,17 @@ export class SpellcheckerService {
     return Promise.resolve(errors);
   }
 
+  proofreadArray(words: string[]) {
+    const errors: string[] = [];
+    words.forEach(wrd => {
+      if (!this.hunspell!.spell(this.removeSpecialChars(wrd))) {
+        errors.push(wrd);
+      }
+    });
+
+    return Promise.resolve(errors);
+  }
+
   getSuggestions(word: string): Promise<string[]> {
     return Promise.resolve(this.hunspell!.suggest(this.removeSpecialChars(word)));
   }
