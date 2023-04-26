@@ -86,6 +86,8 @@ export class SpellcheckerComponent {
         errorRange.insertText(obj.suggestion, 'Replace');
         errorRange.select('End');
 
+        this.updateLineText(obj.paragraphIndex, errorText, obj.suggestion);
+
         /*const lastCorrectedError = {
           error: this.correctedParagraphs[obj.paragraphIndex].errors[obj.errorIndex],
           selectedSuggestion: obj.suggestion,
@@ -111,6 +113,10 @@ export class SpellcheckerComponent {
 
   private getLineText(lineIndex: number): string {
     return this.paragraphs[lineIndex];
+  }
+
+  private updateLineText(lineIndex: number, search: string, replace: string): void {
+    this.paragraphs[lineIndex] = this.paragraphs[lineIndex].replace(search, replace);
   }
 
   private getGrammarErrorText(errorIndex: number): string {
