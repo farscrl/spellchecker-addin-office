@@ -177,7 +177,7 @@ export class SpellcheckerComponent {
               const cntntCtrl = errorRange.insertContentControl();
               cntntCtrl.appearance = "Hidden";
               cntntCtrl.tag = "xsrm";
-              cntntCtrl.placeholderText = "";
+              // cntntCtrl.placeholderText = "";
             }
           }
         }
