@@ -17,7 +17,7 @@ export class SpellcheckerService {
   dictFile?: string;
   hunspell?: Hunspell;
 
-  punctuation = ['.', '©', '', ':', ';', '!', '+', ',', '(', ')', '{', '}', '[', ']', '?', '|', "«", "»", "/", "%", "–", "…"];
+  punctuation = ['-','.', '©', '', ':', ';', '!', '+', ',', '(', ')', '{', '}', '[', ']', '?', '|', "«", "»", "/", "%", "–", "…"];
   isLoaded = false;
 
   version = '';
