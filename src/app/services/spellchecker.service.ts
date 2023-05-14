@@ -29,6 +29,7 @@ export class SpellcheckerService {
   }
 
   proofreadText(sentence: string): Promise<ITextWithPosition[]> {
+    sentence = this.replaceSpecialElements(sentence);
     const tokens = this.tokenizeString(sentence);
     const errors: ITextWithPosition[] = [];
 
@@ -149,4 +150,14 @@ export class SpellcheckerService {
     // remove soft hyphen, zero-width space, thin space
     return text.replace(/[\u00AD\u200B\u2009]+/g,'');
   }
+
+  private replaceSpecialElements(text: string): string {
+    const urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    text = text.replace(urlRegex, "");
+
+    var emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+    text = text.replace(emailRegex, "");
+
+    return text;
+  };
 }
