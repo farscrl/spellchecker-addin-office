@@ -1,7 +1,7 @@
 // this code is based on https://github.com/divvun/divvun-gramcheck-web/blob/master/msoffice/src/utils/index.ts
 
 export default class WordUtils {
-    static async getRange(context: Word.RequestContext, paragraph: string, errorText: string): Promise<Word.Range>{
+    static async getParagraphRange(context: Word.RequestContext, paragraph: string): Promise<Word.Range> {
         const body = context.document.body;
         context.load(body);
         await context.sync();
@@ -37,11 +37,19 @@ export default class WordUtils {
         }
 
         if (!fullRange) {
-            return Promise.reject(new Error('Context parargaph not found'));
+            return Promise.reject(new Error('Context paragraph not found'));
         }
 
-        const errorTextRangeCollection = fullRange.search(errorText, {
+        return fullRange;
+    }
+
+    static async getWordRange(context: Word.RequestContext, range: Word.Range, errorText: string): Promise<Word.Range> {
+        range.load('text');
+        await context.sync();
+
+        const errorTextRangeCollection = range.search(errorText, {
             matchCase: true,
+            matchWholeWord: true,
         });
 
         const foundErrorRange = errorTextRangeCollection.getFirstOrNullObject();

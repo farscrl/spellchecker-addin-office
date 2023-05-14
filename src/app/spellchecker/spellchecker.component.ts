@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SpellcheckerService } from "../services/spellchecker.service";
 import WordUtils from "../utils/word.utils";
-import { debounceTime, Subject } from "rxjs";
 import { ISpellingError } from "../data/data-structures";
 
 /* global Word */
@@ -20,6 +19,8 @@ export class SpellcheckerComponent {
   paragraphs: string[] = [];
 
   spellingErrors: ISpellingError[] = [];
+
+  lastCorrectedError?: { errorIndex: number, paragraphIndex: number, paragraphText: string, errorText: string};
 
   constructor(private spellcheckerService: SpellcheckerService) {
   }
@@ -48,7 +49,7 @@ export class SpellcheckerComponent {
               offset: e.offset,
               length: e.length,
               word: e.word,
-            })
+            });
           });
         }
       } catch (e) {
@@ -60,12 +61,13 @@ export class SpellcheckerComponent {
     });
   }
 
-  highlight(obj: {paragraphIndex: number, errorIndex: number }) {
-    Word.run(async (context) => {
+  async highlight(obj: {paragraphIndex: number, errorIndex: number }) {
+    await Word.run(async (context) => {
       try {
         const paragraphText = this.getLineText(obj.paragraphIndex);
         const errorText = this.getGrammarErrorText(obj.errorIndex);
-        const errorRange = await WordUtils.getRange(context, paragraphText, errorText);
+        const paragraphRange = await WordUtils.getParagraphRange(context, paragraphText);
+        const errorRange = await WordUtils.getWordRange(context, paragraphRange, errorText);
 
         errorRange.select('Select');
         await context.sync();
@@ -81,25 +83,24 @@ export class SpellcheckerComponent {
       try {
         const paragraphText = this.getLineText(obj.paragraphIndex);
         const errorText = this.getGrammarErrorText(obj.errorIndex);
-        const errorRange = await WordUtils.getRange(context, paragraphText, errorText);
+        const paragraphRange = await WordUtils.getParagraphRange(context, paragraphText);
+        const errorRange = await WordUtils.getWordRange(context, paragraphRange, errorText);
 
         errorRange.insertText(obj.suggestion, 'Replace');
         errorRange.select('End');
 
-        this.updateLineText(obj.paragraphIndex, errorText, obj.suggestion);
+        paragraphRange.load('text');
+        await context.sync();
 
-        /*const lastCorrectedError = {
-          error: this.correctedParagraphs[obj.paragraphIndex].errors[obj.errorIndex],
-          selectedSuggestion: obj.suggestion,
-          paragraphIndex: obj.paragraphIndex,
+        this.updateLineText(obj.paragraphIndex, paragraphRange.text);
+
+        // TODO: show toast to revoke change
+        this.lastCorrectedError = {
           errorIndex: obj.errorIndex,
+          paragraphIndex: obj.paragraphIndex,
+          paragraphText: paragraphText,
+          errorText: errorText
         };
-
-        this.setState({
-          lastCorrectedError,
-        }, () => {
-          setTimeout(this.clearLastCorrectedError, SNACKBAR_DISAPPEAR_AFTER_MS);
-        });*/
 
         this.removeGrammarError(obj.errorIndex);
 
@@ -115,8 +116,8 @@ export class SpellcheckerComponent {
     return this.paragraphs[lineIndex];
   }
 
-  private updateLineText(lineIndex: number, search: string, replace: string): void {
-    this.paragraphs[lineIndex] = this.paragraphs[lineIndex].replace(search, replace);
+  private updateLineText(lineIndex: number, newText: string): void {
+    this.paragraphs[lineIndex] = newText;
   }
 
   private getGrammarErrorText(errorIndex: number): string {
