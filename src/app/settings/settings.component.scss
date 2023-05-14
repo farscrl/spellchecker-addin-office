@@ -4,6 +4,10 @@
   justify-content: space-between;
   height: calc(100vh - 80px);
   overflow-y: scroll;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 .select {
   width: calc(100% - 2px);

@@ -3,6 +3,10 @@
   flex-direction: column;
   height: calc(100vh - 80px);
   overflow-y: scroll;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 
 .words-list {
