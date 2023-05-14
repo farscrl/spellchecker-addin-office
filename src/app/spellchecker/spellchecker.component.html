@@ -3,7 +3,11 @@
 <div *ngIf="spellingErrors.length > 0" class="number-spelling-errors">
     Chattà {{ spellingErrors.length }} propostas:
 </div>
-<app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs" (highlightEvent)="highlight($event)" (acceptSuggestionEvent)="acceptSuggestion($event)" *ngIf="!isFirstRun && spellingErrors.length > 0"></app-errors-list>
+<app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs"
+                 (highlightEvent)="highlight($event)"
+                 (acceptSuggestionEvent)="acceptSuggestion($event)"
+                 (ignoreWordEvent)="ignoreWord($event)"
+                 *ngIf="!isFirstRun && spellingErrors.length > 0"></app-errors-list>
 
 <div class="full-size-notification" *ngIf="isFirstRun">
     <span>Cliccar sin «Controllar l’ortografia», lura vegnan eventuals sbagls ortografics mussads en ina glista. <br><br>

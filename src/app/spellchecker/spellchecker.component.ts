@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SpellcheckerService } from "../services/spellchecker.service";
 import WordUtils from "../utils/word.utils";
 import { ISpellingError } from "../data/data-structures";
+import {UserDictionaryService} from "../services/user-dictionary.service";
 
 /* global Word */
 
@@ -22,7 +23,10 @@ export class SpellcheckerComponent {
 
   lastCorrectedError?: { errorIndex: number, paragraphIndex: number, paragraphText: string, errorText: string};
 
-  constructor(private spellcheckerService: SpellcheckerService) {
+  constructor(
+      private spellcheckerService: SpellcheckerService,
+      private userDictionaryService: UserDictionaryService,
+  ) {
   }
 
   async checkGrammar(): Promise<void> {
@@ -44,6 +48,9 @@ export class SpellcheckerComponent {
           const paragraph = this.paragraphs[paragraphIndex];
           const errs = await this.spellcheckerService.proofreadText(paragraph);
           errs.forEach(e => {
+            if (this.userDictionaryService.isInDictionary(e.word)) {
+              return;
+            }
             this.spellingErrors.push({
               paragraph: paragraphIndex,
               offset: e.offset,
@@ -110,6 +117,11 @@ export class SpellcheckerComponent {
         console.error(e.message, e.debugInfo);
       }
     });
+  }
+
+  ignoreWord(obj: {paragraphIndex: number, errorIndex: number, word: string }) {
+    this.userDictionaryService.addToDictionary(obj.word);
+    this.removeGrammarError(obj.errorIndex);
   }
 
   private getLineText(lineIndex: number): string {

@@ -1,1 +1,1 @@
-export type TabType = 'spellchecker' | 'settings';
+export type TabType = 'spellchecker' | 'settings' | 'ignoredWords';

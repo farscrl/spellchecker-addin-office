@@ -25,6 +25,9 @@ export class ErrorComponent {
   @Output()
   acceptSuggestionEvent = new EventEmitter<{ suggestion: string }>();
 
+  @Output()
+  ignoreWordEvent = new EventEmitter<{ word: string }>();
+
   isOpen = false;
 
   suggestions: string[] = [];
@@ -53,5 +56,9 @@ export class ErrorComponent {
 
   acceptSuggestion(suggestion: string) {
     this.acceptSuggestionEvent.emit({ suggestion });
+  }
+
+  ignoreWord(word: string) {
+    this.ignoreWordEvent.emit({ word});
   }
 }

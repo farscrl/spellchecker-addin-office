@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+}
+
+.words-list {
+  margin-top: 24px;
+}
+
+.action-link {
+  color: #595959;
+  cursor: pointer;
+}

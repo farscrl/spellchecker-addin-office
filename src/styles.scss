@@ -43,6 +43,10 @@ button {
     background-color: rgb(16, 110, 190);
     color: rgb(255, 255, 255);
   }
+
+  &.secondary {
+    background-color: #95989A;
+  }
 }
 
 .highlighted-text {

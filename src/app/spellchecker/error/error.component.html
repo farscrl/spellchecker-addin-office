@@ -8,6 +8,10 @@
         <div class="suggestions" *ngIf="isOpen">
             <div class="suggestion-title">Propostas:</div>
             <button *ngFor="let suggestion of suggestions" (click)="acceptSuggestion(suggestion)">{{ suggestion }}</button>
+
+            <div class="ignore-button-container">
+                <button class="secondary" (click)="ignoreWord(error.word)">Ignorar</button>
+            </div>
         </div>
     </div>
 </ng-container>
