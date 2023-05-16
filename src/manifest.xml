@@ -8,7 +8,7 @@
   <Version>1.0.0</Version>
   <ProviderName>far ScRL</ProviderName>
   <DefaultLocale>de</DefaultLocale>
-  <DisplayName DefaultValue="Controlla ortografica"/>
+  <DisplayName DefaultValue="Controlla ortografica DEV"/>
   <Description DefaultValue="In program da controlla ortografica rumantscha."/>
   <IconUrl DefaultValue="https://localhost:4200/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:4200/assets/icon-64.png"/>
@@ -76,7 +76,7 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Curreger texts en Word"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Correctura"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Ortografia rumantscha"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Ortografia rumantscha DEV"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="La controlla ortografica rumantscha è installada correctamain. En il tab «Start» da Word datti ussa in nov butttun «Ortografia rumantscha»."/>
