@@ -100,10 +100,11 @@ export class SpellcheckerComponent {
         errorRange.insertText(obj.suggestion, 'Replace');
         errorRange.select('End');
 
-        paragraphRange.load('text');
+        const newParagraph = paragraphRange.paragraphs.getFirst();
+        newParagraph.load('text');
         await context.sync();
 
-        this.updateLineText(obj.paragraphIndex, paragraphRange.text);
+        this.updateLineText(obj.paragraphIndex, newParagraph.text);
 
         // TODO: show toast to revoke change
         this.lastCorrectedError = {
