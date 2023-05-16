@@ -1,5 +1,7 @@
 // this code is based on https://github.com/divvun/divvun-gramcheck-web/blob/master/msoffice/src/utils/index.ts
 
+import PlatformType = Office.PlatformType;
+
 export default class WordUtils {
     static async getParagraphRange(context: Word.RequestContext, paragraph: string): Promise<Word.Range> {
         const body = context.document.body;
@@ -47,9 +49,22 @@ export default class WordUtils {
         range.load('text');
         await context.sync();
 
+        // Word online seems to have issues with searching whole words including special characters:
+        // https://github.com/OfficeDev/office-js/issues/3360
+        // Thus, disabling whole word match if online and if the word contains a special character
+        let useMatchWholeWord = true;
+        if (Office.context.diagnostics.platform === PlatformType.OfficeOnline) {
+            let pattern = /\W/g;
+            let result = errorText.match(pattern);
+            if(result !== null){
+                useMatchWholeWord = false;
+                console.log("Disable whole word match for word: " + errorText);
+            }
+        }
+
         const errorTextRangeCollection = range.search(errorText, {
             matchCase: true,
-            matchWholeWord: true,
+            matchWholeWord: useMatchWholeWord,
         });
 
         const foundErrorRange = errorTextRangeCollection.getFirstOrNullObject();
@@ -57,7 +72,7 @@ export default class WordUtils {
         await context.sync();
 
         if (!foundErrorRange || foundErrorRange.isNullObject) {
-            return Promise.reject(new Error('The range for the error wasn\'t found'));
+            return Promise.reject(new Error('The range for the error was not found: ' + errorText));
         }
 
         return foundErrorRange;
