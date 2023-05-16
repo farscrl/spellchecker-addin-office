@@ -19,3 +19,21 @@
 </div>
 
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>
+
+<modal #errorModal>
+    <modal-header>
+        <h4>Errur betg chattada</h4>
+    </modal-header>
+    <modal-content>
+        <p>Errur cun chattar il sbagl.</p>
+
+        <p style="margin-top: 24px;">Passascha betg chattada:</p>
+        <p>{{ error }}</p>
+
+        <p style="margin-top: 24px;">Nus recummandain da tschertgar danovamain sbagls.</p>
+    </modal-content>
+    <modal-footer>
+        <button class="secondary" (click)="errorModal.close(false)" style="margin-right: 12px;">Na, cuntinuar</button>
+        <button (click)="errorModal.close(true)">Gea, tschertgar</button>
+    </modal-footer>
+</modal>

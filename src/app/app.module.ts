@@ -15,6 +15,7 @@ import { VirtualScrollerModule } from "ngx-virtual-scroller";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
+import { ModalModule } from "@independer/ng-modal";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
     NgxSpinnerModule,
     VirtualScrollerModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ModalModule,
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

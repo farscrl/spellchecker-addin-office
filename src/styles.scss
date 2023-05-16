@@ -14,6 +14,7 @@ body {
   user-select: none;
 }
 
+@import "@independer/ng-modal/themes/bootstrap/styles.css";
 @import "scss/dropdown";
 @import "scss/checkbox.scss";
 
@@ -52,4 +53,9 @@ button {
 .highlighted-text {
   font-weight: bold;
   text-decoration: red underline wavy;
+}
+
+// modal
+.modal.show .modal-dialog {
+  margin-top: 50px;
 }

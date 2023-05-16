@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SpellcheckerService } from "../services/spellchecker.service";
 import WordUtils from "../utils/word.utils";
 import { ISpellingError } from "../data/data-structures";
-import {UserDictionaryService} from "../services/user-dictionary.service";
+import { UserDictionaryService } from "../services/user-dictionary.service";
+import { ModalComponent } from "@independer/ng-modal/modal.component";
 
 /* global Word */
 
@@ -22,6 +23,10 @@ export class SpellcheckerComponent {
   spellingErrors: ISpellingError[] = [];
 
   lastCorrectedError?: { errorIndex: number, paragraphIndex: number, paragraphText: string, errorText: string};
+
+  @ViewChild('errorModal') errorModal?: ModalComponent;
+
+  error = "";
 
   constructor(
       private spellcheckerService: SpellcheckerService,
@@ -79,8 +84,7 @@ export class SpellcheckerComponent {
         errorRange.select('Select');
         await context.sync();
       } catch (e) {
-        // @ts-ignore
-        console.error(e.message, e.debugInfo);
+        this.handleError(e);
       }
     });
   }
@@ -113,8 +117,7 @@ export class SpellcheckerComponent {
 
         await context.sync();
       } catch (e) {
-        // @ts-ignore
-        console.error(e.message, e.debugInfo);
+        this.handleError(e);
       }
     });
   }
@@ -142,5 +145,29 @@ export class SpellcheckerComponent {
 
   insertGrammarError(errorIndex: number, error: ISpellingError) {
     this.spellingErrors.splice(errorIndex, 0, error);
+  }
+
+  private handleError(e: any) {
+    this.errorModal!.closed.subscribe(args => {
+      if (!!args.result) {
+        this.checkGrammar();
+      }
+    });
+    if (e instanceof Error) {
+      if (e.message.startsWith("Could not find range for chunk: ")) {
+        this.error = e.message.replace("Could not find range for chunk: ", "");
+        this.error = "Betg chattà il paragraf: " + this.error;
+      } else if(e.message.startsWith("The range for the error was not found: ")) {
+        this.error = e.message.replace("The range for the error was not found: ", "");
+        this.error = "Betg chattà il pled: " + this.error;
+      } else {
+        this.error = e.message;
+      }
+
+      this.errorModal!.open();
+      console.error(e.message);
+    } else {
+      console.error(e);
+    }
   }
 }
