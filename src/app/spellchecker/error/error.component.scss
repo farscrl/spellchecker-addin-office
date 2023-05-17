@@ -39,12 +39,19 @@
     }
 
     button {
-      margin-right: 10px;
-      margin-bottom: 10px;
+      margin-right: 8px;
+      margin-bottom: 8px;
     }
 
     .ignore-button-container {
       text-align: right;
+      padding-top: 8px;
+      border-top: 1px solid #a4a4a4;
+
+      button {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
     }
   }
 }
