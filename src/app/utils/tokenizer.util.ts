@@ -27,8 +27,8 @@
  * limitations under the License.
  */
 
-const REGEXP_PREFIXES = /^([,()\[\]{}*<>«»„"”‟“'‘`!?%\/|:;\-–+…©]|\.{1,3})/gi;
-const REGEXP_SUFFIXES =  /([,()\[\]{}*<>«»„"”‟“'‘`!?%\/|:;\-–+…©]|\.{1,3})$/gi;
+const REGEXP_PREFIXES = /^([,()\[\]{}*<>«»„"”‟“'‘’`!?%\/|:;\-–+…©]|\.{1,3})/gi;
+const REGEXP_SUFFIXES =  /([,()\[\]{}*<>«»„"”‟“'‘’`!?%\/|:;\-–+…©]|\.{1,3})$/gi;
 
 const EMOJI_LIST = {
     "^_^": ["^_^"],
