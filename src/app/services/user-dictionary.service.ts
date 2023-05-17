@@ -25,6 +25,9 @@ export class UserDictionaryService {
   }
 
   addToDictionary(word: string) {
+    if (this.isInDictionary(word)) {
+      return;
+    }
     this.dictionaryWords.push(word);
     this.storeToLocalstorage();
   }
