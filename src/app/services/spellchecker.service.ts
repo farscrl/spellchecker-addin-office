@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hunspell, HunspellFactory, loadModule } from "hunspell-asm";
-import tokenize from "@stdlib/nlp-tokenize";
+import { TokenizerUtil } from "../utils/tokenizer.util";
 import { ITextWithPosition } from "../data/data-structures";
 import { SettingsService } from "./settings.service";
 import { Language } from "../data/language";
@@ -76,7 +76,7 @@ export class SpellcheckerService {
   }
 
   private tokenizeString(text: string): ITextWithPosition[] {
-    const tkns = tokenize(text, false) as string[];
+    const tkns = TokenizerUtil.tokenize(text, false, false) as string[];
     const tokens: ITextWithPosition[] = [];
 
     let trimmedOffset = 0;
