@@ -27,8 +27,8 @@
  * limitations under the License.
  */
 
-const REGEXP_PREFIXES = /^([,()\[\]{}*<>«»„"”‟“'‘’`!?%\/|:;\-–+…©]|\.{1,3})/gi;
-const REGEXP_SUFFIXES =  /([,()\[\]{}*<>«»„"”‟“'‘’`!?%\/|:;\-–+…©]|\.{1,3})$/gi;
+const REGEXP_PREFIXES = /^([,()\[\]{}*<>«»„"”‟“'‘’`!?%\/|:;\-–+…©#]|\.{1,3})/gi;
+const REGEXP_SUFFIXES =  /([,()\[\]{}*<>«»„"”‟“'‘’`!?%\/|:;\-–+…©#]|\.{1,3})$/gi;
 
 const EMOJI_LIST = {
     "^_^": ["^_^"],
@@ -79,6 +79,8 @@ const EMOJI_LIST = {
 const ABBREVIATION_LIST = {
     "p.pl.": ["p.pl."],
     "P.pl.": ["P.pl."],
+    "p.ex.": ["p.ex."],
+    "P.ex.": ["P.ex."],
     "e.u.v.": ["e.u.v."],
     "E.u.v.": ["E.u.v."],
 };
