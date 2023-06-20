@@ -41,7 +41,7 @@
     "@microsoft/office-js-helpers": "^1.0.2",
     "core-js": "^3.29.1",
     "hunspell-asm": "^4.0.2",
-    "ngx-spinner": "^15.0.1",
+    "ngx-spinner": "^16.0.2",
     "ngx-virtual-scroller": "git://github.com/iharbeck/ngx-virtual-scroller.git#f2ebf3d1b7a9ba1b8674af7aca02a238c9cd1684",
     "office-ui-fabric-js": "^1.5.0",
     "rxjs": "~7.8.0",
