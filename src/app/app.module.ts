@@ -11,7 +11,7 @@ import { ErrorComponent } from './spellchecker/error/error.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { VirtualScrollerModule } from "ngx-virtual-scroller";
+import { VirtualScrollerModule } from "@iharbeck/ngx-virtual-scroller";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
