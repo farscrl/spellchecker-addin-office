@@ -15,7 +15,7 @@ import { VirtualScrollerModule } from "@iharbeck/ngx-virtual-scroller";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
-import { ModalModule } from "@independer/ng-modal";
+import { provideDialogConfig } from '@ngneat/dialog';
 
 @NgModule({
   declarations: [
@@ -36,9 +36,18 @@ import { ModalModule } from "@independer/ng-modal";
     VirtualScrollerModule,
     AppRoutingModule,
     FormsModule,
-    ModalModule,
   ],
-  providers: [],
+  providers: [
+    provideDialogConfig({
+      closeButton: true,
+      enableClose: false,
+      backdrop: true,
+      resizable: false,
+      draggable: false,
+      windowClass: 'modal-dialog',
+      width: 'calc(100vw - 40px)'
+    }),
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

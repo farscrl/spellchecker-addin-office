@@ -20,17 +20,19 @@
 
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>
 
-<modal #errorModal>
-    <modal-header>
+<ng-template #errorDialog>
+    <header>
         <h4>Betg chattà</h4>
-    </modal-header>
-    <modal-content>
-        <p>{{ error }}</p>
+    </header>
 
-        <p style="margin-top: 24px;">Nus recummandain da tschertgar danovamain sbagls.</p>
-    </modal-content>
-    <modal-footer>
-        <button class="secondary" (click)="errorModal.close(false)" style="margin-right: 12px;">Na, cuntinuar</button>
-        <button (click)="errorModal.close(true)">Gea, tschertgar</button>
-    </modal-footer>
-</modal>
+    <div class="dialog-content">
+        <p>{{ errorIntro }}: <em>{{ errorMessage }}</em></p>
+
+        <p style="margin-top: 24px;">Igl ha dà in sbagl. Probablamain è il document sa midà dapi l’ultima tschertga. Nus recumandain da controllar anc ina giada il text. </p>
+    </div>
+
+    <footer>
+        <button class="secondary" (click)="dialogRef?.close(undefined)" style="margin-right: 12px;">Na, far nagut</button>
+        <button (click)="dialogRef?.close('search')">Gea, controllar</button>
+    </footer>
+</ng-template>

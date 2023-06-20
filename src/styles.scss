@@ -14,7 +14,6 @@ body {
   user-select: none;
 }
 
-@import "@independer/ng-modal/themes/bootstrap/styles.css";
 @import "scss/dropdown";
 @import "scss/checkbox.scss";
 
@@ -63,6 +62,18 @@ button {
 }
 
 // modal
-.modal.show .modal-dialog {
-  margin-top: 50px;
+.ngneat-dialog-backdrop {
+  padding: 0 !important;
+}
+.ngneat-dialog-content {
+  padding: 20px !important;
+}
+.modal-dialog {
+  header {
+    margin-bottom: 20px;
+  }
+
+  footer {
+    margin-top: 40px;
+  }
 }
