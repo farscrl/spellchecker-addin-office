@@ -1,7 +1,7 @@
-<button (click)="checkGrammar()">Controllar l'ortografia</button>
+<button (click)="checkGrammar()">Controllar il text {{ languageText }}</button>
 
 <div *ngIf="spellingErrors.length > 0" class="number-spelling-errors">
-    Chattà {{ spellingErrors.length }} propostas:
+    Chattà {{ spellingErrors.length }} scripziuns nunenconuschentas:
 </div>
 <app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs"
                  (highlightEvent)="highlight($event)"

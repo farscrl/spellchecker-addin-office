@@ -15,7 +15,7 @@ const { version: appVersion } = require('../../../package.json');
 })
 export class SettingsComponent implements OnInit, OnDestroy {
 
-  language: Language = 'surmiran';
+  language: Language = 'rumantschgrischun';
 
   showContext: boolean = true;
 

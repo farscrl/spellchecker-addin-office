@@ -6,7 +6,7 @@
             <div class="toggle" [class.active]="isOpen"><img src="assets/icons/chevron-down.svg" alt="Icon that indicates, if box is open"></div>
         </div>
         <div class="suggestions" *ngIf="isOpen">
-            <div class="suggestion-title">Propostas:</div>
+            <div class="suggestion-title">Propostas da correctura:</div>
             <button *ngFor="let suggestion of suggestions" (click)="acceptSuggestion(suggestion)">{{ suggestion }}</button>
 
             <div class="ignore-button-container">

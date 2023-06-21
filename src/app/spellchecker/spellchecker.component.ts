@@ -1,9 +1,12 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { SpellcheckerService } from "../services/spellchecker.service";
 import WordUtils from "../utils/word.utils";
 import { ISpellingError } from "../data/data-structures";
 import { UserDictionaryService } from "../services/user-dictionary.service";
 import { DialogRef, DialogService } from "@ngneat/dialog";
+import {SettingsService} from "../services/settings.service";
+import {Subscription} from "rxjs";
+import {Language} from "../data/language";
 
 /* global Word */
 
@@ -12,7 +15,7 @@ import { DialogRef, DialogService } from "@ngneat/dialog";
   templateUrl: './spellchecker.component.html',
   styleUrls: ['./spellchecker.component.scss']
 })
-export class SpellcheckerComponent {
+export class SpellcheckerComponent implements OnInit, OnDestroy {
 
   isSpellchecking = false;
 
@@ -30,11 +33,45 @@ export class SpellcheckerComponent {
   errorMessage = "";
   dialogRef?: DialogRef;
 
+  private languageSubscription?: Subscription;
+  private language: Language = 'rumantschgrischun';
+
   constructor(
       private spellcheckerService: SpellcheckerService,
       private userDictionaryService: UserDictionaryService,
       private dialogService: DialogService,
+      private settingsService: SettingsService,
   ) {
+  }
+
+  ngOnInit() {
+    this.languageSubscription = this.settingsService.getLanguageObservable().subscribe(lng => {
+      this.language = lng;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.languageSubscription) {
+      this.languageSubscription.unsubscribe();
+    }
+  }
+
+  get languageText() {
+    switch (this.language) {
+      case 'puter':
+        return ' (puter)';
+      case 'rumantschgrischun':
+        return ' (RG)';
+      case 'sursilvan':
+        return ' (sursilvan)';
+      case 'sutsilvan':
+        return ' (sutsilvan)';
+      case 'surmiran':
+        return ' (surmiran)';
+      case 'vallader':
+        return ' (vallader)';
+    }
+    return '';
   }
 
   async checkGrammar(): Promise<void> {
