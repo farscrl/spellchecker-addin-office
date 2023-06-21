@@ -16,6 +16,8 @@
 
     .preview {
       flex-grow: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .toggle {
@@ -48,9 +50,11 @@
       padding-top: 8px;
       border-top: 1px solid #a4a4a4;
 
-      button {
+      div {
         margin-right: 0;
-        margin-bottom: 0;
+        margin-bottom: 8px;
+        color: rgb(16, 110, 190);
+        cursor: pointer;
       }
     }
   }

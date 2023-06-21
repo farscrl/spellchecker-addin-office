@@ -30,6 +30,10 @@ export class SettingsService {
     return this.languageSubject.asObservable();
   }
 
+  getLanguage(): Language {
+    return this.languageSubject.getValue();
+  }
+
   setLanguage(lng: Language) {
     this.languageSubject.next(lng);
     this.save(this.LANGUAGE_KEY, lng);

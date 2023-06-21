@@ -10,8 +10,28 @@
             <button *ngFor="let suggestion of suggestions" (click)="acceptSuggestion(suggestion)">{{ suggestion }}</button>
 
             <div class="ignore-button-container">
-                <button class="secondary" (click)="ignoreWord(error.word)">Agiuntar al dicziunari persunal</button>
+                <div (click)="ignoreWord(error.word)">Agiuntar al dicziunari persunal</div>
+                <div (click)="reportWord(error.word)">Trametter quest pled a la Lia Rumantscha</div>
             </div>
         </div>
     </div>
 </ng-container>
+
+<ng-template #reportDialog>
+    <header>
+        <h4>Trametter in pled a la LR</h4>
+    </header>
+
+    <div class="dialog-content">
+        <p>Il program da correctura è vegnì creà sin basa dal Pledari Grond.
+            Sch’il program n’ènconuscha betg in pled, pos ti al trametter a la Lia Rumantsch per al integrar en il Pledari Grond.
+            (En l’add-in vegn il pled dentant pir integrà cura ch'i dat ina nova versiun.) </p>
+
+        <p style="margin-top: 24px;">Annunziar il pled «{{ wordToReport }}» a la Lia Rumantscha? </p>
+    </div>
+
+    <footer>
+        <button class="secondary" (click)="dialogRef?.close(undefined)" style="margin-right: 12px;">Na, turnar</button>
+        <button (click)="dialogRef?.close('search')">Gea, trametter</button>
+    </footer>
+</ng-template>

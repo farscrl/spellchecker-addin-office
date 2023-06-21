@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ITextWithPosition } from "../../data/data-structures";
 import TextUtils from "../../utils/text.utils";
 import { SpellcheckerService } from "../../services/spellchecker.service";
+import { DialogRef, DialogService } from "@ngneat/dialog";
+import { LemmaVersion } from "../../data/suggestion";
+import { ReportWordService } from "../../services/report-word.service";
 
 @Component({
   selector: 'app-error',
@@ -32,8 +35,15 @@ export class ErrorComponent {
 
   suggestions: string[] = [];
 
+  @ViewChild('reportDialog') reportDialog?: TemplateRef<any>;
+  dialogRef?: DialogRef;
+  wordToReport?: string;
 
-  constructor(private spellcheckerService: SpellcheckerService) {
+  constructor(
+      private spellcheckerService: SpellcheckerService,
+      private dialogService: DialogService,
+      private reportWordService: ReportWordService,
+  ) {
   }
 
   getContext(word: string) {
@@ -60,5 +70,33 @@ export class ErrorComponent {
 
   ignoreWord(word: string) {
     this.ignoreWordEvent.emit({ word});
+  }
+
+  reportWord(word: string) {
+    this.wordToReport = word;
+    this.dialogRef = this.dialogService.open(this.reportDialog!);
+    this.dialogRef.afterClosed$.subscribe((result) => {
+      if (!!result) {
+        this.sendWordToServer(word);
+      }
+    });
+  }
+
+  sendWordToServer(word: string) {
+    const lemmaVersion = new LemmaVersion();
+    lemmaVersion.lemmaValues.RStichwort = word;
+    lemmaVersion.lemmaValues.DStichwort = '';
+    lemmaVersion.lemmaValues.contact_comment = 'Proposta via spellchecker Word';
+
+    this.reportWordService.create(lemmaVersion).subscribe(data => {
+      const suggestionsBox = document.getElementById('suggestions-box');
+      if (suggestionsBox) {
+        suggestionsBox.textContent = '';
+        suggestionsBox.style.display = 'none'
+      }
+    }, error => {
+      console.error(error);
+    });
+
   }
 }
