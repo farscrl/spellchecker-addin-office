@@ -34,7 +34,7 @@ export class SpellcheckerComponent implements OnInit, OnDestroy {
   dialogRef?: DialogRef;
 
   private languageSubscription?: Subscription;
-  private language: Language = 'rumantschgrischun';
+  language: Language = 'rumantschgrischun';
 
   constructor(
       private spellcheckerService: SpellcheckerService,

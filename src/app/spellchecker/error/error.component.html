@@ -32,6 +32,9 @@
 
     <footer>
         <button class="secondary" (click)="dialogRef?.close(undefined)" style="margin-right: 12px;">Na, turnar</button>
-        <button (click)="dialogRef?.close('search')">Gea, trametter</button>
+        <button (click)="dialogRef?.close('search')"
+                matomoTracker="click"
+                matomoCategory="Actions"
+                matomoAction="send suggestion">Gea, trametter</button>
     </footer>
 </ng-template>

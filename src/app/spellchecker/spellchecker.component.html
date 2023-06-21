@@ -1,4 +1,8 @@
-<button (click)="checkGrammar()">Controllar il text {{ languageText }}</button>
+<button (click)="checkGrammar()"
+        matomoTracker="click"
+        matomoCategory="Actions"
+        matomoAction="check spelling"
+        [matomoName]="language">Controllar il text {{ languageText }}</button>
 
 <div *ngIf="spellingErrors.length > 0" class="number-spelling-errors">
     Chattà {{ spellingErrors.length }} scripziuns nunenconuschentas:
