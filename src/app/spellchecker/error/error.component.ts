@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
-import { ITextWithPosition } from "../../data/data-structures";
 import TextUtils from "../../utils/text.utils";
 import { SpellcheckerService } from "../../services/spellchecker.service";
 import { DialogRef, DialogService } from "@ngneat/dialog";
 import { LemmaVersion } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
+import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
 
 @Component({
   selector: 'app-error',

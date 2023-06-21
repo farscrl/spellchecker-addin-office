@@ -6,9 +6,3 @@ export interface ISpellingError {
     length: number;
     word: string;
 }
-
-export interface ITextWithPosition {
-    offset: number;
-    length: number;
-    word: string;
-}
