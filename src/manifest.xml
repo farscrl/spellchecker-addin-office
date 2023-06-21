@@ -5,7 +5,7 @@
            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
   <Id>f1f7b009-6c3f-4431-90d8-141cf47757a1</Id>
-  <Version>1.0.0</Version>
+  <Version>1.1.0</Version>
   <ProviderName>far ScRL</ProviderName>
   <DefaultLocale>de</DefaultLocale>
   <DisplayName DefaultValue="Controlla ortografica DEV"/>
