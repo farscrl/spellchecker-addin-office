@@ -44,6 +44,7 @@
     "@ngx-matomo/tracker": "^4.1.0",
     "core-js": "^3.29.1",
     "ngx-spinner": "^16.0.2",
+    "ngx-toastr": "^17.0.2",
     "office-ui-fabric-js": "^1.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.5.0",

@@ -17,6 +17,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
 import { provideDialogConfig } from '@ngneat/dialog';
 import { NgxMatomoTrackerModule } from "@ngx-matomo/tracker";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,11 @@ import { NgxMatomoTrackerModule } from "@ngx-matomo/tracker";
       siteId: '10', // your Matomo's site ID (find it in your Matomo's settings)
       trackerUrl: 'https://www.statistica.pledarigrond.ch', // your matomo server root url
     }),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center',
+      maxOpened: 1,
+      autoDismiss: true,
+    })
   ],
   providers: [
     provideDialogConfig({

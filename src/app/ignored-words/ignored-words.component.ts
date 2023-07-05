@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserDictionaryService } from "../services/user-dictionary.service";
 import { Subscription } from "rxjs";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-ignored-words',
@@ -13,7 +14,7 @@ export class IgnoredWordsComponent implements OnInit, OnDestroy {
 
   private dictionarySubscription?: Subscription;
 
-  constructor(private userDictionaryService: UserDictionaryService) {
+  constructor(private userDictionaryService: UserDictionaryService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -31,5 +32,11 @@ export class IgnoredWordsComponent implements OnInit, OnDestroy {
 
   remove(word: string): void {
     this.userDictionaryService.removeFromDictionary(word);
+  }
+
+  async copyWords() {
+    const string = this.words.join("\n");
+    await navigator.clipboard.writeText(string);
+    this.toastr.info('Copià cun success las datas.');
   }
 }

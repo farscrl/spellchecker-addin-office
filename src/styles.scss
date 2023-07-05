@@ -15,7 +15,8 @@ body {
 }
 
 @import "scss/dropdown";
-@import "scss/checkbox.scss";
+@import "scss/checkbox";
+@import "scss/toastr";
 
 button {
   outline: transparent;
