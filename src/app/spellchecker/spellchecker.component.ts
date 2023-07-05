@@ -4,9 +4,10 @@ import WordUtils from "../utils/word.utils";
 import { ISpellingError } from "../data/data-structures";
 import { UserDictionaryService } from "../services/user-dictionary.service";
 import { DialogRef, DialogService } from "@ngneat/dialog";
-import {SettingsService} from "../services/settings.service";
-import {Subscription} from "rxjs";
-import {Language} from "../data/language";
+import { SettingsService } from "../services/settings.service";
+import { Subscription } from "rxjs";
+import { Language } from "../data/language";
+import { ToastrService } from "ngx-toastr";
 
 /* global Word */
 
@@ -41,6 +42,7 @@ export class SpellcheckerComponent implements OnInit, OnDestroy {
       private userDictionaryService: UserDictionaryService,
       private dialogService: DialogService,
       private settingsService: SettingsService,
+      private toastr: ToastrService,
   ) {
   }
 
@@ -166,6 +168,7 @@ export class SpellcheckerComponent implements OnInit, OnDestroy {
   ignoreWord(obj: {paragraphIndex: number, errorIndex: number, word: string }) {
     this.userDictionaryService.addToDictionary(obj.word);
     this.removeGrammarError(obj.errorIndex);
+    this.toastr.info("Agiuntà «" + obj.word + "» al dicziunari persunal.");
   }
 
   private getLineText(lineIndex: number): string {

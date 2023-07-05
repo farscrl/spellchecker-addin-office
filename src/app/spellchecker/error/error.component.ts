@@ -5,6 +5,7 @@ import { DialogRef, DialogService } from "@ngneat/dialog";
 import { LemmaVersion } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
 import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-error',
@@ -43,6 +44,7 @@ export class ErrorComponent {
       private spellcheckerService: SpellcheckerService,
       private dialogService: DialogService,
       private reportWordService: ReportWordService,
+      private toastr: ToastrService,
   ) {
   }
 
@@ -89,11 +91,7 @@ export class ErrorComponent {
     lemmaVersion.lemmaValues.contact_comment = 'Proposta via spellchecker Word';
 
     this.reportWordService.create(lemmaVersion).subscribe(data => {
-      const suggestionsBox = document.getElementById('suggestions-box');
-      if (suggestionsBox) {
-        suggestionsBox.textContent = '';
-        suggestionsBox.style.display = 'none'
-      }
+      this.toastr.info("Tramess il pled «" + word + "» al Pledari Grond.");
     }, error => {
       console.error(error);
     });
