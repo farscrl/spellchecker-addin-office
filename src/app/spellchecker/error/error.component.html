@@ -15,8 +15,8 @@
             </ng-container>
 
             <div class="ignore-button-container">
-                <div (click)="ignoreWord(error.word)">Agiuntar al dicziunari persunal</div>
-                <div (click)="reportWord(error.word)">Trametter quest pled a la Lia Rumantscha</div>
+                <div (click)="ignoreWord(error.word)">Agiuntar «{{ error.word }}» al dicziunari persunal</div>
+                <div (click)="reportWord(error.word)">Trametter «{{ error.word }}» a la Lia Rumantscha</div>
             </div>
         </div>
     </div>
