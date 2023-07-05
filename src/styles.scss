@@ -18,6 +18,10 @@ body {
 @import "scss/checkbox";
 @import "scss/toastr";
 
+a {
+  color: rgb(0, 120, 212);
+}
+
 button {
   outline: transparent;
   position: relative;
