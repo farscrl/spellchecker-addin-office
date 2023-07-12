@@ -49,7 +49,11 @@ export class ErrorComponent {
   }
 
   getContext(word: string) {
-    return TextUtils.getContext(word, (this.context)!);
+    let ctxt = TextUtils.getContext(word, (this.context)!);
+    if (ctxt) {
+      ctxt = ctxt.replace(/()/i, '<img src="assets/icons/soft-return.svg" class="soft-return-icon" alt="Soft return icon"><br>');
+    }
+    return ctxt;
   }
 
   async toggle(): Promise<void> {
