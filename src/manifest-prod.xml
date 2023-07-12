@@ -79,7 +79,7 @@
         <bt:String id="TaskpaneButton.Label" DefaultValue="Ortografia rumantscha"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="La controlla ortografica rumantscha è installada correctamain. En il tab «Start» da Word datti ussa in nov butttun «Ortografia rumantscha»."/>
+        <bt:String id="GetStarted.Description" DefaultValue="La controlla ortografica rumantscha è installada correctamain. En il tab «Start» da Word datti uss in nov buttun «Ortografia rumantscha»."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Cliccar per mussar il program da controlla rumantsch"/>
       </bt:LongStrings>
     </Resources>
