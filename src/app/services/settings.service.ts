@@ -10,7 +10,7 @@ export class SettingsService {
   private LANGUAGE_KEY = 'language';
   private SHOW_CONTEXT_KEY = 'show-context';
 
-  private languageSubject = new BehaviorSubject<Language>('surmiran');
+  private languageSubject = new BehaviorSubject<Language>('rumantschgrischun');
 
   private showContext = new BehaviorSubject<boolean>(true);
 

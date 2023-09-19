@@ -2,12 +2,12 @@
     Idiom per la correctura:
     <div class="select">
         <select name="language" id="language" [ngModel]="language" (ngModelChange)="languageSelected($event)">
-            <option value="puter" disabled>Puter</option>
-            <option value="rumantschgrischun" disabled>Rumantsch Grischun</option>
+            <option value="puter">Puter</option>
+            <option value="rumantschgrischun">Rumantsch Grischun</option>
             <option value="surmiran">Surmiran</option>
             <option value="sursilvan" disabled>Sursilvan</option>
             <option value="sutsilvan">Sutsilvan</option>
-            <option value="vallader" disabled>Vallader</option>
+            <option value="vallader">Vallader</option>
         </select>
     </div>
     <div class="spellchecker-version">{{ spellcheckerService.version }}</div>

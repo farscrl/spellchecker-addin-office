@@ -63,7 +63,7 @@ export class SpellcheckerComponent implements OnInit, OnDestroy {
       case 'puter':
         return ' (puter)';
       case 'rumantschgrischun':
-        return ' (RG)';
+        return ' (rumantsch grischun)';
       case 'sursilvan':
         return ' (sursilvan)';
       case 'sutsilvan':
