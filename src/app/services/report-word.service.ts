@@ -16,24 +16,11 @@ export class ReportWordService {
   }
 
   private getUrl(): string {
-    switch (this.settingsService.getLanguage()) {
-      case "puter":
-        // TODO: implement me
-        return "";
-      case "surmiran":
-        return 'https://api.pledarigrond.ch/surmiran/user/modify/new';
-      case "rumantschgrischun":
-        return 'https://api.pledarigrond.ch/rumantschgrischun/user/modify/new';
-      case "sursilvan":
-        // TODO: implement me
-        return "";
-      case "sutsilvan":
-        return 'https://api.pledarigrond.ch/sutsilvan/user/modify/new';
-      case "vallader":
-        // TODO: implement me
-        return "";
+    let base = 'https://api.pledarigrond.ch';
+    const language = this.settingsService.getLanguage()
+    if (language === 'puter' || language === 'vallader') {
+      base = 'https://admin-api.dicziunaris-ladins.ch';
     }
-
-    return "";
+    return base + "/" + language + "/user/modify/new";
   }
 }
