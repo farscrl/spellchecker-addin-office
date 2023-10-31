@@ -16,7 +16,7 @@
 
             <div class="ignore-button-container">
                 <div (click)="ignoreWord(error.word)">Agiuntar «{{ error.word }}» al dicziunari persunal</div>
-                <div (click)="reportWord(error.word)">Trametter «{{ error.word }}» a la Lia Rumantscha</div>
+                <div (click)="reportWord(error.word)">Trametter «{{ error.word }}» a la redacziun</div>
             </div>
         </div>
     </div>
@@ -24,15 +24,15 @@
 
 <ng-template #reportDialog>
     <header>
-        <h4>Trametter in pled a la LR</h4>
+        <h4>Trametter in pled a la redacziun</h4>
     </header>
 
     <div class="dialog-content">
         <p>Il program da correctura è vegnì creà sin basa dal Pledari Grond.
-            Sch’il program n’enconuscha betg in pled, pos ti al trametter a la Lia Rumantsch. Lezza al endatescha en il Pledari Grond.
+            Sch’il program n’enconuscha betg in pled, pos ti al trametter a la redacziun. Lezza al endatescha en il Pledari Grond.
             (En l’add-in vegn il pled dentant pir integrà, cura ch'i dat ina nova versiun.) </p>
 
-        <p style="margin-top: 24px;">Annunziar il pled «{{ wordToReport }}» a la Lia Rumantscha? </p>
+        <p style="margin-top: 24px;">Annunziar il pled «{{ wordToReport }}» a la redacziun? </p>
     </div>
 
     <footer>
