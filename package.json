@@ -48,7 +48,7 @@
     "office-ui-fabric-js": "^1.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.5.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1602.2",
