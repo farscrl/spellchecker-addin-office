@@ -16,7 +16,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
 import { provideDialogConfig } from '@ngneat/dialog';
-import { NgxMatomoTrackerModule } from "@ngx-matomo/tracker";
+import { MatomoModule } from "ngx-matomo-client/core";
 import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
@@ -38,7 +38,7 @@ import { ToastrModule } from "ngx-toastr";
     VirtualScrollerModule,
     AppRoutingModule,
     FormsModule,
-    NgxMatomoTrackerModule.forRoot({
+    MatomoModule.forRoot({
       siteId: '10', // your Matomo's site ID (find it in your Matomo's settings)
       trackerUrl: 'https://www.statistica.pledarigrond.ch', // your matomo server root url
     }),
