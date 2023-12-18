@@ -40,7 +40,7 @@
     "@farscrl/rumantsch-language-tools": "^1.0.1",
     "@iharbeck/ngx-virtual-scroller": "17.0.0",
     "@microsoft/office-js-helpers": "^1.0.2",
-    "@ngneat/dialog": "^4.0.0",
+    "@ngneat/dialog": "^5.0.0",
     "core-js": "^3.29.1",
     "ngx-matomo-client": "^6.0.0",
     "ngx-spinner": "^16.0.2",
