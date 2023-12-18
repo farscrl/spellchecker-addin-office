@@ -38,7 +38,7 @@
     "@angular/platform-browser-dynamic": "^17.0.7",
     "@angular/router": "^17.0.7",
     "@farscrl/rumantsch-language-tools": "^1.0.1",
-    "@iharbeck/ngx-virtual-scroller": "16.0.0",
+    "@iharbeck/ngx-virtual-scroller": "17.0.0",
     "@microsoft/office-js-helpers": "^1.0.2",
     "@ngneat/dialog": "^4.0.0",
     "ngx-matomo-client": "^6.0.0",
