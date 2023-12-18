@@ -88,21 +88,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "office-angular:build"
+            "buildTarget": "office-angular:build"
           },
           "configurations": {
             "test": {
-              "browserTarget": "office-angular:build:test"
+              "buildTarget": "office-angular:build:test"
             },
             "production": {
-              "browserTarget": "office-angular:build:production"
+              "buildTarget": "office-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "office-angular:build"
+            "buildTarget": "office-angular:build"
           }
         },
         "test": {
