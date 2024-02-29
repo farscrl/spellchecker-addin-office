@@ -19,8 +19,8 @@
     "stop:prod": "office-addin-debugging stop ./src/manifest-prod.xml",
     "test": "ng test",
     "test:coverage": "ng test --watch false --code-coverage",
-    "validate": "office-toolbox validate -m ./src/manifest.xml",
-    "validate:prod": "office-toolbox validate -m ./src/manifest-prod.xml"
+    "validate": "office-addin-manifest validate ./src/manifest.xml",
+    "validate:prod": "office-addin-manifest validate ./src/manifest-prod.xml"
   },
   "license": "MIT",
   "config": {
@@ -72,7 +72,7 @@
     "eslint-plugin-prefer-arrow": "1.2.3",
     "office-addin-debugging": "^5.0.4",
     "office-addin-dev-certs": "^1.11.2",
-    "office-toolbox": "^0.3.0",
+    "office-addin-manifest": "^1.12.10",
     "ts-node": "~10.9.1",
     "typescript": "~5.2.2"
   }
