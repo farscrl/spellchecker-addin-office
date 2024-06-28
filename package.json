@@ -42,7 +42,7 @@
     "@microsoft/office-js-helpers": "^1.0.2",
     "@ngneat/dialog": "^5.0.0",
     "core-js": "^3.34.0",
-    "ngx-matomo-client": "^6.0.0",
+    "ngx-matomo-client": "^6.2.0",
     "ngx-spinner": "^16.0.2",
     "ngx-toastr": "^18.0.0",
     "office-ui-fabric-js": "^1.5.0",
