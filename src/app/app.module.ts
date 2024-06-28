@@ -13,7 +13,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { VirtualScrollerModule } from "@iharbeck/ngx-virtual-scroller";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
 import { provideDialogConfig } from '@ngneat/dialog';
 import { MatomoModule } from "ngx-matomo-client/core";
@@ -33,7 +33,6 @@ import { ToastrModule } from "ngx-toastr";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     NgxSpinnerModule,
     VirtualScrollerModule,
     AppRoutingModule,
@@ -58,6 +57,7 @@ import { ToastrModule } from "ngx-toastr";
       windowClass: 'modal-dialog',
       width: 'calc(100vw - 40px)'
     }),
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -29,14 +29,14 @@
     "dev-server-port": 4200
   },
   "dependencies": {
-    "@angular/animations": "^17.3.0",
-    "@angular/common": "^17.3.0",
-    "@angular/compiler": "^17.3.0",
-    "@angular/core": "^17.3.0",
-    "@angular/forms": "^17.3.0",
-    "@angular/platform-browser": "^17.3.0",
-    "@angular/platform-browser-dynamic": "^17.3.0",
-    "@angular/router": "^17.3.0",
+    "@angular/animations": "^18.0.5",
+    "@angular/common": "^18.0.5",
+    "@angular/compiler": "^18.0.5",
+    "@angular/core": "^18.0.5",
+    "@angular/forms": "^18.0.5",
+    "@angular/platform-browser": "^18.0.5",
+    "@angular/platform-browser-dynamic": "^18.0.5",
+    "@angular/router": "^18.0.5",
     "@farscrl/rumantsch-language-tools": "^1.0.1",
     "@iharbeck/ngx-virtual-scroller": "17.0.0",
     "@microsoft/office-js-helpers": "^1.0.2",
@@ -51,15 +51,15 @@
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1703.0",
-    "@angular-devkit/build-angular": "^17.3.0",
-    "@angular-eslint/builder": "17.3.0",
-    "@angular-eslint/eslint-plugin": "17.3.0",
-    "@angular-eslint/eslint-plugin-template": "17.3.0",
-    "@angular-eslint/schematics": "17.3.0",
-    "@angular-eslint/template-parser": "17.3.0",
-    "@angular/cli": "^17.3.0",
-    "@angular/compiler-cli": "^17.3.0",
+    "@angular-devkit/architect": "^0.1800.6",
+    "@angular-devkit/build-angular": "^18.0.6",
+    "@angular-eslint/builder": "18.0.1",
+    "@angular-eslint/eslint-plugin": "18.0.1",
+    "@angular-eslint/eslint-plugin-template": "18.0.1",
+    "@angular-eslint/schematics": "18.0.1",
+    "@angular-eslint/template-parser": "18.0.1",
+    "@angular/cli": "^18.0.6",
+    "@angular/compiler-cli": "^18.0.5",
     "@types/node": "^18.15.3",
     "@types/office-js": "^1.0.363",
     "@types/office-runtime": "^1.0.29",
@@ -74,6 +74,6 @@
     "office-addin-dev-certs": "^1.11.2",
     "office-addin-manifest": "^1.12.10",
     "ts-node": "~10.9.1",
-    "typescript": "~5.2.2"
+    "typescript": "~5.4.5"
   }
 }
