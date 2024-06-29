@@ -4,11 +4,11 @@ import { SettingsService } from "../../services/settings.service";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-errors-list',
-  templateUrl: './errors-list.component.html',
-  styleUrls: ['./errors-list.component.scss']
+  selector: 'app-errors-list-legacy',
+  templateUrl: './errors-list-legacy.component.html',
+  styleUrls: ['./errors-list-legacy.component.scss']
 })
-export class ErrorsListComponent implements OnInit, OnDestroy {
+export class ErrorsListLegacyComponent implements OnInit, OnDestroy {
 
   @Input()
   spellingErrors: ISpellingError[] = [];

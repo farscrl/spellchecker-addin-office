@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpellcheckerComponent } from './spellchecker.component';
+import { SpellcheckerLegacyComponent } from './spellchecker-legacy.component';
 
 describe('SpellcheckerComponent', () => {
-  let component: SpellcheckerComponent;
-  let fixture: ComponentFixture<SpellcheckerComponent>;
+  let component: SpellcheckerLegacyComponent;
+  let fixture: ComponentFixture<SpellcheckerLegacyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SpellcheckerComponent ]
+      declarations: [ SpellcheckerLegacyComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SpellcheckerComponent);
+    fixture = TestBed.createComponent(SpellcheckerLegacyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorsListComponent } from './errors-list.component';
+import { ErrorsListLegacyComponent } from './errors-list-legacy.component';
 
 describe('ErrorsListComponent', () => {
-  let component: ErrorsListComponent;
-  let fixture: ComponentFixture<ErrorsListComponent>;
+  let component: ErrorsListLegacyComponent;
+  let fixture: ComponentFixture<ErrorsListLegacyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorsListComponent ]
+      declarations: [ ErrorsListLegacyComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ErrorsListComponent);
+    fixture = TestBed.createComponent(ErrorsListLegacyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

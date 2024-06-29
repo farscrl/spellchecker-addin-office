@@ -8,11 +8,11 @@ import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/
 import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: 'app-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
+  selector: 'app-error-legacy',
+  templateUrl: './error-legacy.component.html',
+  styleUrls: ['./error-legacy.component.scss']
 })
-export class ErrorComponent {
+export class ErrorLegacyComponent {
 
   @Input()
   error?: ITextWithPosition;

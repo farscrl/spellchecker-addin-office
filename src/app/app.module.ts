@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SettingsComponent } from './settings/settings.component';
-import { SpellcheckerComponent } from './spellchecker/spellchecker.component';
+import { SpellcheckerLegacyComponent } from './spellchecker-legacy/spellchecker-legacy.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { ErrorsListComponent } from './spellchecker/errors-list/errors-list.component';
-import { ErrorComponent } from './spellchecker/error/error.component';
+import { ErrorsListLegacyComponent } from './spellchecker-legacy/errors-list-legacy/errors-list-legacy.component';
+import { ErrorLegacyComponent } from './spellchecker-legacy/error-legacy/error-legacy.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -23,10 +23,10 @@ import { ToastrModule } from "ngx-toastr";
   declarations: [
     AppComponent,
     SettingsComponent,
-    SpellcheckerComponent,
+    SpellcheckerLegacyComponent,
     TabsComponent,
-    ErrorsListComponent,
-    ErrorComponent,
+    ErrorsListLegacyComponent,
+    ErrorLegacyComponent,
     HighlightPipe,
     IgnoredWordsComponent
   ],

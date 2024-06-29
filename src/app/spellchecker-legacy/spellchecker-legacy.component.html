@@ -7,11 +7,11 @@
 <div *ngIf="spellingErrors.length > 0" class="number-spelling-errors">
     Chattà {{ spellingErrors.length }} scripziuns nunenconuschentas:
 </div>
-<app-errors-list [spellingErrors]="spellingErrors" [paragraphs]="paragraphs"
+<app-errors-list-legacy [spellingErrors]="spellingErrors" [paragraphs]="paragraphs"
                  (highlightEvent)="highlight($event)"
                  (acceptSuggestionEvent)="acceptSuggestion($event)"
                  (ignoreWordEvent)="ignoreWord($event)"
-                 *ngIf="!isFirstRun && spellingErrors.length > 0"></app-errors-list>
+                 *ngIf="!isFirstRun && spellingErrors.length > 0"></app-errors-list-legacy>
 
 <div class="full-size-notification" *ngIf="isFirstRun">
     <span>Cliccar sin «Controllar l’ortografia», lura vegnan eventuals sbagls ortografics mussads en ina glista. <br><br>
