@@ -18,6 +18,7 @@ import { IgnoredWordsComponent } from './ignored-words/ignored-words.component';
 import { provideDialogConfig } from '@ngneat/dialog';
 import { MatomoModule } from "ngx-matomo-client/core";
 import { ToastrModule } from "ngx-toastr";
+import { SpellcheckerInlineComponent } from './spellchecker-inline/spellchecker-inline.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastrModule } from "ngx-toastr";
     ErrorsListLegacyComponent,
     ErrorLegacyComponent,
     HighlightPipe,
-    IgnoredWordsComponent
+    IgnoredWordsComponent,
+    SpellcheckerInlineComponent
   ],
   imports: [
     BrowserModule,

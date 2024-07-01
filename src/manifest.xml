@@ -77,6 +77,11 @@
         <bt:String id="GetStarted.Title" DefaultValue="Curreger texts en Word"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Correctura"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Ortografia rumantscha DEV"/>
+        <bt:String id="Spellchecker.Popup.Branding" DefaultValue="rumantsch"/>
+        <bt:String id="Spellchecker.Popup.Title" DefaultValue="Propostas da correctura"/>
+        <bt:String id="Spellchecker.Popup.Subtitle" DefaultValue=" "/>
+        <bt:String id="Spellchecker.Popup.Title.No" DefaultValue="Naginas propostas da correctura"/>
+        <bt:String id="Spellchecker.Popup.Subtitle.No" DefaultValue=" "/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="La controlla ortografica rumantscha è installada correctamain. En il tab «Start» da Word datti uss in nov buttun «Ortografia rumantscha»."/>

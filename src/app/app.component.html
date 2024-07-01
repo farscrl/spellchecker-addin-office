@@ -1,6 +1,7 @@
 <div id="main-content">
     <div>
-        <app-spellchecker-legacy *ngIf="selectedTab === 'spellchecker'"></app-spellchecker-legacy>
+        <app-spellchecker-legacy *ngIf="selectedTab === 'spellchecker' && !wordApiLevel18Supported"></app-spellchecker-legacy>
+        <app-spellchecker-inline *ngIf="selectedTab === 'spellchecker' && wordApiLevel18Supported"></app-spellchecker-inline>
         <app-settings *ngIf="selectedTab === 'settings'"></app-settings>
         <app-ignored-words *ngIf="selectedTab === 'ignoredWords'"></app-ignored-words>
     </div>
