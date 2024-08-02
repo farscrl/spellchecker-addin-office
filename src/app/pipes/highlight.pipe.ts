@@ -11,8 +11,9 @@ export class HighlightPipe implements PipeTransform {
     // the search term has to be enclosed by word boundaries. as the standard word boundaries (\b)
     // do not include special characters like àèì, the regex has to be written manually. see:
     // https://stackoverflow.com/a/56945933
-    const re = new RegExp(`(?<![äöüÄÖÜàéèòìÀÉÈÒÌ\\w])(${TextUtils.escapeRegExp(args)})(?![äöüÄÖÜàéèòìÀÉÈÒÌ\\w])`, 'gm');
-    value= value.replace(re, '<span class="highlighted-text">$1</span>');
+    const escapedArgs = TextUtils.escapeRegExp(args);
+    const re = new RegExp(`(^|[^äöüÄÖÜàéèòìÀÉÈÒÌ\\w])(${escapedArgs})(?![äöüÄÖÜàéèòìÀÉÈÒÌ\\w])`, 'gm');
+    value = value.replace(re, (match: any, p1: any, p2: any) => `${p1}<span class="highlighted-text">${p2}</span>`);
     return value;
   }
 
