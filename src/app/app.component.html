@@ -1,20 +1,20 @@
 <div id="main-content">
-  <div>
-    @if (selectedTab === 'spellchecker' && !wordApiLevel18Supported) {
-      <app-spellchecker-legacy></app-spellchecker-legacy>
-    }
-    @if (selectedTab === 'spellchecker' && wordApiLevel18Supported) {
-      <app-spellchecker-inline></app-spellchecker-inline>
-    }
-    @if (selectedTab === 'settings') {
-      <app-settings></app-settings>
-    }
-    @if (selectedTab === 'ignoredWords') {
-      <app-ignored-words></app-ignored-words>
-    }
-  </div>
+    <div>
+        @if (selectedTab === 'spellchecker' && !wordApiLevel18Supported) {
+            <app-spellchecker-legacy></app-spellchecker-legacy>
+        }
+        @if (selectedTab === 'spellchecker' && wordApiLevel18Supported) {
+            <app-spellchecker-inline></app-spellchecker-inline>
+        }
+        @if (selectedTab === 'settings') {
+            <app-settings [wordApiLevel18Supported]="wordApiLevel18Supported"></app-settings>
+        }
+        @if (selectedTab === 'ignoredWords') {
+            <app-ignored-words></app-ignored-words>
+        }
+    </div>
 </div>
 
 <div id="tabs">
-  <app-tabs [selectedTab]="selectedTab" (tabChangedEvent)="tabChanged($event)"></app-tabs>
+    <app-tabs [selectedTab]="selectedTab" (tabChangedEvent)="tabChanged($event)"></app-tabs>
 </div>

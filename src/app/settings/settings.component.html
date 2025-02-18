@@ -14,23 +14,26 @@
 
     <br>
 
-    <div class="toggle">
-        <div class="toggler">
-            <div class="check-box">
-                <input type="checkbox" [ngModel]="showContext" (ngModelChange)="showContextChanged($event)">
+    @if (!wordApiLevel18Supported) {
+        <div class="toggle">
+            <div class="toggler">
+                <div class="check-box">
+                    <input type="checkbox" [ngModel]="showContext" (ngModelChange)="showContextChanged($event)">
+                </div>
+            </div>
+            <div class="description">
+                Mussar context
             </div>
         </div>
-        <div class="description">
-            Mussar context
-        </div>
-    </div>
-    <div class="toggle-description">Mussa en la trav laterala il context dals pleds chattads. </div>
+        <div class="toggle-description">Mussa en la trav laterala il context dals pleds chattads.</div>
+    }
 </div>
 
 <div>
     <div class="impressum">
         <p>
-            Il program da controlla ortografica rumantscha è in project da la <a href="https://www.rumantsch.ch/" target="_blank">Pro Svizra Rumantscha</a>
+            Il program da controlla ortografica rumantscha è in project da la
+            <a href="https://www.rumantsch.ch/" target="_blank">Pro Svizra Rumantscha</a>
             realisà en collavuraziun cun la <a href="http://www.liarumantscha.ch" target="_blank">Lia Rumantscha</a>.
             L'Uffizi federal da cultura ed il chantun Grischun sustegnan finanzialmain il project.
         </p>
