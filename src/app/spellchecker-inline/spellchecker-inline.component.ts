@@ -1,28 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { SpellcheckerService } from '../services/spellchecker.service';
-import { UserDictionaryService } from '../services/user-dictionary.service';
+import { Component, OnInit } from "@angular/core";
+import { SpellcheckerService } from "../services/spellchecker.service";
+import { UserDictionaryService } from "../services/user-dictionary.service";
 
 @Component({
-  selector: 'app-spellchecker-inline',
-  templateUrl: './spellchecker-inline.component.html',
-  styleUrl: './spellchecker-inline.component.scss'
+  selector: "app-spellchecker-inline",
+  templateUrl: "./spellchecker-inline.component.html",
+  styleUrl: "./spellchecker-inline.component.scss",
 })
 export class SpellcheckerInlineComponent implements OnInit {
-
   isSpellchecking = false;
   executionTime = "";
 
   private start: number = 0;
 
   constructor(
-      private spellcheckerService: SpellcheckerService,
-      private userDictionaryService: UserDictionaryService,
+    private spellcheckerService: SpellcheckerService,
+    private userDictionaryService: UserDictionaryService
   ) {}
 
   ngOnInit() {
     this.initChangeHandlers().then(async () => {
       await this.executeFullCheck();
-    })
+    });
   }
 
   async executeFullCheck() {
@@ -70,6 +69,7 @@ export class SpellcheckerInlineComponent implements OnInit {
   }
 
   private async paragraphAdded(event: Word.ParagraphAddedEventArgs) {
+    this.isSpellchecking = true;
     await Word.run(async (context) => {
       await context.sync();
       for (let id of event.uniqueLocalIds) {
@@ -79,10 +79,12 @@ export class SpellcheckerInlineComponent implements OnInit {
         await this.spellcheckParagraph(context, paragraph);
         await context.sync();
       }
+      this.isSpellchecking = false;
     });
   }
 
   private async paragraphChanged(event: Word.ParagraphChangedEventArgs) {
+    this.isSpellchecking = true;
     await Word.run(async (context) => {
       for (let id of event.uniqueLocalIds) {
         const paragraph = context.document.getParagraphByUniqueLocalId(id);
@@ -91,6 +93,7 @@ export class SpellcheckerInlineComponent implements OnInit {
         await this.spellcheckParagraph(context, paragraph);
         await context.sync();
       }
+      this.isSpellchecking = false;
     });
   }
 
@@ -101,7 +104,10 @@ export class SpellcheckerInlineComponent implements OnInit {
     });
   }
 
-  private async spellcheckParagraph(context: Word.RequestContext, paragraph: Word.Paragraph) {
+  private async spellcheckParagraph(
+    context: Word.RequestContext,
+    paragraph: Word.Paragraph
+  ) {
     // this.start = performance.now();
     const errs = await this.spellcheckerService.proofreadText(paragraph.text);
     const critiques: Word.Critique[] = [];
@@ -111,8 +117,14 @@ export class SpellcheckerInlineComponent implements OnInit {
       }
 
       const suggestions = await this.spellcheckerService.getSuggestions(e.word);
-      const titleResourceId = suggestions.length > 0 ? "Spellchecker.Popup.Title" : "Spellchecker.Popup.Title.No";
-      const subtitleResourceId = suggestions.length > 0 ? "Spellchecker.Popup.Subtitle" : "Spellchecker.Popup.Subtitle.No";
+      const titleResourceId =
+        suggestions.length > 0
+          ? "Spellchecker.Popup.Title"
+          : "Spellchecker.Popup.Title.No";
+      const subtitleResourceId =
+        suggestions.length > 0
+          ? "Spellchecker.Popup.Subtitle"
+          : "Spellchecker.Popup.Subtitle.No";
       critiques.push({
         colorScheme: Word.CritiqueColorScheme.berry,
         start: e.offset,
@@ -121,19 +133,22 @@ export class SpellcheckerInlineComponent implements OnInit {
           brandingTextResourceId: "Spellchecker.Popup.Branding",
           subtitleResourceId: subtitleResourceId,
           titleResourceId: titleResourceId,
-          suggestions: suggestions
-        }
-      })
+          suggestions: suggestions,
+        },
+      });
     }
     if (critiques.length > 0) {
       const annotationSet: Word.AnnotationSet = {
-        critiques: critiques
+        critiques: critiques,
       };
       paragraph.insertAnnotations(annotationSet);
     }
   }
 
-  async deleteAllAnnotations(context: Word.RequestContext, paragraphs: Word.ParagraphCollection) {
+  async deleteAllAnnotations(
+    context: Word.RequestContext,
+    paragraphs: Word.ParagraphCollection
+  ) {
     const allAnnotations: Word.AnnotationCollection[] = [];
     for (const paragraph of paragraphs.items) {
       const annotations: Word.AnnotationCollection = paragraph.getAnnotations();
@@ -143,7 +158,7 @@ export class SpellcheckerInlineComponent implements OnInit {
 
     await context.sync();
 
-    allAnnotations.forEach(annotations => {
+    allAnnotations.forEach((annotations) => {
       for (let i = 0; i < annotations.items.length; i++) {
         const annotation: Word.Annotation = annotations.items[i];
         annotation.delete();

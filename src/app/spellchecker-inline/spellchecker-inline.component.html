@@ -1,4 +1,9 @@
-<p>spellchecker-inline works!</p>
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>
+<div class="main-content">
+    {{ executionTime }}
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true"
+                 [showSpinner]="isSpellchecking"><p style="color: white"> Curreger... </p></ngx-spinner>
 
-{{executionTime}}
+</div>
+<div class="report-missing">
+    <app-suggestion-box></app-suggestion-box>
+</div>
