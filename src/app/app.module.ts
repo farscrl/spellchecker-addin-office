@@ -13,10 +13,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { VirtualScrollerModule } from "@iharbeck/ngx-virtual-scroller";
 import { FormsModule } from "@angular/forms";
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi, } from "@angular/common/http";
 import { IgnoredWordsComponent } from "./ignored-words/ignored-words.component";
 import { provideDialogConfig } from "@ngneat/dialog";
 import { MatomoModule } from "ngx-matomo-client/core";
@@ -25,49 +22,47 @@ import { SpellcheckerInlineComponent } from "./spellchecker-inline/spellchecker-
 import { SuggestionBoxComponent } from "./spellchecker-inline/suggestion-box/suggestion-box.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SettingsComponent,
-    SpellcheckerLegacyComponent,
-    TabsComponent,
-    ErrorsListLegacyComponent,
-    ErrorLegacyComponent,
-    HighlightPipe,
-    IgnoredWordsComponent,
-    SpellcheckerInlineComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NgxSpinnerModule,
-    VirtualScrollerModule,
-    AppRoutingModule,
-    FormsModule,
-    MatomoModule.forRoot({
-      siteId: "10", // your Matomo's site ID (find it in your Matomo's settings)
-      trackerUrl: "https://www.statistica.pledarigrond.ch", // your matomo server root url
-    }),
-    ToastrModule.forRoot({
-      positionClass: "toast-bottom-center",
-      maxOpened: 1,
-      autoDismiss: true,
-    }),
-
-    SuggestionBoxComponent,
-  ],
-  providers: [
-    provideDialogConfig({
-      closeButton: true,
-      enableClose: false,
-      backdrop: true,
-      resizable: false,
-      draggable: false,
-      windowClass: "modal-dialog",
-      width: "calc(100vw - 40px)",
-    }),
-    provideHttpClient(withInterceptorsFromDi()),
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        NgxSpinnerModule,
+        VirtualScrollerModule,
+        AppRoutingModule,
+        FormsModule,
+        MatomoModule.forRoot({
+            siteId: "10", // your Matomo's site ID (find it in your Matomo's settings)
+            trackerUrl: "https://www.statistica.pledarigrond.ch", // your matomo server root url
+        }),
+        ToastrModule.forRoot({
+            positionClass: "toast-bottom-center",
+            maxOpened: 1,
+            autoDismiss: true,
+        }),
+        SuggestionBoxComponent,
+        SettingsComponent,
+        SpellcheckerLegacyComponent,
+        TabsComponent,
+        ErrorsListLegacyComponent,
+        ErrorLegacyComponent,
+        HighlightPipe,
+        IgnoredWordsComponent,
+        SpellcheckerInlineComponent,
+    ],
+    providers: [
+        provideDialogConfig({
+            closeButton: true,
+            enableClose: false,
+            backdrop: true,
+            resizable: false,
+            draggable: false,
+            windowClass: "modal-dialog",
+            width: "calc(100vw - 40px)",
+        }),
+        provideHttpClient(withInterceptorsFromDi()),
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

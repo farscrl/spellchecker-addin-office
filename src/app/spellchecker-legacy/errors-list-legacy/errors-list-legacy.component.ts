@@ -2,58 +2,61 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { ISpellingError } from "../../data/data-structures";
 import { SettingsService } from "../../services/settings.service";
 import { Subscription } from "rxjs";
+import { VirtualScrollerModule } from '@iharbeck/ngx-virtual-scroller';
+import { NgFor } from '@angular/common';
+import { ErrorLegacyComponent } from '../error-legacy/error-legacy.component';
 
 @Component({
     selector: 'app-errors-list-legacy',
     templateUrl: './errors-list-legacy.component.html',
     styleUrls: ['./errors-list-legacy.component.scss'],
-    standalone: false
+    imports: [VirtualScrollerModule, NgFor, ErrorLegacyComponent]
 })
 export class ErrorsListLegacyComponent implements OnInit, OnDestroy {
 
-  @Input()
-  spellingErrors: ISpellingError[] = [];
+    @Input()
+    spellingErrors: ISpellingError[] = [];
 
-  @Input()
-  paragraphs: string[] = [];
+    @Input()
+    paragraphs: string[] = [];
 
-  @Output()
-  highlightEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number }>();
+    @Output()
+    highlightEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number }>();
 
-  @Output()
-  acceptSuggestionEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, suggestion: string }>();
+    @Output()
+    acceptSuggestionEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, suggestion: string }>();
 
-  @Output()
-  ignoreWordEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, word: string }>();
+    @Output()
+    ignoreWordEvent = new EventEmitter<{ paragraphIndex: number, errorIndex: number, word: string }>();
 
-  showContext = true;
+    showContext = true;
 
-  private settingsServiceSubscription?: Subscription;
+    private settingsServiceSubscription?: Subscription;
 
-  constructor(private settingsService: SettingsService) {
-  }
-
-  ngOnInit() {
-    this.settingsServiceSubscription = this.settingsService.getShowContextObservable().subscribe(value => {
-      this.showContext = value;
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.settingsServiceSubscription) {
-      this.settingsServiceSubscription.unsubscribe();
+    constructor(private settingsService: SettingsService) {
     }
-  }
 
-  sendHighlight(paragraphIndex: number, errorIndex: number) {
-    this.highlightEvent.emit({ paragraphIndex, errorIndex });
-  }
+    ngOnInit() {
+        this.settingsServiceSubscription = this.settingsService.getShowContextObservable().subscribe(value => {
+            this.showContext = value;
+        });
+    }
 
-  acceptSuggestion(paragraphIndex: number, errorIndex: number, childObj: { suggestion: string }) {
-    this.acceptSuggestionEvent.emit({ paragraphIndex, errorIndex, suggestion: childObj.suggestion });
-  }
+    ngOnDestroy() {
+        if (this.settingsServiceSubscription) {
+            this.settingsServiceSubscription.unsubscribe();
+        }
+    }
 
-  ignoreWord(paragraphIndex: number, errorIndex: number, childObj: { word: string }) {
-    this.ignoreWordEvent.emit({ paragraphIndex, errorIndex, word: childObj.word });
-  }
+    sendHighlight(paragraphIndex: number, errorIndex: number) {
+        this.highlightEvent.emit({paragraphIndex, errorIndex});
+    }
+
+    acceptSuggestion(paragraphIndex: number, errorIndex: number, childObj: { suggestion: string }) {
+        this.acceptSuggestionEvent.emit({paragraphIndex, errorIndex, suggestion: childObj.suggestion});
+    }
+
+    ignoreWord(paragraphIndex: number, errorIndex: number, childObj: { word: string }) {
+        this.ignoreWordEvent.emit({paragraphIndex, errorIndex, word: childObj.word});
+    }
 }

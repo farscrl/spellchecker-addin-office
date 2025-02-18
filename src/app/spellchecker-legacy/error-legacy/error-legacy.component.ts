@@ -6,100 +6,103 @@ import { LemmaVersion } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
 import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
 import { ToastrService } from "ngx-toastr";
+import { NgFor, NgIf } from '@angular/common';
+import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
+import { HighlightPipe } from '../../pipes/highlight.pipe';
 
 @Component({
     selector: 'app-error-legacy',
     templateUrl: './error-legacy.component.html',
     styleUrls: ['./error-legacy.component.scss'],
-    standalone: false
+    imports: [NgIf, NgFor, MatomoTrackerDirective, HighlightPipe]
 })
 export class ErrorLegacyComponent {
 
-  @Input()
-  error?: ITextWithPosition;
+    @Input()
+    error?: ITextWithPosition;
 
-  @Input()
-  context?: string;
+    @Input()
+    context?: string;
 
-  @Input()
-  showContext: boolean = true;
+    @Input()
+    showContext: boolean = true;
 
-  @Output()
-  highlightEvent = new EventEmitter();
+    @Output()
+    highlightEvent = new EventEmitter();
 
-  @Output()
-  acceptSuggestionEvent = new EventEmitter<{ suggestion: string }>();
+    @Output()
+    acceptSuggestionEvent = new EventEmitter<{ suggestion: string }>();
 
-  @Output()
-  ignoreWordEvent = new EventEmitter<{ word: string }>();
+    @Output()
+    ignoreWordEvent = new EventEmitter<{ word: string }>();
 
-  isOpen = false;
+    isOpen = false;
 
-  suggestions: string[] = [];
+    suggestions: string[] = [];
 
-  @ViewChild('reportDialog') reportDialog?: TemplateRef<any>;
-  dialogRef?: DialogRef;
-  wordToReport?: string;
+    @ViewChild('reportDialog') reportDialog?: TemplateRef<any>;
+    dialogRef?: DialogRef;
+    wordToReport?: string;
 
-  constructor(
-      private spellcheckerService: SpellcheckerService,
-      private dialogService: DialogService,
-      private reportWordService: ReportWordService,
-      private toastr: ToastrService,
-  ) {
-  }
-
-  getContext(word: string) {
-    let ctxt = TextUtils.getContext(word, (this.context)!);
-    if (ctxt) {
-      ctxt = ctxt.replace(/()/i, '<img src="assets/icons/soft-return.svg" class="soft-return-icon" alt="Soft return icon"><br>');
+    constructor(
+        private spellcheckerService: SpellcheckerService,
+        private dialogService: DialogService,
+        private reportWordService: ReportWordService,
+        private toastr: ToastrService,
+    ) {
     }
-    return ctxt;
-  }
 
-  async toggle(): Promise<void> {
-    if (!this.isOpen) {
-      this.isOpen = true;
-      this.suggestions = await this.spellcheckerService.getSuggestions(this.error!.word);
-      this.sendHighlight()
-    } else {
-      this.isOpen = false;
+    getContext(word: string) {
+        let ctxt = TextUtils.getContext(word, (this.context)!);
+        if (ctxt) {
+            ctxt = ctxt.replace(/()/i, '<img src="assets/icons/soft-return.svg" class="soft-return-icon" alt="Soft return icon"><br>');
+        }
+        return ctxt;
     }
-  }
 
-  sendHighlight() {
-    this.highlightEvent.emit();
-  }
+    async toggle(): Promise<void> {
+        if (!this.isOpen) {
+            this.isOpen = true;
+            this.suggestions = await this.spellcheckerService.getSuggestions(this.error!.word);
+            this.sendHighlight()
+        } else {
+            this.isOpen = false;
+        }
+    }
 
-  acceptSuggestion(suggestion: string) {
-    this.acceptSuggestionEvent.emit({ suggestion });
-  }
+    sendHighlight() {
+        this.highlightEvent.emit();
+    }
 
-  ignoreWord(word: string) {
-    this.ignoreWordEvent.emit({ word});
-  }
+    acceptSuggestion(suggestion: string) {
+        this.acceptSuggestionEvent.emit({suggestion});
+    }
 
-  reportWord(word: string) {
-    this.wordToReport = word;
-    this.dialogRef = this.dialogService.open(this.reportDialog!);
-    this.dialogRef.afterClosed$.subscribe((result) => {
-      if (!!result) {
-        this.sendWordToServer(word);
-      }
-    });
-  }
+    ignoreWord(word: string) {
+        this.ignoreWordEvent.emit({word});
+    }
 
-  sendWordToServer(word: string) {
-    const lemmaVersion = new LemmaVersion();
-    lemmaVersion.lemmaValues.RStichwort = word;
-    lemmaVersion.lemmaValues.DStichwort = '';
-    lemmaVersion.lemmaValues.contact_comment = 'Proposta via spellchecker Word';
+    reportWord(word: string) {
+        this.wordToReport = word;
+        this.dialogRef = this.dialogService.open(this.reportDialog!);
+        this.dialogRef.afterClosed$.subscribe((result) => {
+            if (!!result) {
+                this.sendWordToServer(word);
+            }
+        });
+    }
 
-    this.reportWordService.create(lemmaVersion).subscribe(data => {
-      this.toastr.info("Tramess il pled «" + word + "» al Pledari Grond.");
-    }, error => {
-      console.error(error);
-    });
+    sendWordToServer(word: string) {
+        const lemmaVersion = new LemmaVersion();
+        lemmaVersion.lemmaValues.RStichwort = word;
+        lemmaVersion.lemmaValues.DStichwort = '';
+        lemmaVersion.lemmaValues.contact_comment = 'Proposta via spellchecker Word';
 
-  }
+        this.reportWordService.create(lemmaVersion).subscribe(data => {
+            this.toastr.info("Tramess il pled «" + word + "» al Pledari Grond.");
+        }, error => {
+            console.error(error);
+        });
+
+    }
 }
