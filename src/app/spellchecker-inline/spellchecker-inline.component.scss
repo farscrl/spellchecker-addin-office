@@ -21,5 +21,13 @@
   .main-content {
     flex-grow: 1;
     align-content: center;
+
+    ol {
+      padding-left: 20px;
+
+      li {
+        margin-top: 12px;
+      }
+    }
   }
 }

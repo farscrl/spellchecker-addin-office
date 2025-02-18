@@ -78,9 +78,9 @@
                 <bt:String id="CommandsGroup.Label" DefaultValue="Correctura"/>
                 <bt:String id="TaskpaneButton.Label" DefaultValue="Ortografia rumantscha DEV"/>
                 <bt:String id="Spellchecker.Popup.Branding" DefaultValue="rumantsch"/>
-                <bt:String id="Spellchecker.Popup.Title" DefaultValue="Propostas da correctura"/>
+                <bt:String id="Spellchecker.Popup.Title" DefaultValue="Pleds sumegliants"/>
                 <bt:String id="Spellchecker.Popup.Subtitle" DefaultValue=" "/>
-                <bt:String id="Spellchecker.Popup.Title.No" DefaultValue="Naginas propostas da correctura"/>
+                <bt:String id="Spellchecker.Popup.Title.No" DefaultValue="Nagins pleds sumegliants"/>
                 <bt:String id="Spellchecker.Popup.Subtitle.No" DefaultValue=" "/>
             </bt:ShortStrings>
             <bt:LongStrings>

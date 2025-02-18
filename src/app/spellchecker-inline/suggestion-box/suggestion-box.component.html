@@ -1,47 +1,50 @@
 <h2>Manca in pled?</h2>
-<p>Marchescha la controlla ortograficamain fauss in pled? Lura ans rapporta quel cun quest formular:</p>
+<p>Cuntegna il program da correctura ortografica in sbagl? Cliccar sin il buttun sutvart per proponer novs pleds u
+    midadas.</p>
 <div class="button-bar">
-  <button (click)="openSuggestionDialog()">Proponer midada…</button>
+    <button (click)="openSuggestionDialog()">Proponer ina midada…</button>
 </div>
 
 <ng-template #suggestionDialog>
-  <header>
-    <h4>Proponer pled</h4>
-  </header>
+    <header>
+        <h4>Nova proposta</h4>
+    </header>
 
-  <div class="intro">
-    <p>Cun quest formular ans pos ti proponer pleds che mancan en il spell-checker <b>{{ languageText }}</b>.</p>
-  </div>
-
-  @if (error) {
-    <div style="color: red;" class="error-message">
-      {{ error }}
+    <div class="intro">
+        <p>Per plaschair inditgar il pled che manca u la proposta da correctura per
+            il {{ LanguageUtils.languageText(language) }} e cliccar sin
+            «Trametter».</p>
     </div>
-  }
 
-  <!--
-  <div class="control-group">
-    <label class="control-label">tudestg</label>
-    <input type="text" id="DStichwort" [(ngModel)]="lemmaValues.DStichwort" spellcheck="false">
-  </div>
-  -->
+    @if (error) {
+        <div style="color: red;" class="error-message">
+            {{ error }}
+        </div>
+    }
 
-  <div class="control-group">
-    <label class="control-label">rumantsch*</label>
-    <input type="text" id="RStichwort" [(ngModel)]="lemmaValues.RStichwort" spellcheck="false">
-  </div>
+    <!--
+    <div class="control-group">
+      <label class="control-label">tudestg</label>
+      <input type="text" id="DStichwort" [(ngModel)]="lemmaValues.DStichwort" spellcheck="false">
+    </div>
+    -->
 
-  <div class="control-group">
-    <label class="control-label">remartga (facultativ)</label>
-    <textarea [(ngModel)]="lemmaValues.contact_comment" spellcheck="false"></textarea>
-  </div>
+    <div class="control-group">
+        <label class="control-label">rumantsch*</label>
+        <input type="text" id="RStichwort" [(ngModel)]="lemmaValues.RStichwort" spellcheck="false">
+    </div>
 
-  <div class="control-group">
-    <label class="control-label">adressa dad e-mail (facultativ)</label>
-    <input type="email" [(ngModel)]="lemmaValues.contact_email" spellcheck="false">
-  </div>
+    <div class="control-group">
+        <label class="control-label">remartga (facultativ)</label>
+        <textarea [(ngModel)]="lemmaValues.contact_comment" spellcheck="false"></textarea>
+    </div>
 
-  <footer>
-    <button (click)="sendSuggestion()">Trametter</button>
-  </footer>
+    <div class="control-group">
+        <label class="control-label">adressa dad e-mail (facultativ)</label>
+        <input type="email" [(ngModel)]="lemmaValues.contact_email" spellcheck="false">
+    </div>
+
+    <footer>
+        <button (click)="sendSuggestion()">Trametter</button>
+    </footer>
 </ng-template>

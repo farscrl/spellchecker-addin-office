@@ -7,6 +7,7 @@ import { Subscription } from "rxjs";
 import { Language } from "../data/language";
 import { SettingsService } from "../services/settings.service";
 import { SpinnerComponent } from "./spinner/spinner.component";
+import LanguageUtils from "../utils/language.utils";
 import AnnotationPopupActionEventArgs = Word.AnnotationPopupActionEventArgs;
 
 @Component({
@@ -231,4 +232,6 @@ export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
       suggestions: suggestions,
     };
   }
+
+  protected readonly LanguageUtils = LanguageUtils;
 }

@@ -1,20 +1,24 @@
 <div class="status">
     @if (isSpellcheckingInitial || isSpellchecking) {
         <div class="ongoing">
-            <span>Curreger...</span>
+            <span>Analisar...</span>
             <app-spinner></app-spinner>
         </div>
     }
 </div>
 
-
 <div class="main-content">
-    <div class="full-size-notification">
-    <span>Cliccar sin «Controllar l’ortografia», lura vegnan eventuals sbagls ortografics mussads en ina glista. <br><br>
-        Cun in clic sin in pled en la glista vegn quel selecziunà en il document ed il program fa propostas da correctura. Cliccar sin ina proposta per l'acceptar.</span>
-    </div>
-
+    <b>Correctura ortografica ({{ LanguageUtils.languageText(language) }})</b>
+    <ol>
+        <li>Per plaschair tscherner l’idiom en ils «Parameters» sut a dretga.</li>
+        <li>Turnar a «Correctura»: Il text vegn analisà.</li>
+        <li>La lingia violetta inditgescha ch’il program n’enconuscha betg il pled sutlingià.
+            Cun cliccar (cun la tasta sanestra da la mieur) sin il pled, vegnan mussadas propostas da pleds
+            ortograficamain corrects. Cliccar sin ina proposta per remplazzar il pled sutlingià.
+        </li>
+    </ol>
 </div>
+
 <div class="report-missing">
     <app-suggestion-box></app-suggestion-box>
 </div>
