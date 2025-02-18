@@ -1,7 +1,18 @@
+<div class="status">
+    @if (isSpellcheckingInitial || isSpellchecking) {
+        <div class="ongoing">
+            <span>Curreger...</span>
+            <app-spinner></app-spinner>
+        </div>
+    }
+</div>
+
+
 <div class="main-content">
-    {{ executionTime }}
-    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true"
-                 [showSpinner]="isSpellchecking"><p style="color: white"> Curreger... </p></ngx-spinner>
+    <div class="full-size-notification">
+    <span>Cliccar sin «Controllar l’ortografia», lura vegnan eventuals sbagls ortografics mussads en ina glista. <br><br>
+        Cun in clic sin in pled en la glista vegn quel selecziunà en il document ed il program fa propostas da correctura. Cliccar sin ina proposta per l'acceptar.</span>
+    </div>
 
 </div>
 <div class="report-missing">
