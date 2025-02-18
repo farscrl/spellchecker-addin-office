@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SpellcheckerService } from "../services/spellchecker.service";
 import { UserDictionaryService } from "../services/user-dictionary.service";
+import AnnotationPopupActionEventArgs = Word.AnnotationPopupActionEventArgs;
 
 @Component({
   selector: "app-spellchecker-inline",
@@ -64,6 +65,9 @@ export class SpellcheckerInlineComponent implements OnInit {
       context.document.onParagraphAdded.add(this.paragraphAdded.bind(that));
       context.document.onParagraphChanged.add(this.paragraphChanged.bind(that));
       context.document.onParagraphDeleted.add(this.paragraphDeleted.bind(that));
+      context.document.onAnnotationPopupAction.add(
+        this.onPopupActionHandler.bind(that)
+      );
       await context.sync();
     });
   }
@@ -102,6 +106,24 @@ export class SpellcheckerInlineComponent implements OnInit {
       for (let id of event.uniqueLocalIds) {
       }
     });
+  }
+
+  private async onPopupActionHandler(args: AnnotationPopupActionEventArgs) {
+    console.log("popup", args);
+
+    if (args.action === "Reject") {
+      await Word.run(async (context) => {
+        const annotation = context.document.getAnnotationById(args.id);
+        annotation.load("critiqueAnnotation");
+        await context.sync();
+
+        const range: Word.Range = annotation.critiqueAnnotation.range;
+        range.load("text");
+        await context.sync();
+
+        this.userDictionaryService.addToDictionary(range.text);
+      });
+    }
   }
 
   private async spellcheckParagraph(
