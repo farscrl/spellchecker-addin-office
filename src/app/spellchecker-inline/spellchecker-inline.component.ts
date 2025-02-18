@@ -4,9 +4,10 @@ import { UserDictionaryService } from "../services/user-dictionary.service";
 import AnnotationPopupActionEventArgs = Word.AnnotationPopupActionEventArgs;
 
 @Component({
-  selector: "app-spellchecker-inline",
-  templateUrl: "./spellchecker-inline.component.html",
-  styleUrl: "./spellchecker-inline.component.scss",
+    selector: "app-spellchecker-inline",
+    templateUrl: "./spellchecker-inline.component.html",
+    styleUrl: "./spellchecker-inline.component.scss",
+    standalone: false
 })
 export class SpellcheckerInlineComponent implements OnInit {
   isSpellchecking = false;

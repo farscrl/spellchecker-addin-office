@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import TextUtils from "../utils/text.utils";
 
 @Pipe({
-  name: 'highlight'
+    name: 'highlight',
+    standalone: false
 })
 export class HighlightPipe implements PipeTransform {
 

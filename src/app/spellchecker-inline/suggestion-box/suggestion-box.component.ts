@@ -10,11 +10,10 @@ import { ReportWordService } from "../../services/report-word.service";
 import { NgIf } from "@angular/common";
 
 @Component({
-  selector: "app-suggestion-box",
-  standalone: true,
-  imports: [FormsModule, NgIf],
-  templateUrl: "./suggestion-box.component.html",
-  styleUrl: "./suggestion-box.component.scss",
+    selector: "app-suggestion-box",
+    imports: [FormsModule, NgIf],
+    templateUrl: "./suggestion-box.component.html",
+    styleUrl: "./suggestion-box.component.scss"
 })
 export class SuggestionBoxComponent implements OnInit {
   @ViewChild("suggestionDialog") suggestionDialog?: TemplateRef<any>;

@@ -12,9 +12,10 @@ import { ToastrService } from "ngx-toastr";
 /* global Word */
 
 @Component({
-  selector: 'app-spellchecker-legacy',
-  templateUrl: './spellchecker-legacy.component.html',
-  styleUrls: ['./spellchecker-legacy.component.scss']
+    selector: 'app-spellchecker-legacy',
+    templateUrl: './spellchecker-legacy.component.html',
+    styleUrls: ['./spellchecker-legacy.component.scss'],
+    standalone: false
 })
 export class SpellcheckerLegacyComponent implements OnInit, OnDestroy {
 

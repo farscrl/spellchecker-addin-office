@@ -9,9 +9,10 @@ import { SpellcheckerService } from "../services/spellchecker.service";
 const { version: appVersion } = require('../../../package.json');
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss'],
+    standalone: false
 })
 export class SettingsComponent implements OnInit, OnDestroy {
 

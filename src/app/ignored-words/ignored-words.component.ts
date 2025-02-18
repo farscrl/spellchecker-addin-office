@@ -4,9 +4,10 @@ import { Subscription } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: 'app-ignored-words',
-  templateUrl: './ignored-words.component.html',
-  styleUrls: ['./ignored-words.component.scss']
+    selector: 'app-ignored-words',
+    templateUrl: './ignored-words.component.html',
+    styleUrls: ['./ignored-words.component.scss'],
+    standalone: false
 })
 export class IgnoredWordsComponent implements OnInit, OnDestroy {
 

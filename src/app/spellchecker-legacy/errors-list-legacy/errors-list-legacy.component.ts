@@ -4,9 +4,10 @@ import { SettingsService } from "../../services/settings.service";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-errors-list-legacy',
-  templateUrl: './errors-list-legacy.component.html',
-  styleUrls: ['./errors-list-legacy.component.scss']
+    selector: 'app-errors-list-legacy',
+    templateUrl: './errors-list-legacy.component.html',
+    styleUrls: ['./errors-list-legacy.component.scss'],
+    standalone: false
 })
 export class ErrorsListLegacyComponent implements OnInit, OnDestroy {
 
