@@ -6,7 +6,7 @@ import { LemmaVersion } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
 import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
 import { ToastrService } from "ngx-toastr";
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
 import { HighlightPipe } from '../../pipes/highlight.pipe';
 
@@ -14,7 +14,7 @@ import { HighlightPipe } from '../../pipes/highlight.pipe';
     selector: 'app-error-legacy',
     templateUrl: './error-legacy.component.html',
     styleUrls: ['./error-legacy.component.scss'],
-    imports: [NgIf, NgFor, MatomoTrackerDirective, HighlightPipe]
+    imports: [MatomoTrackerDirective, HighlightPipe]
 })
 export class ErrorLegacyComponent {
 

@@ -1,45 +1,52 @@
-<ng-container *ngIf="error && context">
-    <div class="error-box">
-        <div class="header" (click)="toggle()">
-            <div class="preview" *ngIf="showContext" [innerHTML]="getContext(error.word) | highlight:error.word"></div>
-            <div class="preview" *ngIf="!showContext">{{ error.word }}</div>
-            <div class="toggle" [class.active]="isOpen"><img src="assets/icons/chevron-down.svg" alt="Icon that indicates, if box is open"></div>
-        </div>
-        <div class="suggestions" *ngIf="isOpen">
-            <ng-container *ngIf="suggestions.length > 0">
-                <div class="suggestion-title">Propostas da correctura:</div>
-                <button *ngFor="let suggestion of suggestions" (click)="acceptSuggestion(suggestion)">{{ suggestion }}</button>
-            </ng-container>
-            <ng-container *ngIf="suggestions.length === 0">
-                <div class="suggestion-title">Naginas propostas da correctura</div>
-            </ng-container>
-
-            <div class="ignore-button-container">
-                <div (click)="ignoreWord(error.word)">Agiuntar «{{ error.word }}» al dicziunari persunal</div>
-                <div (click)="reportWord(error.word)">Trametter «{{ error.word }}» a la redacziun</div>
-            </div>
-        </div>
+@if (error && context) {
+  <div class="error-box">
+    <div class="header" (click)="toggle()">
+      @if (showContext) {
+        <div class="preview" [innerHTML]="getContext(error.word) | highlight:error.word"></div>
+      }
+      @if (!showContext) {
+        <div class="preview">{{ error.word }}</div>
+      }
+      <div class="toggle" [class.active]="isOpen"><img src="assets/icons/chevron-down.svg" alt="Icon that indicates, if box is open"></div>
     </div>
-</ng-container>
+    @if (isOpen) {
+      <div class="suggestions">
+        @if (suggestions.length > 0) {
+          <div class="suggestion-title">Propostas da correctura:</div>
+          @for (suggestion of suggestions; track suggestion) {
+            <button (click)="acceptSuggestion(suggestion)">{{ suggestion }}</button>
+          }
+        }
+        @if (suggestions.length === 0) {
+          <div class="suggestion-title">Naginas propostas da correctura</div>
+        }
+        <div class="ignore-button-container">
+          <div (click)="ignoreWord(error.word)">Agiuntar «{{ error.word }}» al dicziunari persunal</div>
+          <div (click)="reportWord(error.word)">Trametter «{{ error.word }}» a la redacziun</div>
+        </div>
+      </div>
+    }
+  </div>
+}
 
 <ng-template #reportDialog>
-    <header>
-        <h4>Trametter in pled a la redacziun</h4>
-    </header>
+  <header>
+    <h4>Trametter in pled a la redacziun</h4>
+  </header>
 
-    <div class="dialog-content">
-        <p>Il program da correctura è vegnì creà sin basa dal Pledari Grond.
-            Sch’il program n’enconuscha betg in pled, pos ti al trametter a la redacziun. Lezza al endatescha en il Pledari Grond.
-            (En l’add-in vegn il pled dentant pir integrà, cura ch'i dat ina nova versiun.) </p>
+  <div class="dialog-content">
+    <p>Il program da correctura è vegnì creà sin basa dal Pledari Grond.
+      Sch’il program n’enconuscha betg in pled, pos ti al trametter a la redacziun. Lezza al endatescha en il Pledari Grond.
+    (En l’add-in vegn il pled dentant pir integrà, cura ch'i dat ina nova versiun.) </p>
 
-        <p style="margin-top: 24px;">Annunziar il pled «{{ wordToReport }}» a la redacziun? </p>
-    </div>
+    <p style="margin-top: 24px;">Annunziar il pled «{{ wordToReport }}» a la redacziun? </p>
+  </div>
 
-    <footer>
-        <button class="secondary" (click)="dialogRef?.close(undefined)" style="margin-right: 12px;">Na, turnar</button>
-        <button (click)="dialogRef?.close('search')"
-                matomoTracker="click"
-                matomoCategory="Actions"
-                matomoAction="send suggestion">Gea, trametter</button>
-    </footer>
+  <footer>
+    <button class="secondary" (click)="dialogRef?.close(undefined)" style="margin-right: 12px;">Na, turnar</button>
+    <button (click)="dialogRef?.close('search')"
+      matomoTracker="click"
+      matomoCategory="Actions"
+    matomoAction="send suggestion">Gea, trametter</button>
+  </footer>
 </ng-template>

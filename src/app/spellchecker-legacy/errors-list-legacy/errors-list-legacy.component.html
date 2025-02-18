@@ -1,6 +1,8 @@
 <virtual-scroller #scroll [items]="spellingErrors" [enableUnequalChildrenSizes]="true">
-    <app-error-legacy *ngFor="let e of scroll.viewPortItems; index as errorIndex" [error]="e" [context]="paragraphs[e.paragraph]" [showContext]="showContext"
-               (highlightEvent)="sendHighlight(e.paragraph, scroll.viewPortInfo.startIndexWithBuffer + errorIndex)"
-               (acceptSuggestionEvent)="acceptSuggestion(e.paragraph, scroll.viewPortInfo.startIndexWithBuffer + errorIndex, $event)"
-               (ignoreWordEvent)="ignoreWord(e.paragraph, scroll.viewPortInfo.startIndexWithBuffer + errorIndex, $event)"></app-error-legacy>
+  @for (e of scroll.viewPortItems; track e; let errorIndex = $index) {
+    <app-error-legacy [error]="e" [context]="paragraphs[e.paragraph]" [showContext]="showContext"
+      (highlightEvent)="sendHighlight(e.paragraph, scroll.viewPortInfo.startIndexWithBuffer + errorIndex)"
+      (acceptSuggestionEvent)="acceptSuggestion(e.paragraph, scroll.viewPortInfo.startIndexWithBuffer + errorIndex, $event)"
+    (ignoreWordEvent)="ignoreWord(e.paragraph, scroll.viewPortInfo.startIndexWithBuffer + errorIndex, $event)"></app-error-legacy>
+  }
 </virtual-scroller>

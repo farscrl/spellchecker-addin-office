@@ -1,42 +1,50 @@
 <button (click)="checkGrammar()"
-        matomoTracker="click"
-        matomoCategory="Actions"
-        matomoAction="check spelling"
-        [matomoName]="language">Controllar il text {{ languageText }}</button>
+  matomoTracker="click"
+  matomoCategory="Actions"
+  matomoAction="check spelling"
+[matomoName]="language">Controllar il text {{ languageText }}</button>
 
-<div *ngIf="spellingErrors.length > 0" class="number-spelling-errors">
+@if (spellingErrors.length > 0) {
+  <div class="number-spelling-errors">
     Chattà {{ spellingErrors.length }} scripziuns nunenconuschentas:
-</div>
-<app-errors-list-legacy [spellingErrors]="spellingErrors" [paragraphs]="paragraphs"
-                 (highlightEvent)="highlight($event)"
-                 (acceptSuggestionEvent)="acceptSuggestion($event)"
-                 (ignoreWordEvent)="ignoreWord($event)"
-                 *ngIf="!isFirstRun && spellingErrors.length > 0"></app-errors-list-legacy>
+  </div>
+}
+@if (!isFirstRun && spellingErrors.length > 0) {
+  <app-errors-list-legacy [spellingErrors]="spellingErrors" [paragraphs]="paragraphs"
+    (highlightEvent)="highlight($event)"
+    (acceptSuggestionEvent)="acceptSuggestion($event)"
+    (ignoreWordEvent)="ignoreWord($event)"
+  ></app-errors-list-legacy>
+}
 
-<div class="full-size-notification" *ngIf="isFirstRun">
+@if (isFirstRun) {
+  <div class="full-size-notification">
     <span>Cliccar sin «Controllar l’ortografia», lura vegnan eventuals sbagls ortografics mussads en ina glista. <br><br>
-        Cun in clic sin in pled en la glista vegn quel selecziunà en il document ed il program fa propostas da correctura. Cliccar sin ina proposta per l'acceptar.</span>
-</div>
+    Cun in clic sin in pled en la glista vegn quel selecziunà en il document ed il program fa propostas da correctura. Cliccar sin ina proposta per l'acceptar.</span>
+  </div>
+}
 
-<div class="full-size-notification" *ngIf="!isFirstRun && spellingErrors.length === 0">
+@if (!isFirstRun && spellingErrors.length === 0) {
+  <div class="full-size-notification">
     <span>Chattà nagins sbagls.</span>
-</div>
+  </div>
+}
 
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>
 
 <ng-template #errorDialog>
-    <header>
-        <h4>Betg chattà</h4>
-    </header>
+  <header>
+    <h4>Betg chattà</h4>
+  </header>
 
-    <div class="dialog-content">
-        <p>{{ errorIntro }}: <em>{{ errorMessage }}</em></p>
+  <div class="dialog-content">
+    <p>{{ errorIntro }}: <em>{{ errorMessage }}</em></p>
 
-        <p style="margin-top: 24px;">Igl ha dà in sbagl. Probablamain è il document sa midà dapi l’ultima tschertga. Nus recumandain da controllar anc ina giada il text. </p>
-    </div>
+    <p style="margin-top: 24px;">Igl ha dà in sbagl. Probablamain è il document sa midà dapi l’ultima tschertga. Nus recumandain da controllar anc ina giada il text. </p>
+  </div>
 
-    <footer>
-        <button class="secondary" (click)="dialogRef?.close(undefined)" style="margin-right: 12px;">Na, far nagut</button>
-        <button (click)="dialogRef?.close('search')">Gea, controllar</button>
-    </footer>
+  <footer>
+    <button class="secondary" (click)="dialogRef?.close(undefined)" style="margin-right: 12px;">Na, far nagut</button>
+    <button (click)="dialogRef?.close('search')">Gea, controllar</button>
+  </footer>
 </ng-template>

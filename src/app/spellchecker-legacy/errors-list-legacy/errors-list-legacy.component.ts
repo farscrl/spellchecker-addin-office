@@ -3,14 +3,14 @@ import { ISpellingError } from "../../data/data-structures";
 import { SettingsService } from "../../services/settings.service";
 import { Subscription } from "rxjs";
 import { VirtualScrollerModule } from '@iharbeck/ngx-virtual-scroller';
-import { NgFor } from '@angular/common';
+
 import { ErrorLegacyComponent } from '../error-legacy/error-legacy.component';
 
 @Component({
     selector: 'app-errors-list-legacy',
     templateUrl: './errors-list-legacy.component.html',
     styleUrls: ['./errors-list-legacy.component.scss'],
-    imports: [VirtualScrollerModule, NgFor, ErrorLegacyComponent]
+    imports: [VirtualScrollerModule, ErrorLegacyComponent]
 })
 export class ErrorsListLegacyComponent implements OnInit, OnDestroy {
 

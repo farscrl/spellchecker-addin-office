@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TabType } from "./data/tabs";
-import { NgIf } from '@angular/common';
+
 import { SpellcheckerLegacyComponent } from './spellchecker-legacy/spellchecker-legacy.component';
 import { SpellcheckerInlineComponent } from './spellchecker-inline/spellchecker-inline.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -11,7 +11,7 @@ import { TabsComponent } from './tabs/tabs.component';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [NgIf, SpellcheckerLegacyComponent, SpellcheckerInlineComponent, SettingsComponent, IgnoredWordsComponent, TabsComponent]
+    imports: [SpellcheckerLegacyComponent, SpellcheckerInlineComponent, SettingsComponent, IgnoredWordsComponent, TabsComponent]
 })
 export class AppComponent {
     selectedTab: TabType = 'spellchecker';

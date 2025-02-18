@@ -7,11 +7,11 @@ import { Language } from "../../data/language";
 import { LemmaValues, LemmaVersion } from "../../data/suggestion";
 import { FormsModule } from "@angular/forms";
 import { ReportWordService } from "../../services/report-word.service";
-import { NgIf } from "@angular/common";
+
 
 @Component({
     selector: "app-suggestion-box",
-    imports: [FormsModule, NgIf],
+    imports: [FormsModule],
     templateUrl: "./suggestion-box.component.html",
     styleUrl: "./suggestion-box.component.scss"
 })

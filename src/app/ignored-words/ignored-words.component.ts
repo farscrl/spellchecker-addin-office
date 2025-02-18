@@ -2,13 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserDictionaryService } from "../services/user-dictionary.service";
 import { Subscription } from "rxjs";
 import { ToastrService } from "ngx-toastr";
-import { NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-ignored-words',
     templateUrl: './ignored-words.component.html',
     styleUrls: ['./ignored-words.component.scss'],
-    imports: [NgFor]
+    imports: []
 })
 export class IgnoredWordsComponent implements OnInit, OnDestroy {
 

@@ -9,7 +9,7 @@ import { Subscription } from "rxjs";
 import { Language } from "../data/language";
 import { ToastrService } from "ngx-toastr";
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
-import { NgIf } from '@angular/common';
+
 import { ErrorsListLegacyComponent } from './errors-list-legacy/errors-list-legacy.component';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 
@@ -19,7 +19,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     selector: 'app-spellchecker-legacy',
     templateUrl: './spellchecker-legacy.component.html',
     styleUrls: ['./spellchecker-legacy.component.scss'],
-    imports: [MatomoTrackerDirective, NgIf, ErrorsListLegacyComponent, NgxSpinnerComponent]
+    imports: [MatomoTrackerDirective, ErrorsListLegacyComponent, NgxSpinnerComponent]
 })
 export class SpellcheckerLegacyComponent implements OnInit, OnDestroy {
 
