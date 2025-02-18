@@ -117,25 +117,8 @@ export class SpellcheckerInlineComponent implements OnInit {
       }
 
       const suggestions = await this.spellcheckerService.getSuggestions(e.word);
-      const titleResourceId =
-        suggestions.length > 0
-          ? "Spellchecker.Popup.Title"
-          : "Spellchecker.Popup.Title.No";
-      const subtitleResourceId =
-        suggestions.length > 0
-          ? "Spellchecker.Popup.Subtitle"
-          : "Spellchecker.Popup.Subtitle.No";
-      critiques.push({
-        colorScheme: Word.CritiqueColorScheme.berry,
-        start: e.offset,
-        length: e.length,
-        popupOptions: {
-          brandingTextResourceId: "Spellchecker.Popup.Branding",
-          subtitleResourceId: subtitleResourceId,
-          titleResourceId: titleResourceId,
-          suggestions: suggestions,
-        },
-      });
+
+      critiques.push(this.createCritique(suggestions, e.offset, e.length));
     }
     if (critiques.length > 0) {
       const annotationSet: Word.AnnotationSet = {
@@ -166,5 +149,36 @@ export class SpellcheckerInlineComponent implements OnInit {
     });
 
     await context.sync();
+  }
+
+  private createCritique(
+    suggestions: string[],
+    start: number,
+    length: number
+  ): Word.Critique {
+    return {
+      colorScheme: Word.CritiqueColorScheme.berry,
+      start: start,
+      length: length,
+      popupOptions: this.createPopupOptions(suggestions),
+    };
+  }
+
+  private createPopupOptions(suggestions: string[]): Word.CritiquePopupOptions {
+    const titleResourceId =
+      suggestions.length > 0
+        ? "Spellchecker.Popup.Title"
+        : "Spellchecker.Popup.Title.No";
+    const subtitleResourceId =
+      suggestions.length > 0
+        ? "Spellchecker.Popup.Subtitle"
+        : "Spellchecker.Popup.Subtitle.No";
+
+    return {
+      brandingTextResourceId: "Spellchecker.Popup.Branding",
+      subtitleResourceId: subtitleResourceId,
+      titleResourceId: titleResourceId,
+      suggestions: suggestions,
+    };
   }
 }
