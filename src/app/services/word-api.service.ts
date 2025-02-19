@@ -11,13 +11,17 @@ import { UserDictionaryService } from "./user-dictionary.service";
   providedIn: "root",
 })
 export class WordApiService {
+  private abortProcessing = false;
+  private currentTimeoutId: number | null = null;
+
   constructor(
     private spellcheckerService: SpellcheckerService,
     private userDictionaryService: UserDictionaryService
   ) {}
 
   async executeFullCheck(context: Word.RequestContext) {
-    OfficeExtension.config.extendedErrorLogging = true;
+    // OfficeExtension.config.extendedErrorLogging = true;
+    this.abortProcessing = false;
     const body = context.document.body;
     try {
       context.load(body.paragraphs);
@@ -30,13 +34,22 @@ export class WordApiService {
       await context.sync();
 
       await this.deleteAllAnnotations(context, paragraphCollection);
-      for (const paragraph of paragraphCollection.items) {
-        await this.spellcheckParagraph(context, paragraph);
-      }
+      // for (const paragraph of paragraphCollection.items) {
+      //   await this.spellcheckParagraph(context, paragraph);
+      // }
+      await this.processParagraphsAsync(context, paragraphCollection);
+
       await context.sync();
     } catch (e) {
       // @ts-ignore
       console.error(e.message, e.debugInfo);
+    }
+  }
+
+  abortFullCheck() {
+    this.abortProcessing = true;
+    if (this.currentTimeoutId !== null) {
+      clearTimeout(this.currentTimeoutId);
     }
   }
 
@@ -62,6 +75,36 @@ export class WordApiService {
       };
       paragraph.insertAnnotations(annotationSet);
     }
+  }
+
+  private processParagraphsAsync(
+    context: Word.RequestContext,
+    paragraphCollection: Word.ParagraphCollection
+  ): Promise<void> {
+    return new Promise((resolve, reject) => {
+      let index = 0;
+
+      const processNext = () => {
+        // Check if the abort flag is set.
+        if (this.abortProcessing) {
+          return reject(new Error("Processing aborted"));
+        }
+
+        if (index < paragraphCollection.items.length) {
+          this.spellcheckParagraph(context, paragraphCollection.items[index])
+            // .then(() => context.sync())
+            .then(() => {
+              index++;
+              this.currentTimeoutId = window.setTimeout(processNext, 0);
+            })
+            .catch(reject);
+        } else {
+          resolve();
+        }
+      };
+
+      processNext();
+    });
   }
 
   private createCritique(

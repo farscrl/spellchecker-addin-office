@@ -44,6 +44,7 @@ export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.wordApiService.abortFullCheck();
     if (this.languageSubscription) {
       this.languageSubscription.unsubscribe();
     }
