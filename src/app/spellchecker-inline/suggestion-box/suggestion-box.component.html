@@ -7,13 +7,11 @@
 
 <ng-template #suggestionDialog>
     <header>
-        <h4>Nova proposta</h4>
+        <h4>Nova proposta ({{ LanguageUtils.languageText(language) }})</h4>
     </header>
 
     <div class="intro">
-        <p>Per plaschair inditgar il pled che manca u la proposta da correctura per
-            il {{ LanguageUtils.languageText(language) }} e cliccar sin
-            «Trametter».</p>
+        <p>Per plaschair inditgar il pled che manca u la proposta da correctura e cliccar sin «Trametter».</p>
     </div>
 
     @if (error) {
