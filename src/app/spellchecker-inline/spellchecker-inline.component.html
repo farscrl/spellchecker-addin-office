@@ -1,8 +1,12 @@
 <div class="status">
-    @if (isSpellcheckingInitial || isSpellchecking) {
+    @if (isSpellcheckingInitial.isOngoing || isSpellchecking) {
         <div class="ongoing">
             <span>Analisar...</span>
-            <app-spinner></app-spinner>
+            <!--<app-spinner></app-spinner>-->
+            @if (isSpellcheckingInitial.isOngoing) {
+                <progress [max]="isSpellcheckingInitial.total" [value]="isSpellcheckingInitial.current"></progress>
+
+            }
         </div>
     }
 </div>

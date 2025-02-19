@@ -5,23 +5,27 @@ import { MatomoTracker } from "ngx-matomo-client";
 import { Subscription } from "rxjs";
 import { Language } from "../data/language";
 import { SettingsService } from "../services/settings.service";
-import { SpinnerComponent } from "./spinner/spinner.component";
 import LanguageUtils from "../utils/language.utils";
-import { WordApiService } from "../services/word-api.service";
+import {
+  FullSpellcheckProgress,
+  WordApiService,
+} from "../services/word-api.service";
 import AnnotationPopupActionEventArgs = Word.AnnotationPopupActionEventArgs;
 
 @Component({
   selector: "app-spellchecker-inline",
   templateUrl: "./spellchecker-inline.component.html",
   styleUrl: "./spellchecker-inline.component.scss",
-  imports: [SuggestionBoxComponent, SpinnerComponent],
+  imports: [SuggestionBoxComponent],
 })
 export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
-  isSpellcheckingInitial = false;
+  isSpellcheckingInitial = new FullSpellcheckProgress();
   isSpellchecking = false;
 
   private languageSubscription?: Subscription;
   language: Language = "rumantschgrischun";
+
+  private fullCheckSubscription?: Subscription;
 
   private start: number = 0;
 
@@ -41,6 +45,11 @@ export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
     this.initChangeHandlers().then(async () => {
       await this.executeFullCheck();
     });
+    this.fullCheckSubscription = this.wordApiService
+      .getFullCheckObservable()
+      .subscribe((value) => {
+        this.isSpellcheckingInitial = value;
+      });
   }
 
   ngOnDestroy() {
@@ -48,17 +57,18 @@ export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
     if (this.languageSubscription) {
       this.languageSubscription.unsubscribe();
     }
+    if (this.fullCheckSubscription) {
+      this.fullCheckSubscription.unsubscribe();
+    }
   }
 
   async executeFullCheck() {
-    this.isSpellcheckingInitial = true;
     this.start = performance.now();
 
     await Word.run(async (context) => {
       await this.wordApiService.executeFullCheck(context);
     });
 
-    this.isSpellcheckingInitial = false;
     const end = performance.now();
     this.matomoTracker.trackEvent(
       "Actions",

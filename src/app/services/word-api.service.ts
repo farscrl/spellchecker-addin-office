@@ -1,6 +1,13 @@
 import { Injectable } from "@angular/core";
 import { SpellcheckerService } from "./spellchecker.service";
 import { UserDictionaryService } from "./user-dictionary.service";
+import { BehaviorSubject, Observable } from "rxjs";
+
+export class FullSpellcheckProgress {
+  isOngoing: boolean = false;
+  total: number = 0;
+  current: number = 0;
+}
 
 /**
  * This service provides functions, that have to be run in a `Word.run(...)` context. Thus,
@@ -14,12 +21,26 @@ export class WordApiService {
   private abortProcessing = false;
   private currentTimeoutId: number | null = null;
 
+  private fullSpellcheckProgress = new FullSpellcheckProgress();
+  private isExecutingFullChecking = new BehaviorSubject<FullSpellcheckProgress>(
+    this.fullSpellcheckProgress
+  );
+
   constructor(
     private spellcheckerService: SpellcheckerService,
     private userDictionaryService: UserDictionaryService
   ) {}
 
+  getFullCheckObservable(): Observable<FullSpellcheckProgress> {
+    return this.isExecutingFullChecking.asObservable();
+  }
+
   async executeFullCheck(context: Word.RequestContext) {
+    this.fullSpellcheckProgress.isOngoing = true;
+    this.fullSpellcheckProgress.total = 0;
+    this.fullSpellcheckProgress.current = 0;
+    this.isExecutingFullChecking.next(this.fullSpellcheckProgress);
+
     // OfficeExtension.config.extendedErrorLogging = true;
     this.abortProcessing = false;
     const body = context.document.body;
@@ -37,9 +58,14 @@ export class WordApiService {
       // for (const paragraph of paragraphCollection.items) {
       //   await this.spellcheckParagraph(context, paragraph);
       // }
+      this.fullSpellcheckProgress.total = paragraphCollection.items.length;
+      this.isExecutingFullChecking.next(this.fullSpellcheckProgress);
       await this.processParagraphsAsync(context, paragraphCollection);
 
       await context.sync();
+
+      this.fullSpellcheckProgress.isOngoing = false;
+      this.isExecutingFullChecking.next(this.fullSpellcheckProgress);
     } catch (e) {
       // @ts-ignore
       console.error(e.message, e.debugInfo);
@@ -95,6 +121,8 @@ export class WordApiService {
             // .then(() => context.sync())
             .then(() => {
               index++;
+              this.fullSpellcheckProgress.current = index;
+              this.isExecutingFullChecking.next(this.fullSpellcheckProgress);
               this.currentTimeoutId = window.setTimeout(processNext, 0);
             })
             .catch(reject);
