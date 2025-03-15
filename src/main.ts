@@ -31,6 +31,7 @@ Office.initialize = () => {
                 MatomoModule.forRoot({
                     siteId: "10", // your Matomo's site ID (find it in your Matomo's settings)
                     trackerUrl: "https://www.statistica.pledarigrond.ch", // your matomo server root url
+                    enableJSErrorTracking: true,
                 }),
                 ToastrModule.forRoot({
                     positionClass: "toast-bottom-center",
