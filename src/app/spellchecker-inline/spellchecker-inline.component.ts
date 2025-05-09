@@ -100,7 +100,7 @@ export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
         const paragraph = context.document.getParagraphByUniqueLocalId(id);
         paragraph.load("text");
         await context.sync();
-        await this.wordApiService.spellcheckParagraph(context, paragraph);
+        await this.wordApiService.spellcheckParagraph(context, paragraph, true);
         await context.sync();
       }
       this.isSpellchecking = false;
@@ -114,7 +114,7 @@ export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
         const paragraph = context.document.getParagraphByUniqueLocalId(id);
         paragraph.load("text");
         await context.sync();
-        await this.wordApiService.spellcheckParagraph(context, paragraph);
+        await this.wordApiService.spellcheckParagraph(context, paragraph, true);
         await context.sync();
       }
       this.isSpellchecking = false;
@@ -129,8 +129,6 @@ export class SpellcheckerInlineComponent implements OnInit, OnDestroy {
   }
 
   private async onPopupActionHandler(args: AnnotationPopupActionEventArgs) {
-    console.log("popup", args);
-
     if (args.action === "Reject") {
       await Word.run(async (context) => {
         const annotation = context.document.getAnnotationById(args.id);

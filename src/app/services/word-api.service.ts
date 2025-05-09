@@ -81,8 +81,13 @@ export class WordApiService {
 
   async spellcheckParagraph(
     context: Word.RequestContext,
-    paragraph: Word.Paragraph
+    paragraph: Word.Paragraph,
+    deleteAnnotations: boolean
   ) {
+    if (deleteAnnotations) {
+      await this.deleteAllAnnotationsForParagraph(context, paragraph);
+    }
+
     // this.start = performance.now();
     const errs = await this.spellcheckerService.proofreadText(paragraph.text);
     const critiques: Word.Critique[] = [];
@@ -117,7 +122,11 @@ export class WordApiService {
         }
 
         if (index < paragraphCollection.items.length) {
-          this.spellcheckParagraph(context, paragraphCollection.items[index])
+          this.spellcheckParagraph(
+            context,
+            paragraphCollection.items[index],
+            false
+          )
             // .then(() => context.sync())
             .then(() => {
               index++;
@@ -176,6 +185,28 @@ export class WordApiService {
       annotations.load("id");
       allAnnotations.push(annotations);
     }
+
+    await context.sync();
+
+    allAnnotations.forEach((annotations) => {
+      for (let i = 0; i < annotations.items.length; i++) {
+        const annotation: Word.Annotation = annotations.items[i];
+        annotation.delete();
+      }
+    });
+
+    await context.sync();
+  }
+
+  private async deleteAllAnnotationsForParagraph(
+    context: Word.RequestContext,
+    paragraph: Word.Paragraph
+  ) {
+    const allAnnotations: Word.AnnotationCollection[] = [];
+
+    const annotations: Word.AnnotationCollection = paragraph.getAnnotations();
+    annotations.load("id");
+    allAnnotations.push(annotations);
 
     await context.sync();
 
