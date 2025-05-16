@@ -1,13 +1,13 @@
 <div id="main-content">
     <div>
-        @if (selectedTab === 'spellchecker' && !wordApiLevel18Supported) {
+        @if (selectedTab === 'spellchecker' && isLegacyViewDisplayed) {
             <app-spellchecker-legacy></app-spellchecker-legacy>
         }
-        @if (selectedTab === 'spellchecker' && wordApiLevel18Supported) {
+        @if (selectedTab === 'spellchecker' && isInlineViewDisplayed) {
             <app-spellchecker-inline></app-spellchecker-inline>
         }
         @if (selectedTab === 'settings') {
-            <app-settings [wordApiLevel18Supported]="wordApiLevel18Supported"></app-settings>
+            <app-settings [isLegacyViewDisplayed]="isLegacyViewDisplayed"></app-settings>
         }
         @if (selectedTab === 'ignoredWords') {
             <app-ignored-words></app-ignored-words>

@@ -23,27 +23,73 @@ import { MatomoTracker } from "ngx-matomo-client";
 export class AppComponent {
   selectedTab: TabType = "spellchecker";
 
-  public wordApiLevel18Supported = false;
+  public isLegacyViewDisplayed = false;
+  public isInlineViewDisplayed = false;
+
+  private wordApiLevel18Supported = false;
+  private supportsAnnotations = false;
 
   constructor(private matomoTracker: MatomoTracker) {
-    this.wordApiLevel18Supported = Office.context.requirements.isSetSupported(
-      "WordApi",
-      "1.8"
-    );
-    if (!this.wordApiLevel18Supported) {
-      console.warn(
-        "wordAPI level 1.8 not supported. Mark errors inline disabled"
+    this.checkWordApiLevel();
+    this.isAnnotationAvailable().then((available) => {
+      this.supportsAnnotations = available;
+      this.matomoTracker.trackEvent(
+        "supportsAnnotations",
+        this.supportsAnnotations ? "true" : "false"
       );
-    }
-    this.matomoTracker.trackEvent(
-      "Stats",
-      "Supports WordAPI 1.8",
-      undefined,
-      this.wordApiLevel18Supported ? 1 : 0
-    );
+
+      if (this.supportsAnnotations && this.wordApiLevel18Supported) {
+        console.log(
+          "wordAPI level 1.8 and annotations supported. Mark errors inline enabled."
+        );
+        this.isInlineViewDisplayed = true;
+      } else {
+        if (!this.supportsAnnotations) {
+          console.warn(
+            "annotations not supported. Mark errors inline disabled."
+          );
+        }
+        if (!this.wordApiLevel18Supported) {
+          console.warn(
+            "wordAPI level 1.8 not supported. Mark errors inline disabled."
+          );
+        }
+        this.isLegacyViewDisplayed = true;
+      }
+    });
   }
 
   tabChanged(type: TabType) {
     this.selectedTab = type;
+  }
+
+  private checkWordApiLevel() {
+    this.wordApiLevel18Supported = Office.context.requirements.isSetSupported(
+      "WordApi",
+      "1.8"
+    );
+    this.matomoTracker.trackEvent(
+      "SupportsWordAPI_1.8",
+      this.wordApiLevel18Supported ? "true" : "false"
+    );
+  }
+
+  private async isAnnotationAvailable() {
+    try {
+      await Word.run(async (ctx) => {
+        const para = ctx.document.body.paragraphs.getFirst();
+        para.getAnnotations().load();
+        await ctx.sync();
+      });
+      return true;
+    } catch (err) {
+      if (
+        err instanceof OfficeExtension.Error &&
+        err.code === Word.ErrorCodes.notImplemented
+      ) {
+        return false;
+      }
+      throw err;
+    }
   }
 }

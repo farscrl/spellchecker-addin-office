@@ -17,7 +17,7 @@ const { version: appVersion } = require("../../../package.json");
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   @Input()
-  wordApiLevel18Supported: boolean = false;
+  isLegacyViewDisplayed: boolean = false;
 
   language: Language = "rumantschgrischun";
 
