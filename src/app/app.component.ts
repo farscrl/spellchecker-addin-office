@@ -89,7 +89,14 @@ export class AppComponent {
       ) {
         return false;
       }
-      throw err;
+      const errorMessage =
+        err instanceof Error ? err.message : JSON.stringify(err);
+      this.matomoTracker.trackEvent(
+        "Error",
+        "isAnnotationAvailable failed",
+        errorMessage
+      );
+      return false;
     }
   }
 }
