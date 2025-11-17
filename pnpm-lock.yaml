@@ -48,8 +48,8 @@ importers:
         specifier: ^3.40.0
         version: 3.46.0
       ngx-matomo-client:
-        specifier: ^7.0.1
-        version: 7.1.0(@angular/common@20.3.12(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))
+        specifier: ^8.0.0
+        version: 8.0.0(@angular/common@20.3.12(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))
       ngx-spinner:
         specifier: ^19.0.0
         version: 19.0.0(@angular/animations@20.3.12(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@20.3.12(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))
@@ -4614,11 +4614,11 @@ packages:
   neverthrow@3.2.0:
     resolution: {integrity: sha512-AINA32QbYO83L+3CBI6I5lH4LpBSlLwWteJ+uI25s4AQy6g/xz3RZuedmuNo91lLw2rY+AbPEPQdxd7mg1rXoQ==}
 
-  ngx-matomo-client@7.1.0:
-    resolution: {integrity: sha512-fYNOf/ycq21qhgQEhDbPRr+QPbBbRkgwXUcB+CG5LvjX6kjzMS7wGNInoop8kqwyq/WWeNsZ3r7ct6Z4Ts3DyQ==}
+  ngx-matomo-client@8.0.0:
+    resolution: {integrity: sha512-ztZankR5dfSjMYBn4n19w5yNJUZvpvTKZot+nvzxMO+0FUHbZz97rsJVBwA2Hg2wv6YvqU2GZ6KSMS4Fz0XoVg==}
     peerDependencies:
-      '@angular/common': ^19.0.0
-      '@angular/core': ^19.0.0
+      '@angular/common': ^20.0.0
+      '@angular/core': ^20.0.0
 
   ngx-spinner@19.0.0:
     resolution: {integrity: sha512-UqmYvLfPyA1AkLw3xGe7NscIiJVG7u9j7NMW10J38Kp8EXv8l/pQdLlqFJS5x70dbRkt90lvOIvEBZM8b/rN7g==}
@@ -11503,7 +11503,7 @@ snapshots:
 
   neverthrow@3.2.0: {}
 
-  ngx-matomo-client@7.1.0(@angular/common@20.3.12(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1)):
+  ngx-matomo-client@8.0.0(@angular/common@20.3.12(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1)):
     dependencies:
       '@angular/common': 20.3.12(@angular/core@20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 20.3.12(@angular/compiler@20.3.12)(rxjs@7.8.2)(zone.js@0.15.1)
