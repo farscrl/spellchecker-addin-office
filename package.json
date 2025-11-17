@@ -30,14 +30,14 @@
     "dev-server-port": 4200
   },
   "dependencies": {
-    "@angular/animations": "^19.2.10",
-    "@angular/common": "^19.2.10",
-    "@angular/compiler": "^19.2.10",
-    "@angular/core": "^19.2.10",
-    "@angular/forms": "^19.2.10",
-    "@angular/platform-browser": "^19.2.10",
-    "@angular/platform-browser-dynamic": "^19.2.10",
-    "@angular/router": "^19.2.10",
+    "@angular/animations": "^20.3.12",
+    "@angular/common": "^20.3.12",
+    "@angular/compiler": "^20.3.12",
+    "@angular/core": "^20.3.12",
+    "@angular/forms": "^20.3.12",
+    "@angular/platform-browser": "^20.3.12",
+    "@angular/platform-browser-dynamic": "^20.3.12",
+    "@angular/router": "^20.3.12",
     "@farscrl/rumantsch-language-tools": "^1.0.4",
     "@iharbeck/ngx-virtual-scroller": "^19.0.1",
     "@microsoft/office-js-helpers": "^1.0.2",
@@ -52,16 +52,16 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1902.11",
-    "@angular-devkit/build-angular": "^19.2.11",
+    "@angular-devkit/architect": "^0.2003.10",
+    "@angular-devkit/build-angular": "^20.3.10",
     "@angular-eslint/builder": "19.3.0",
     "@angular-eslint/eslint-plugin": "19.3.0",
     "@angular-eslint/eslint-plugin-template": "19.3.0",
     "@angular-eslint/schematics": "19.3.0",
     "@angular-eslint/template-parser": "19.3.0",
-    "@angular/cli": "^19.2.11",
-    "@angular/compiler-cli": "^19.2.10",
-    "@types/node": "^18.19.76",
+    "@angular/cli": "^20.3.10",
+    "@angular/compiler-cli": "^20.3.12",
+    "@types/node": "^22.19.1",
     "@types/office-js": "^1.0.467",
     "@types/office-runtime": "^1.0.35",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
@@ -75,7 +75,7 @@
     "office-addin-dev-certs": "^2.0.3",
     "office-addin-manifest": "^2.0.3",
     "ts-node": "~10.9.1",
-    "typescript": "~5.7.3"
+    "typescript": "~5.9.3"
   },
   "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184"
 }
