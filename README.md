@@ -1,43 +1,101 @@
-# Program da correctura rumantsch: Add-in Microsoft Office
+# Controlla ortografica rumantscha: Add-in Microsoft Office
 
+A Romansh spellchecker add-in for Microsoft Word. This add-in integrates with Microsoft Word to provide real-time spellchecking for the Romansh language.
 
-## Development server
+## Features
 
-The self-signed SSL certificates used for development expire after 30 days. Run `pnpm run ssl:config` to create new ones when needed.
+- Spellchecking for all six Romansh idioms:
+  - Rumantsch Grischun
+  - Sursilvan
+  - Sutsilvan
+  - Surmiran
+  - Puter
+  - Vallader
+- Inline error highlighting (on supported Word versions with API level 1.8+)
+- Fallback legacy view for older Word versions
+- Custom ignored words list
+- Works in Word desktop (Windows/macOS) and Word Online
 
-Run `pnpm run dev-server` for a dev server. Run `pnpm run start:desktop` to open Word and sideload the add-in automatically.
+## Prerequisites
 
-To run on the web, get the shareable link for a document you have access to, then run `pnpm run start:web -- --document https://thedocumenturl` to open Word in your default browser and sideload the add-in. If this doesn't work on the first try, you may need to visit https://localhost:4200 first to let your browser know to trust the self-signed certificate that is being used.
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [pnpm](https://pnpm.io/) package manager
+- Microsoft Word (desktop or web)
+- For desktop development on macOS/Windows: Word must be installed locally
 
-## Code scaffolding
+## Getting started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
 
-## Build
+2. Generate SSL certificates for local development:
+   ```bash
+   pnpm run ssl:config
+   ```
+   Note: Certificates expire after 30 days. Re-run this command to regenerate them.
 
-Run `pnpm run build:dev` to build the project. The build artifacts will be stored in the `dist/` directory. Use `pnpm run build` for a production build.
+3. Start the development server and Word:
+   ```bash
+   # start dev server
+   pnpm run dev-server
+   
+   # For desktop Word
+   pnpm run start:desktop
 
-## Running unit tests
+   # For Word Online (requires a document URL)
+   pnpm run start:web -- --document https://your-document-url
+   ```
 
-Run `pnpm run test` to execute the unit tests via [Karma](https://karma-runner.github.io). Use `pnpm run test:coverage` to generate a coverage report in `/coverage`.
+If Word Online doesn't load the add-in on the first try, visit https://localhost:4200 first to trust the self-signed certificate.
 
-## Running end-to-end tests
+## Available scripts
 
-Run `pnpm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+| Script                      | Description                                        |
+|-----------------------------|----------------------------------------------------|
+| `pnpm run dev-server`       | Start the development server only                  |
+| `pnpm run start:desktop`    | Start dev server and open Word desktop with add-in |
+| `pnpm run start:web`        | Start dev server and open Word Online with add-in  |
+| `pnpm run build:dev`        | Development build (output in `dist/`)              |
+| `pnpm run build:staging`    | Staging build (output in `dist/`)                  |
+| `pnpm run build`            | Production build (output in `dist/`)               |
+| `pnpm run lint`             | Lint the codebase                                  |
+| `pnpm run validate`         | Validate the dev Office add-in manifest            |
+| `pnpm run validate:staging` | Validate the stagin Office add-in manifest         |
+| `pnpm run validate:prod`    | Validate the prod Office add-in manifest           |
 
 ## Debugging
 
-This template supports debugging using any of the following techniques:
+- **Word Online**: Use your browser's developer tools (F12)
+- **Word Desktop (Windows)**: Use F12 developer tools or attach a debugger from the task pane
+- **Word Desktop (macOS)**: Use Safari Web Inspector
 
-- [Use a browser's developer tools](https://docs.microsoft.com/office/dev/add-ins/testing/debug-add-ins-in-office-online)
-- [Attach a debugger from the task pane](https://docs.microsoft.com/office/dev/add-ins/testing/attach-debugger-from-task-pane)
-- [Use F12 developer tools on Windows 10](https://docs.microsoft.com/office/dev/add-ins/testing/debug-add-ins-using-f12-developer-tools-on-windows-10)
+For detailed debugging instructions, see the [Office Add-ins debugging documentation](https://learn.microsoft.com/office/dev/add-ins/testing/debug-add-ins-overview).
 
-## Additional resources
+## Project structure
 
-* [Office add-in documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
-* More Office Add-in samples at [OfficeDev on Github](https://github.com/officedev)
+```
+src/
+├── app/
+│   ├── spellchecker-inline/  # Modern inline spellchecker (Word API 1.8+)
+│   ├── spellchecker-legacy/  # Fallback for older Word versions
+│   ├── settings/             # User settings component
+│   ├── ignored-words/        # Custom ignored words management
+│   ├── services/             # Spellchecking and API services
+│   └── data/                 # Data types and constants
+├── assets/                   # Icons and static assets
+├── manifest.xml              # Development manifest
+├── manifest-staging.xml      # Staging manifest
+└── manifest-prod.xml         # Production manifest
+```
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Resources
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Pledari Grond](https://www.pledarigrond.ch) - Romansh online dictionary
+- [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+- [Angular documentation](https://angular.dev)
+
+## License
+
+MIT
