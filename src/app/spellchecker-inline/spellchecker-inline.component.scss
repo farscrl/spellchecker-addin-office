@@ -2,6 +2,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  font-size: 13px;
 
   .status {
     min-height: 60px;
@@ -46,6 +47,22 @@
       li {
         margin-top: 12px;
       }
+    }
+
+    .note {
+      font-style: italic;
+    }
+
+    .berry {
+      border-bottom: 1.5px solid #C239B3;
+    }
+
+    .red {
+      text-decoration-line: underline;
+      text-decoration-style: wavy;
+      text-decoration-color: red;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
     }
   }
 }

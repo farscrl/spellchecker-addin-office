@@ -3,16 +3,21 @@
   padding: 20px;
   background-color: white;
   border: 1px solid grey;
+  font-size: 13px;
 }
 
 h2 {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .button-bar {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
+
+  button {
+    font-size: 13px;
+  }
 }
 
 input, textarea {
