@@ -1,0 +1,76 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Prevent concurrent deployments — always finish one before starting the next
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (production)
+        run: pnpm build
+
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Backup current version & deploy
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
+        run: |
+          TIMESTAMP=$(date -u +%Y-%m-%d_%H-%M-%S)
+          echo "Deployment timestamp: $TIMESTAMP"
+
+          # Write lftp script — unquoted heredoc expands shell variables
+          # Note: FTP_PASSWORD must not contain a comma (lftp -u limitation)
+          cat > /tmp/deploy.lftp << LFTP_SCRIPT
+          set ftp:ssl-allow yes
+          set ssl:verify-certificate no
+          set cmd:fail-exit yes
+          open -u ${FTP_USERNAME},${FTP_PASSWORD} ${FTP_HOST}
+          cd ${FTP_REMOTE_PATH}
+
+          # --- Backup current addin folder ---
+          mkdir _backups/${TIMESTAMP}
+          set cmd:fail-exit no
+          mv addin _backups/${TIMESTAMP}/addin
+          set cmd:fail-exit yes
+
+          # --- Upload new version ---
+          mirror --reverse --delete --verbose --no-perms --no-umask dist/addin addin
+
+          quit
+          LFTP_SCRIPT
+
+          lftp -f /tmp/deploy.lftp
+          rm -f /tmp/deploy.lftp
+
+          echo "Deployed successfully. Backup saved as: _backups/${TIMESTAMP}"

@@ -1,0 +1,73 @@
+name: Restore from Backup
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to restore'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      backup_timestamp:
+        description: 'Backup to restore (format: YYYY-MM-DD_HH-MM-SS, e.g. 2026-02-18_14-30-00)'
+        required: true
+        type: string
+
+jobs:
+  restore:
+    name: Restore
+    runs-on: ubuntu-latest
+    # Dynamically selects the "staging" or "production" GitHub Environment,
+    # so the correct set of FTP secrets is used automatically.
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Restore backup
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
+          BACKUP_TIMESTAMP: ${{ inputs.backup_timestamp }}
+        run: |
+          PRE_RESTORE_TIMESTAMP=$(date -u +%Y-%m-%d_%H-%M-%S)
+
+          echo "Restoring backup: _backups/${BACKUP_TIMESTAMP}"
+          echo "Current state will be preserved as: _backups/pre-restore_${PRE_RESTORE_TIMESTAMP}"
+
+          # Write lftp script — unquoted heredoc expands shell variables
+          # Note: FTP_PASSWORD must not contain a comma (lftp -u limitation)
+          cat > /tmp/restore.lftp << LFTP_SCRIPT
+          set ftp:ssl-allow yes
+          set ssl:verify-certificate no
+          set cmd:fail-exit yes
+          open -u ${FTP_USERNAME},${FTP_PASSWORD} ${FTP_HOST}
+          cd ${FTP_REMOTE_PATH}
+
+          # --- Verify backup exists before doing anything destructive ---
+          ls _backups/${BACKUP_TIMESTAMP}
+
+          # --- Archive current live state (safety net) ---
+          mkdir _backups/pre-restore_${PRE_RESTORE_TIMESTAMP}
+          set cmd:fail-exit no
+          mv addin _backups/pre-restore_${PRE_RESTORE_TIMESTAMP}/addin
+          set cmd:fail-exit yes
+
+          # --- Move backup to live location ---
+          mv _backups/${BACKUP_TIMESTAMP}/addin addin
+          rmdir _backups/${BACKUP_TIMESTAMP}
+
+          quit
+          LFTP_SCRIPT
+
+          lftp -f /tmp/restore.lftp
+          rm -f /tmp/restore.lftp
+
+          echo "Restore complete."
+          echo "Restored from:  _backups/${BACKUP_TIMESTAMP}"
+          echo "Pre-restore snapshot saved as: _backups/pre-restore_${PRE_RESTORE_TIMESTAMP}"
