@@ -22,6 +22,7 @@ A Romansh spellchecker add-in for Microsoft Word. This add-in integrates with Mi
 - [pnpm](https://pnpm.io/) package manager
 - Microsoft Word (desktop or web)
 - For desktop development on macOS/Windows: Word must be installed locally
+- Enable dev mode if you want to debug the software: https://learn.microsoft.com/en-us/office/dev/add-ins/testing/debug-office-add-ins-on-ipad-and-mac
 
 ## Getting started
 
@@ -47,6 +48,8 @@ A Romansh spellchecker add-in for Microsoft Word. This add-in integrates with Mi
    # For Word Online (requires a document URL)
    pnpm run start:web -- --document https://your-document-url
    ```
+
+Sideloading in web: https://learn.microsoft.com/en-us/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#manually-sideload-an-add-in-to-office-on-the-web
 
 If Word Online doesn't load the add-in on the first try, visit https://localhost:4200 first to trust the self-signed certificate.
 
