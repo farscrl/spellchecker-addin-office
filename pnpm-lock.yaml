@@ -38,9 +38,6 @@ importers:
       '@iharbeck/ngx-virtual-scroller':
         specifier: ^20.0.0
         version: 20.0.0(@tweenjs/tween.js@25.0.0)
-      '@microsoft/office-js-helpers':
-        specifier: ^1.0.2
-        version: 1.0.2
       '@ngneat/dialog':
         specifier: ^5.2.1
         version: 5.2.1(@angular/core@21.1.5(@angular/compiler@21.1.5)(rxjs@7.8.2)(zone.js@0.15.1))
@@ -1757,10 +1754,6 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  '@microsoft/office-js-helpers@1.0.2':
-    resolution: {integrity: sha512-zTnWWcwdUjbGwkgslh7LN+ArRSWFScMMqy4+5rUUeZUUkQcGVMXMfCZ2n8Tzm0S9BJY7mcm1o27z5RSVb1Anfw==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-
   '@microsoft/teams-manifest@0.1.9':
     resolution: {integrity: sha512-WMGdAYir9cdcE9tqfWgk5JRgIHc4f3Bk6cjDFScpQD3+DbzMkRKyFj9ZtfprM4Z0cbgwQmNfp6KaGH+qYSgk+Q==}
 
@@ -2375,9 +2368,6 @@ packages:
   '@types/jsonfile@6.1.4':
     resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
-  '@types/microsoftteams@1.9.6':
-    resolution: {integrity: sha512-uMsY7rzusyFCS3PiYIPYBleLXG0uJTp7rrhOyJyTGWGY16D9y1Hvb4Q9L6Ddapza4fRj7xnUAnnqvIRJQ98k4w==}
-
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
 
@@ -2395,9 +2385,6 @@ packages:
 
   '@types/node@22.19.11':
     resolution: {integrity: sha512-BH7YwL6rA93ReqeQS1c4bsPpcfOmJasG+Fkr6Y59q83f9M1WcBRHR2vM+P9eOisYRcN3ujQoiZY8uk5W+1WL8w==}
-
-  '@types/office-js@0.0.51':
-    resolution: {integrity: sha512-NIw11M12C5SDD5fsv6qd3ZG1GnLNAiLBiGBHsrW8XX1c7gYKXpAClOiOcFLGGw46cwld0XhW6EsZ6X6CEEPL/w==}
 
   '@types/office-js@1.0.574':
     resolution: {integrity: sha512-705uXU91PAVcv1BgZvjdfegIZmoib8LYKGO4l9oXp/2P7C9GJX0ll+wUlUaxrSphq2eigv7fsUcRLPxWZ1vzqw==}
@@ -3123,10 +3110,6 @@ packages:
 
   core-js-compat@3.48.0:
     resolution: {integrity: sha512-OM4cAF3D6VtH/WkLtWvyNC56EZVXsZdU3iqaMG2B4WvYrlqU831pc4UtG5yp0sE9z8Y02wVN7PjW5Zf9Gt0f1Q==}
-
-  core-js@2.6.12:
-    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
-    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
 
   core-js@3.48.0:
     resolution: {integrity: sha512-zpEHTy1fjTMZCKLHUZoVeylt9XrzaIN2rbPXEt0k+q7JE5CkCZdo6bNq55bn24a69CH7ErAVLKijxJja4fw+UQ==}
@@ -4496,9 +4479,6 @@ packages:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
 
-  lodash-es@4.17.23:
-    resolution: {integrity: sha512-kVI48u3PZr38HdYz98UmfPnXl2DXrpdctLrFLCd3kOx1xUkOmpFPx7gCWWM5MPkL/fD8zb+Ph0QzjGFs4+hHWg==}
-
   lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
 
@@ -5451,10 +5431,6 @@ packages:
     resolution: {integrity: sha512-IoDlSLTs3Yq593mb3ZoKWKXMNu3UpObxhgA/Xuid5p4bbfi2jdY1Hj0m1K+0/tEuQTxIGMhQDqGjKb7RuxGpAQ==}
     engines: {node: '>=0.12.0'}
 
-  rxjs@5.5.12:
-    resolution: {integrity: sha512-xx2itnL5sBbqeeiVgNPVuQQ1nC8Jp2WfNJhXWHmElW9YmrpS9UVnNzhP3EH3HFqexO5Tlp8GhYY+WEcqcVMvGw==}
-    engines: {npm: '>=2.0.0'}
-
   rxjs@7.8.2:
     resolution: {integrity: sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==}
 
@@ -5814,10 +5790,6 @@ packages:
   swagger2openapi@7.0.8:
     resolution: {integrity: sha512-upi/0ZGkYgEcLeGieoz8gT74oWHA0E7JivX7aN9mAf+Tc7BQoRBvnIGHoPDw+f9TXTW4s6kGYCZJtauP6OYp7g==}
     hasBin: true
-
-  symbol-observable@1.0.1:
-    resolution: {integrity: sha512-Kb3PrPYz4HanVF1LVGuAdW6LoVgIwjUYJGzFe7NDrBLCN4lsV/5J0MFurV+ygS4bRVwrCEt2c7MQ1R2a72oJDw==}
-    engines: {node: '>=0.10.0'}
 
   synckit@0.11.12:
     resolution: {integrity: sha512-Bh7QjT8/SuKUIfObSXNHNSK6WHo6J1tHCqJsuaFDP7gP0fkzSfTxI8y85JrppZ0h8l0maIgc2tfuZQ6/t3GtnQ==}
@@ -8450,14 +8422,6 @@ snapshots:
       - encoding
       - supports-color
 
-  '@microsoft/office-js-helpers@1.0.2':
-    dependencies:
-      '@types/microsoftteams': 1.9.6
-      '@types/office-js': 0.0.51
-      core-js: 2.6.12
-      lodash-es: 4.17.23
-      rxjs: 5.5.12
-
   '@microsoft/teams-manifest@0.1.9(encoding@0.1.13)':
     dependencies:
       '@types/fs-extra': 11.0.4
@@ -9054,8 +9018,6 @@ snapshots:
     dependencies:
       '@types/node': 22.19.11
 
-  '@types/microsoftteams@1.9.6': {}
-
   '@types/mime@1.3.5': {}
 
   '@types/mute-stream@0.0.4':
@@ -9078,8 +9040,6 @@ snapshots:
   '@types/node@22.19.11':
     dependencies:
       undici-types: 6.21.0
-
-  '@types/office-js@0.0.51': {}
 
   '@types/office-js@1.0.574': {}
 
@@ -9948,8 +9908,6 @@ snapshots:
   core-js-compat@3.48.0:
     dependencies:
       browserslist: 4.28.1
-
-  core-js@2.6.12: {}
 
   core-js@3.48.0: {}
 
@@ -11513,8 +11471,6 @@ snapshots:
     dependencies:
       p-locate: 5.0.0
 
-  lodash-es@4.17.23: {}
-
   lodash.debounce@4.0.8: {}
 
   lodash.includes@4.3.0: {}
@@ -12662,10 +12618,6 @@ snapshots:
 
   run-async@4.0.6: {}
 
-  rxjs@5.5.12:
-    dependencies:
-      symbol-observable: 1.0.1
-
   rxjs@7.8.2:
     dependencies:
       tslib: 2.8.1
@@ -13136,8 +13088,6 @@ snapshots:
       yargs: 17.7.2
     transitivePeerDependencies:
       - encoding
-
-  symbol-observable@1.0.1: {}
 
   synckit@0.11.12:
     dependencies:

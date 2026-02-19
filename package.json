@@ -41,7 +41,6 @@
     "@angular/router": "^21.1.5",
     "@farscrl/rumantsch-language-tools": "^1.0.4",
     "@iharbeck/ngx-virtual-scroller": "^20.0.0",
-    "@microsoft/office-js-helpers": "^1.0.2",
     "@ngneat/dialog": "^5.2.1",
     "core-js": "^3.48.0",
     "ngx-matomo-client": "^9.0.1",
