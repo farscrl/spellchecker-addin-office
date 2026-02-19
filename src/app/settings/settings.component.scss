@@ -45,6 +45,15 @@
   margin-bottom: 20px;
 }
 
+.version-info {
+  user-select: text;
+  cursor: text;
+
+  .git-hash {
+    color: #5e5e5e;
+  }
+}
+
 .spellchecker-version {
   font-size: 10px;
   text-align: right;
