@@ -4,10 +4,7 @@ import { Language } from "../data/language";
 import { Subscription } from "rxjs";
 import { SpellcheckerService } from "../services/spellchecker.service";
 import { FormsModule } from "@angular/forms";
-// this loads package.json
-// then you destructure that object and take out the 'version' property from it
-// and finally with ': appVersion' you rename it to const appVersion
-const { version: appVersion } = require("../../../package.json");
+import { VERSION_INFO } from "../../environments/version";
 
 @Component({
   selector: "app-settings",
@@ -24,6 +21,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   showContext: boolean = true;
 
   public appVersion = "-";
+  public gitHash = "-";
 
   private languageSubscription?: Subscription;
   private showContextSubscription?: Subscription;
@@ -34,7 +32,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.appVersion = appVersion;
+    this.appVersion = VERSION_INFO.version;
+    this.gitHash = VERSION_INFO.gitHash;
     this.languageSubscription = this.settingsService
       .getLanguageObservable()
       .subscribe((lng) => {

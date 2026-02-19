@@ -1,7 +1,4 @@
 last 2 Chrome versions
-last 1 Firefox version
 last 2 Edge major versions
-last 4 Safari major versions
-last 4 iOS major versions
-last 2 Android major versions
-Firefox ESR
+Safari >= 16.4
+iOS >= 16.4

@@ -93,6 +93,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist/addin
+src/environments/version.ts
 
 # Gatsby files
 .cache/
