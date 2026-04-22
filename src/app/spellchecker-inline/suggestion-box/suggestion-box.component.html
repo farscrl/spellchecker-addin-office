@@ -29,17 +29,17 @@
 
     <div class="control-group">
         <label class="control-label">rumantsch*</label>
-        <input type="text" id="RStichwort" [(ngModel)]="lemmaValues.RStichwort" spellcheck="false">
+        <input type="text" id="RStichwort" [(ngModel)]="entryVersionDto.rmStichwort" spellcheck="false">
     </div>
 
     <div class="control-group">
         <label class="control-label">remartga (facultativ)</label>
-        <textarea [(ngModel)]="lemmaValues.contact_comment" spellcheck="false"></textarea>
+        <textarea [(ngModel)]="entryVersionDto.userComment" spellcheck="false"></textarea>
     </div>
 
     <div class="control-group">
         <label class="control-label">adressa dad e-mail (facultativ)</label>
-        <input type="email" [(ngModel)]="lemmaValues.contact_email" spellcheck="false">
+        <input type="email" [(ngModel)]="entryVersionDto.userEmail" spellcheck="false">
     </div>
 
     <footer>
