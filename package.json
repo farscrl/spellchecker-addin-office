@@ -1,6 +1,6 @@
 {
   "name": "spellchecker-addin-office",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "scripts": {
     "build": "node scripts/generate-version.js && ng build --configuration production --base-href=/addin/",
     "build:staging": "node scripts/generate-version.js && ng build --configuration test  --base-href=/addin/",

@@ -1,9 +1,13 @@
 Ils pleds sin questa glista has ti marcà per ignorar.
 
-<ul class="words-list">
-  @for (word of words; track word) {
-    <li>- {{ word }} (<span (click)="remove(word)" class="action-link">allontanar</span>)</li>
-  }
-</ul>
+@if (words && words.length > 0) {
+    <ul class="words-list">
+        @for (word of words; track word) {
+            <li>- {{ word }} (<span (click)="remove(word)" class="action-link">allontanar</span>)</li>
+        }
+    </ul>
 
-<button class="copy-button" (click)="copyWords()">Copiar ils pleds en l’archiv provisoric</button>
+    <button class="copy-button" (click)="copyWords()">Copiar ils pleds en l’archiv provisoric</button>
+} @else {
+    <p style="margin-top: 24px;"><em>Ti glista da pleds dad ignorar è anc vida.</em></p>
+}
