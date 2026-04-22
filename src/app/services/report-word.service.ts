@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { LemmaVersion } from "../data/suggestion";
+import { EntryVersionDto } from "../data/suggestion";
 import { SettingsService } from "./settings.service";
 
 @Injectable({
@@ -10,9 +10,9 @@ export class ReportWordService {
 
   constructor(private httpClient: HttpClient, private settingsService: SettingsService) { }
 
-  create(version: LemmaVersion) {
+  create(version: EntryVersionDto) {
     const body: any = Object.assign({}, version);
-    return this.httpClient.post<LemmaVersion>(this.getUrl(), body);
+    return this.httpClient.post<EntryVersionDto>(this.getUrl(), body);
   }
 
   private getUrl(): string {

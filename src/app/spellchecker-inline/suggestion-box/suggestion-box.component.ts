@@ -4,7 +4,7 @@ import { SettingsService } from "../../services/settings.service";
 import { ToastrService } from "ngx-toastr";
 import { Subscription } from "rxjs";
 import { Language } from "../../data/language";
-import { LemmaValues, LemmaVersion } from "../../data/suggestion";
+import { EntryVersionDto } from "../../data/suggestion";
 import { FormsModule } from "@angular/forms";
 import { ReportWordService } from "../../services/report-word.service";
 import LanguageUtils from "../../utils/language.utils";
@@ -22,7 +22,7 @@ export class SuggestionBoxComponent implements OnInit {
   private languageSubscription?: Subscription;
   language: Language = "rumantschgrischun";
 
-  lemmaValues = new LemmaValues();
+  entryVersionDto = new EntryVersionDto();
 
   error = "";
 
@@ -48,7 +48,7 @@ export class SuggestionBoxComponent implements OnInit {
   }
 
   openSuggestionDialog(): void {
-    this.lemmaValues = new LemmaValues();
+    this.entryVersionDto = new EntryVersionDto();
 
     this.dialogRef = this.dialogService.open(this.suggestionDialog!);
     this.dialogRef.afterClosed$.subscribe((result) => {
@@ -61,26 +61,21 @@ export class SuggestionBoxComponent implements OnInit {
   sendSuggestion() {
     this.error = "";
 
-    if (!this.lemmaValues.RStichwort?.trim()) {
+    if (!this.entryVersionDto.rmStichwort?.trim()) {
       this.error = "P.pl. almain endatar in pled rumantsch.";
       return;
     }
 
-    this.lemmaValues.contact_comment = this.lemmaValues.contact_comment?.trim();
-    if (this.lemmaValues.contact_comment) {
-      this.lemmaValues.contact_comment =
-        this.lemmaValues.contact_comment + "\n\n";
+    this.entryVersionDto.userComment = this.entryVersionDto.userComment?.trim();
+    if (this.entryVersionDto.userComment) {
+      this.entryVersionDto.userComment = this.entryVersionDto.userComment + "\n\n";
     }
-    this.lemmaValues.contact_comment =
-      this.lemmaValues.contact_comment + "Proposta via spellchecker Word";
+    this.entryVersionDto.userComment = this.entryVersionDto.userComment + "Proposta via spellchecker Word";
 
-    const lemmaVersion = new LemmaVersion();
-    lemmaVersion.lemmaValues = this.lemmaValues;
-
-    this.reportWordService.create(lemmaVersion).subscribe({
+    this.reportWordService.create(this.entryVersionDto).subscribe({
       next: (result) => {
         this.toastr.info(
-          `Tramess il pled «${this.lemmaValues.RStichwort}» a la redacziun.`
+          `Tramess il pled «${this.entryVersionDto.rmStichwort}» a la redacziun.`
         );
         this.dialogRef?.close();
       },

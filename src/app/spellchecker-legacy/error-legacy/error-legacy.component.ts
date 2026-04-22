@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '
 import TextUtils from "../../utils/text.utils";
 import { SpellcheckerService } from "../../services/spellchecker.service";
 import { DialogRef, DialogService } from "@ngneat/dialog";
-import { LemmaVersion } from "../../data/suggestion";
+import { EntryVersionDto } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
 import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
 import { ToastrService } from "ngx-toastr";
@@ -93,12 +93,12 @@ export class ErrorLegacyComponent {
     }
 
     sendWordToServer(word: string) {
-        const lemmaVersion = new LemmaVersion();
-        lemmaVersion.lemmaValues.RStichwort = word;
-        lemmaVersion.lemmaValues.DStichwort = '';
-        lemmaVersion.lemmaValues.contact_comment = 'Proposta via spellchecker Word';
+        const dto = new EntryVersionDto();
+        dto.rmStichwort = word;
+        dto.deStichwort = '';
+        dto.userComment = 'Proposta via spellchecker Word';
 
-        this.reportWordService.create(lemmaVersion).subscribe(data => {
+        this.reportWordService.create(dto).subscribe(data => {
             this.toastr.info("Tramess il pled «" + word + "» al Pledari Grond.");
         }, error => {
             console.error(error);
