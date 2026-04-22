@@ -38,8 +38,56 @@ export class IgnoredWordsComponent implements OnInit, OnDestroy {
 
     async copyWords() {
         const string = this.words.join("\n");
-        await navigator.clipboard.writeText(string);
-        this.toastr.info('Copià cun success las datas.');
+        const success = await this.copyTextToClipboard(string);
+
+        if (success) {
+            this.toastr.info('Copià cun success las datas.');
+        } else {
+            this.toastr.error("Impussibel da copiar las datas en l’archiv provisoric.");
+        }
+    }
+
+    /**
+     * Helper method to handle cross-platform clipboard copying
+     * specifically designed to bypass Word Add-in WebView2 limitations.
+     */
+    private async copyTextToClipboard(text: string): Promise<boolean> {
+        // 1. modern API
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(text);
+                return true;
+            } catch (err) {
+                console.warn("Modern clipboard API failed, attempting fallback...", err);
+                // Do not throw here, let it proceed to the fallback method below
+            }
+        }
+
+        // 2. Fallback
+        let textArea: HTMLTextAreaElement | null = null;
+
+        try {
+            textArea = document.createElement("textarea");
+            textArea.value = text;
+
+            textArea.style.position = "fixed";
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.opacity = "0";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            return document.execCommand('copy');
+        } catch (err) {
+            console.error("Fallback clipboard copy failed:", err);
+            return false;
+        } finally {
+            if (textArea && document.body.contains(textArea)) {
+                document.body.removeChild(textArea);
+            }
+        }
     }
 }
 
