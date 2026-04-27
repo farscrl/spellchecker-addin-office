@@ -14,7 +14,23 @@
 
     <br>
 
-    @if (isLegacyViewDisplayed) {
+    <div class="toggle">
+        <div class="toggler">
+            <div class="check-box">
+                <input type="checkbox" [ngModel]="useInlineViewPref" (ngModelChange)="useInlineViewChanged($event)" [disabled]="!doesSupportInlineView">
+            </div>
+        </div>
+        <div class="description" [class.disabled]="!doesSupportInlineView">
+            Marcar pleds nunenconuschents directamain en il document cun <span class="berry">ina lingia violetta</span>.
+        </div>
+    </div>
+    @if (!doesSupportInlineView) {
+        <div class="toggle-description">La versiun da Microsoft Word sin quest computer na sustegna betg las funcziuns per marcar sbagls directamain en il document.</div>
+    }
+
+    <br>
+
+    @if (!doesSupportInlineView || !useInlineViewPref) {
         <div class="toggle">
             <div class="toggler">
                 <div class="check-box">

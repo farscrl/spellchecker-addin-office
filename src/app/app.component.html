@@ -1,13 +1,13 @@
 <div id="main-content">
     <div>
-        @if (selectedTab === 'spellchecker' && isLegacyViewDisplayed) {
+        @if (selectedTab === 'spellchecker' && !useInlineView) {
             <app-spellchecker-legacy></app-spellchecker-legacy>
         }
-        @if (selectedTab === 'spellchecker' && isInlineViewDisplayed) {
+        @if (selectedTab === 'spellchecker' && useInlineView) {
             <app-spellchecker-inline></app-spellchecker-inline>
         }
         @if (selectedTab === 'settings') {
-            <app-settings [isLegacyViewDisplayed]="isLegacyViewDisplayed"></app-settings>
+            <app-settings [doesSupportInlineView]="doesSupportInlineView"></app-settings>
         }
         @if (selectedTab === 'ignoredWords') {
             <app-ignored-words></app-ignored-words>
