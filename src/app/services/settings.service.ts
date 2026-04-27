@@ -13,6 +13,7 @@ export class SettingsService {
   private languageSubject = new BehaviorSubject<Language>('rumantschgrischun');
 
   private showContext = new BehaviorSubject<boolean>(true);
+  private useInlineViewSubject = new BehaviorSubject<boolean>(true);
 
   constructor() {
     const lng = this.load(this.LANGUAGE_KEY);
@@ -46,6 +47,14 @@ export class SettingsService {
   setShowContext(value: boolean) {
     this.showContext.next(value);
     this.save(this.SHOW_CONTEXT_KEY, value);
+  }
+
+  getUseInlineViewObservable(): Observable<boolean> {
+    return this.useInlineViewSubject.asObservable();
+  }
+
+  setUseInlineView(value: boolean) {
+    this.useInlineViewSubject.next(value);
   }
 
   private save(name: string, value: any): void {

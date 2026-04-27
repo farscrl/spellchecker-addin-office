@@ -7,6 +7,7 @@ import { SettingsComponent } from "./settings/settings.component";
 import { IgnoredWordsComponent } from "./ignored-words/ignored-words.component";
 import { TabsComponent } from "./tabs/tabs.component";
 import { MatomoTracker } from "ngx-matomo-client";
+import { SettingsService } from "./services/settings.service";
 
 @Component({
   selector: "app-root",
@@ -24,11 +25,18 @@ export class AppComponent {
   selectedTab: TabType = "spellchecker";
 
   public useInlineView = false;
+  public doesSupportInlineView = false;
 
   private wordApiLevel18Supported = false;
   private supportsAnnotations = false;
+  private userPrefersInlineView = true;
 
-  constructor(private matomoTracker: MatomoTracker) {
+  constructor(private matomoTracker: MatomoTracker, private settingsService: SettingsService) {
+    this.settingsService.getUseInlineViewObservable().subscribe((pref) => {
+      this.userPrefersInlineView = pref;
+      this.updateInlineView();
+    });
+
     this.checkWordApiLevel();
     this.isAnnotationAvailable().then((available) => {
       this.supportsAnnotations = available;
@@ -37,11 +45,12 @@ export class AppComponent {
         this.supportsAnnotations ? "true" : "false"
       );
 
-      if (this.supportsAnnotations && this.wordApiLevel18Supported) {
+      this.doesSupportInlineView = this.wordApiLevel18Supported && this.supportsAnnotations;
+
+      if (this.doesSupportInlineView) {
         console.log(
           "wordAPI level 1.8 and annotations supported. Mark errors inline enabled."
         );
-        this.useInlineView = true;
       } else {
         if (!this.supportsAnnotations) {
           console.warn(
@@ -54,7 +63,13 @@ export class AppComponent {
           );
         }
       }
+
+      this.updateInlineView();
     });
+  }
+
+  private updateInlineView() {
+    this.useInlineView = this.doesSupportInlineView && this.userPrefersInlineView;
   }
 
   tabChanged(type: TabType) {

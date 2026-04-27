@@ -13,18 +13,18 @@ import { VERSION_INFO } from "../../environments/version";
   imports: [FormsModule],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
-  @Input()
-  isLegacyViewDisplayed: boolean = false;
+  @Input() doesSupportInlineView = false;
 
   language: Language = "rumantschgrischun";
-
-  showContext: boolean = true;
+  showContext = true;
+  useInlineViewPref = true;
 
   public appVersion = "-";
   public gitHash = "-";
 
   private languageSubscription?: Subscription;
   private showContextSubscription?: Subscription;
+  private useInlineViewSubscription?: Subscription;
 
   constructor(
     private settingsService: SettingsService,
@@ -45,16 +45,18 @@ export class SettingsComponent implements OnInit, OnDestroy {
       .subscribe((ctx) => {
         this.showContext = ctx;
       });
+
+    this.useInlineViewSubscription = this.settingsService
+      .getUseInlineViewObservable()
+      .subscribe((pref) => {
+        this.useInlineViewPref = pref;
+      });
   }
 
   ngOnDestroy() {
-    if (this.languageSubscription) {
-      this.languageSubscription.unsubscribe();
-    }
-
-    if (this.showContextSubscription) {
-      this.showContextSubscription.unsubscribe();
-    }
+    this.languageSubscription?.unsubscribe();
+    this.showContextSubscription?.unsubscribe();
+    this.useInlineViewSubscription?.unsubscribe();
   }
 
   languageSelected(lng: Language) {
@@ -63,5 +65,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   showContextChanged(value: boolean) {
     this.settingsService.setShowContext(value);
+  }
+
+  useInlineViewChanged(value: boolean) {
+    this.settingsService.setUseInlineView(value);
   }
 }

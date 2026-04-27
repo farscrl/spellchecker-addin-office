@@ -7,7 +7,7 @@
             <app-spellchecker-inline></app-spellchecker-inline>
         }
         @if (selectedTab === 'settings') {
-            <app-settings [isLegacyViewDisplayed]="!useInlineView"></app-settings>
+            <app-settings [doesSupportInlineView]="doesSupportInlineView"></app-settings>
         }
         @if (selectedTab === 'ignoredWords') {
             <app-ignored-words></app-ignored-words>

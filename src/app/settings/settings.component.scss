@@ -22,6 +22,10 @@
 
   .description {
     margin-left: 16px;
+
+    &.disabled {
+      color: #888;
+    }
   }
 }
 
@@ -58,4 +62,8 @@
   font-size: 10px;
   text-align: right;
   margin-right: 2px;
+}
+
+.berry {
+  border-bottom: 1.5px solid #C239B3;
 }
