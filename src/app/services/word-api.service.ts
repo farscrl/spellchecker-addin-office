@@ -175,6 +175,16 @@ export class WordApiService {
     };
   }
 
+  async clearAllAnnotations(): Promise<void> {
+    await Word.run(async (context) => {
+      const paragraphs = context.document.body.paragraphs.load({
+        uniqueLocalId: true,
+      });
+      await context.sync();
+      await this.deleteAllAnnotations(context, paragraphs);
+    });
+  }
+
   private async deleteAllAnnotations(
     context: Word.RequestContext,
     paragraphs: Word.ParagraphCollection
