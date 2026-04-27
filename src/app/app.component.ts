@@ -23,8 +23,7 @@ import { MatomoTracker } from "ngx-matomo-client";
 export class AppComponent {
   selectedTab: TabType = "spellchecker";
 
-  public isLegacyViewDisplayed = false;
-  public isInlineViewDisplayed = false;
+  public useInlineView = false;
 
   private wordApiLevel18Supported = false;
   private supportsAnnotations = false;
@@ -42,7 +41,7 @@ export class AppComponent {
         console.log(
           "wordAPI level 1.8 and annotations supported. Mark errors inline enabled."
         );
-        this.isInlineViewDisplayed = true;
+        this.useInlineView = true;
       } else {
         if (!this.supportsAnnotations) {
           console.warn(
@@ -54,7 +53,6 @@ export class AppComponent {
             "wordAPI level 1.8 not supported. Mark errors inline disabled."
           );
         }
-        this.isLegacyViewDisplayed = true;
       }
     });
   }
