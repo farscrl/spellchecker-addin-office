@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { SpellcheckerService } from "../services/spellchecker.service";
 import WordUtils from "../utils/word.utils";
 import { ISpellingError } from "../data/data-structures";
@@ -19,6 +19,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     selector: 'app-spellchecker-legacy',
     templateUrl: './spellchecker-legacy.component.html',
     styleUrls: ['./spellchecker-legacy.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatomoTrackerDirective, ErrorsListLegacyComponent, NgxSpinnerComponent]
 })
 export class SpellcheckerLegacyComponent implements OnInit, OnDestroy {

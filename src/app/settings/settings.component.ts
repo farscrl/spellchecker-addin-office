@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { SettingsService } from "../services/settings.service";
 import { Language } from "../data/language";
 import { Subscription } from "rxjs";
@@ -10,6 +10,7 @@ import { VERSION_INFO } from "../../environments/version";
   selector: "app-settings",
   templateUrl: "./settings.component.html",
   styleUrls: ["./settings.component.scss"],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
