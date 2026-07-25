@@ -11,7 +11,7 @@ import { ToastrService } from "@iqx-limited/ngx-toastr";
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
 
 import { ErrorsListLegacyComponent } from './errors-list-legacy/errors-list-legacy.component';
-import { NgxSpinnerComponent } from 'ngx-spinner';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 /* global Word */
 
@@ -20,7 +20,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     templateUrl: './spellchecker-legacy.component.html',
     styleUrls: ['./spellchecker-legacy.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatomoTrackerDirective, ErrorsListLegacyComponent, NgxSpinnerComponent]
+    imports: [MatomoTrackerDirective, ErrorsListLegacyComponent, SpinnerComponent]
 })
 export class SpellcheckerLegacyComponent implements OnInit, OnDestroy {
 

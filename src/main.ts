@@ -6,7 +6,6 @@ import { provideDialogConfig } from '@ngneat/dialog';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { VirtualScrollerModule } from '@iharbeck/ngx-virtual-scroller';
 import { AppRoutingModule } from './app/app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -25,7 +24,6 @@ Office.initialize = () => {
             provideZoneChangeDetection(),
             importProvidersFrom(
                 BrowserModule,
-                NgxSpinnerModule,
                 VirtualScrollerModule,
                 AppRoutingModule,
                 FormsModule,

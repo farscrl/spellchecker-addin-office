@@ -36,7 +36,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/ngx-spinner/animations/line-scale.css",
               "src/styles.scss"
             ],
             "scripts": [],

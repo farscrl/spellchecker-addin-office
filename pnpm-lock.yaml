@@ -47,9 +47,6 @@ importers:
       ngx-matomo-client:
         specifier: ^10.0.0
         version: 10.0.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
-      ngx-spinner:
-        specifier: ^21.0.0
-        version: 21.0.0(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
       office-ui-fabric-js:
         specifier: ^1.5.0
         version: 1.5.0
@@ -5467,13 +5464,6 @@ packages:
     peerDependencies:
       '@angular/common': ^22.0.0
       '@angular/core': ^22.0.0
-
-  ngx-spinner@21.0.0:
-    resolution: {integrity: sha512-fWwBt4A/q8PPYdotGB1ffgRfNzS/Yw/YyCUtgrtNoyiBiN074OUUSzrq9w4v73hvIv5sxwkdYiOKyyOoeE49Lw==}
-    peerDependencies:
-      '@angular/animations': '>=20.0.0'
-      '@angular/common': '>=20.0.0'
-      '@angular/core': '>=20.0.0'
 
   node-abi@3.89.0:
     resolution: {integrity: sha512-6u9UwL0HlAl21+agMN3YAMXcKByMqwGx+pq+P76vii5f7hTPtKDp08/H9py6DY+cfDw7kQNTGEj/rly3IgbNQA==}
@@ -13572,13 +13562,6 @@ snapshots:
 
   ngx-matomo-client@10.0.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)):
     dependencies:
-      '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
-      '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)
-      tslib: 2.8.1
-
-  ngx-spinner@21.0.0(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)):
-    dependencies:
-      '@angular/animations': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
       '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)
       tslib: 2.8.1
