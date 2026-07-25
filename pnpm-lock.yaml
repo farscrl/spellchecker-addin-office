@@ -48,8 +48,8 @@ importers:
         specifier: ^3.48.0
         version: 3.48.0
       ngx-matomo-client:
-        specifier: ^9.0.1
-        version: 9.0.1(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
+        specifier: ^10.0.0
+        version: 10.0.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
       ngx-spinner:
         specifier: ^21.0.0
         version: 21.0.0(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
@@ -5478,11 +5478,11 @@ packages:
   neverthrow@3.2.0:
     resolution: {integrity: sha512-AINA32QbYO83L+3CBI6I5lH4LpBSlLwWteJ+uI25s4AQy6g/xz3RZuedmuNo91lLw2rY+AbPEPQdxd7mg1rXoQ==}
 
-  ngx-matomo-client@9.0.1:
-    resolution: {integrity: sha512-GtwR4/W1MKN8+5g3sx258tWm35fLzGE9+v5wyo8uV/rj366sEcmStcQkBoSrvXRwPqZBpYNtyxoLsP9OIzZujA==}
+  ngx-matomo-client@10.0.0:
+    resolution: {integrity: sha512-dhpBA7imAQvNy3Qu7mdkzUEQ3XxA3AuRS4OJGIw8K0F70bcgDycNGr4oYVDwA+J7O665BoR8XQQYz7altk5pzg==}
     peerDependencies:
-      '@angular/common': ^21.0.0
-      '@angular/core': ^21.0.0
+      '@angular/common': ^22.0.0
+      '@angular/core': ^22.0.0
 
   ngx-spinner@21.0.0:
     resolution: {integrity: sha512-fWwBt4A/q8PPYdotGB1ffgRfNzS/Yw/YyCUtgrtNoyiBiN074OUUSzrq9w4v73hvIv5sxwkdYiOKyyOoeE49Lw==}
@@ -13594,7 +13594,7 @@ snapshots:
 
   neverthrow@3.2.0: {}
 
-  ngx-matomo-client@9.0.1(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)):
+  ngx-matomo-client@10.0.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)):
     dependencies:
       '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)
