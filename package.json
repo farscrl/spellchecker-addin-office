@@ -45,7 +45,7 @@
     "core-js": "^3.48.0",
     "ngx-matomo-client": "^9.0.1",
     "ngx-spinner": "^21.0.0",
-    "ngx-toastr": "^20.0.5",
+    "@iqx-limited/ngx-toastr": "^3.0.0",
     "office-ui-fabric-js": "^1.5.0",
     "rxjs": "~7.8.2",
     "tslib": "^2.8.1",

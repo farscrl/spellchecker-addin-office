@@ -5,7 +5,7 @@ import { DialogRef, DialogService } from "@ngneat/dialog";
 import { EntryVersionDto } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
 import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from "@iqx-limited/ngx-toastr";
 
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
 import { HighlightPipe } from '../../pipes/highlight.pipe';

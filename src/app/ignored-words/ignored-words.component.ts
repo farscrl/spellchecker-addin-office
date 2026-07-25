@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UserDictionaryService } from "../services/user-dictionary.service";
 import { Subscription } from "rxjs";
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from "@iqx-limited/ngx-toastr";
 
 
 @Component({

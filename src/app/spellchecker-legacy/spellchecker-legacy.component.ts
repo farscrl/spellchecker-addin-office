@@ -7,7 +7,7 @@ import { DialogRef, DialogService } from "@ngneat/dialog";
 import { SettingsService } from "../services/settings.service";
 import { Subscription } from "rxjs";
 import { Language } from "../data/language";
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from "@iqx-limited/ngx-toastr";
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
 
 import { ErrorsListLegacyComponent } from './errors-list-legacy/errors-list-legacy.component';

@@ -38,6 +38,9 @@ importers:
       '@iharbeck/ngx-virtual-scroller':
         specifier: ^20.0.0
         version: 20.0.0(@tweenjs/tween.js@25.0.0)
+      '@iqx-limited/ngx-toastr':
+        specifier: ^3.0.0
+        version: 3.0.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))
       '@ngneat/dialog':
         specifier: ^5.2.1
         version: 5.2.1(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
@@ -50,9 +53,6 @@ importers:
       ngx-spinner:
         specifier: ^21.0.0
         version: 21.0.0(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
-      ngx-toastr:
-        specifier: ^20.0.5
-        version: 20.0.5(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       office-ui-fabric-js:
         specifier: ^1.5.0
         version: 1.5.0
@@ -1737,6 +1737,13 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
+
+  '@iqx-limited/ngx-toastr@3.0.0':
+    resolution: {integrity: sha512-0aTVJxCFqDduHoijv6Zk01GWfTZ5urK61QhhneONA3cpiNzCW4Ew9wEUdAaap88xEAbrgRJtrG6B7EP5VV0R/Q==}
+    peerDependencies:
+      '@angular/common': '>=20.0.0-0'
+      '@angular/core': '>=20.0.0-0'
+      '@angular/platform-browser': '>=20.0.0-0'
 
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
@@ -5484,13 +5491,6 @@ packages:
       '@angular/common': '>=20.0.0'
       '@angular/core': '>=20.0.0'
 
-  ngx-toastr@20.0.5:
-    resolution: {integrity: sha512-JcGu1Cbl+0SovPhxma72ygGeZHtpHWWKwBCyiabb+MSWYtXu/SOwEZ2HTWtZ4wcEYOOiy9tDQZgiEKWXpibpRw==}
-    peerDependencies:
-      '@angular/common': ^21.0.0
-      '@angular/core': ^21.0.0
-      rxjs: ^7.8.2
-
   node-abi@3.89.0:
     resolution: {integrity: sha512-6u9UwL0HlAl21+agMN3YAMXcKByMqwGx+pq+P76vii5f7hTPtKDp08/H9py6DY+cfDw7kQNTGEj/rly3IgbNQA==}
     engines: {node: '>=10'}
@@ -9237,6 +9237,13 @@ snapshots:
   '@inquirer/type@4.0.7(@types/node@22.20.1)':
     optionalDependencies:
       '@types/node': 22.20.1
+
+  '@iqx-limited/ngx-toastr@3.0.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))':
+    dependencies:
+      '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
+      '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)
+      '@angular/platform-browser': 22.0.8(@angular/animations@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
+      tslib: 2.8.1
 
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
@@ -13598,13 +13605,6 @@ snapshots:
       '@angular/animations': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))
       '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)
-      tslib: 2.8.1
-
-  ngx-toastr@20.0.5(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2):
-    dependencies:
-      '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
-      '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)(zone.js@0.15.1)
-      rxjs: 7.8.2
       tslib: 2.8.1
 
   node-abi@3.89.0:
