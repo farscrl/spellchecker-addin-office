@@ -38,15 +38,15 @@
     "@iharbeck/ngx-virtual-scroller": "^20.0.0",
     "@iqx-limited/ngx-toastr": "^3.0.0",
     "@ngneat/dialog": "^5.2.1",
-    "core-js": "^3.48.0",
+    "core-js": "^3.50.0",
     "ngx-matomo-client": "^10.0.0",
     "office-ui-fabric-js": "^1.5.0",
     "rxjs": "~7.8.2",
     "tslib": "^2.8.1",
-    "zone.js": "~0.15.1"
+    "zone.js": "~0.16.2"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.2200.9",
+    "@angular-devkit/architect": "^0.2201.4",
     "@angular-eslint/builder": "22.1.0",
     "@angular-eslint/schematics": "22.1.0",
     "@angular/build": "^22.1.4",
@@ -54,7 +54,7 @@
     "@angular/compiler-cli": "^22.1.2",
     "@eslint/js": "^10.0.1",
     "@types/node": "^22.20.1",
-    "@types/office-js": "^1.0.600",
+    "@types/office-js": "^1.0.605",
     "@types/office-runtime": "^1.0.40",
     "angular-eslint": "^22.1.0",
     "eslint": "^10.8.1",
