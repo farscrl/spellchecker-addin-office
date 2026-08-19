@@ -3,9 +3,7 @@ import { SettingsService } from "./settings.service";
 import { Language } from "../data/language";
 import LanguageUtils from "../utils/language.utils";
 import { HttpClient } from "@angular/common/http";
-import { Proofreader } from '@farscrl/rumantsch-language-tools';
-import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
-import { Idioms } from "@farscrl/rumantsch-language-tools/lib/models/idioms";
+import { Proofreader, Idioms, ITextWithPosition } from '@farscrl/rumantsch-language-tools';
 
 @Injectable({
   providedIn: 'root'

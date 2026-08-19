@@ -4,7 +4,7 @@ import { SpellcheckerService } from "../../services/spellchecker.service";
 import { DialogRef, DialogService } from "@ngneat/dialog";
 import { EntryVersionDto } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
-import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
+import { ITextWithPosition } from "@farscrl/rumantsch-language-tools";
 import { ToastrService } from "@iqx-limited/ngx-toastr";
 
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
