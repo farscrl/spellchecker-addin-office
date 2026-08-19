@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { SpellcheckerService } from "../services/spellchecker.service";
 import WordUtils from "../utils/word.utils";
 import { ISpellingError } from "../data/data-structures";
@@ -7,11 +7,11 @@ import { DialogRef, DialogService } from "@ngneat/dialog";
 import { SettingsService } from "../services/settings.service";
 import { Subscription } from "rxjs";
 import { Language } from "../data/language";
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from "@iqx-limited/ngx-toastr";
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
 
 import { ErrorsListLegacyComponent } from './errors-list-legacy/errors-list-legacy.component';
-import { NgxSpinnerComponent } from 'ngx-spinner';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 /* global Word */
 
@@ -19,7 +19,8 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     selector: 'app-spellchecker-legacy',
     templateUrl: './spellchecker-legacy.component.html',
     styleUrls: ['./spellchecker-legacy.component.scss'],
-    imports: [MatomoTrackerDirective, ErrorsListLegacyComponent, NgxSpinnerComponent]
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [MatomoTrackerDirective, ErrorsListLegacyComponent, SpinnerComponent]
 })
 export class SpellcheckerLegacyComponent implements OnInit, OnDestroy {
 

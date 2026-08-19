@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { TabType } from "./data/tabs";
 
 import { SpellcheckerLegacyComponent } from "./spellchecker-legacy/spellchecker-legacy.component";
@@ -13,6 +13,7 @@ import { SettingsService } from "./services/settings.service";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     SpellcheckerLegacyComponent,
     SpellcheckerInlineComponent,

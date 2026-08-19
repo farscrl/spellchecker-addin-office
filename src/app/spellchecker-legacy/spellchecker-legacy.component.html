@@ -30,7 +30,12 @@
   </div>
 }
 
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true" [showSpinner]="isSpellchecking"><p style="color: white" > Curreger... </p></ngx-spinner>
+@if (isSpellchecking) {
+  <div class="spellcheck-overlay">
+    <app-spinner></app-spinner>
+    <p>Curreger...</p>
+  </div>
+}
 
 <ng-template #errorDialog>
   <header>

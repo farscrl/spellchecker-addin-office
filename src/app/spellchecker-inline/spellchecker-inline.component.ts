@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { UserDictionaryService } from "../services/user-dictionary.service";
 import { SuggestionBoxComponent } from "./suggestion-box/suggestion-box.component";
 import { MatomoTracker } from "ngx-matomo-client";
@@ -16,6 +16,7 @@ import AnnotationPopupActionEventArgs = Word.AnnotationPopupActionEventArgs;
   selector: "app-spellchecker-inline",
   templateUrl: "./spellchecker-inline.component.html",
   styleUrl: "./spellchecker-inline.component.scss",
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [SuggestionBoxComponent],
 })
 export class SpellcheckerInlineComponent implements OnInit, OnDestroy {

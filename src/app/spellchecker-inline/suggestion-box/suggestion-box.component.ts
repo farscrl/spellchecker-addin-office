@@ -1,7 +1,7 @@
-import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from "@angular/core";
 import { DialogRef, DialogService } from "@ngneat/dialog";
 import { SettingsService } from "../../services/settings.service";
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from "@iqx-limited/ngx-toastr";
 import { Subscription } from "rxjs";
 import { Language } from "../../data/language";
 import { EntryVersionDto } from "../../data/suggestion";
@@ -13,6 +13,7 @@ import LanguageUtils from "../../utils/language.utils";
   selector: "app-suggestion-box",
   imports: [FormsModule],
   templateUrl: "./suggestion-box.component.html",
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: "./suggestion-box.component.scss",
 })
 export class SuggestionBoxComponent implements OnInit {

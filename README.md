@@ -93,6 +93,28 @@ src/
 └── manifest-prod.xml         # Production manifest
 ```
 
+## Release process
+
+Deployment is fully automated via GitHub Actions — there is no manual build/upload step. The workflows live in `.github/workflows/`.
+
+| Branch    | Workflow             | Build command        | Deploys to |
+|-----------|----------------------|----------------------|------------|
+| `staging` | `deploy-staging.yml` | `pnpm build:staging` | Staging    |
+| `main`    | `deploy-prod.yml`    | `pnpm build`         | Production |
+
+To ship a change:
+
+1. Merge/push to `staging` to deploy to the staging environment.
+2. Once verified on staging, merge `staging` into `main` (or open a PR and merge it) to deploy to production.
+
+Each deploy job builds the app, then uploads `dist/addin` over FTP, first moving the currently-live `addin` folder into a timestamped `_backups/<timestamp>/` directory on the server. Both workflows can also be triggered manually from the Actions tab via "Run workflow" (`workflow_dispatch`) without needing a new commit.
+
+`scripts/generate-version.js` bakes the current `version` field from `package.json` (plus the short git hash) into the build. Bump `"version"` in `package.json` before releasing if you want the deployed build to reflect a new version number — nothing does this automatically.
+
+### Rolling back
+
+Use the "Restore from Backup" workflow (`restore.yml`) from the Actions tab: pick the `staging` or `production` environment and provide the backup timestamp to restore (format `YYYY-MM-DD_HH-MM-SS`, visible in the deploy job logs or by listing `_backups/` on the FTP server). The currently-live version is itself backed up as `_backups/pre-restore_<timestamp>/` before the restore happens, so a bad restore can also be undone.
+
 ## Resources
 
 - [Pledari Grond](https://www.pledarigrond.ch) - Romansh online dictionary

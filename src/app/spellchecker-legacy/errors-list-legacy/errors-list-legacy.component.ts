@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { ISpellingError } from "../../data/data-structures";
 import { SettingsService } from "../../services/settings.service";
 import { Subscription } from "rxjs";
@@ -10,6 +10,7 @@ import { ErrorLegacyComponent } from '../error-legacy/error-legacy.component';
     selector: 'app-errors-list-legacy',
     templateUrl: './errors-list-legacy.component.html',
     styleUrls: ['./errors-list-legacy.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [VirtualScrollerModule, ErrorLegacyComponent]
 })
 export class ErrorsListLegacyComponent implements OnInit, OnDestroy {

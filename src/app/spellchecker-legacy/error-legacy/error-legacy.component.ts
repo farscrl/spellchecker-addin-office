@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import TextUtils from "../../utils/text.utils";
 import { SpellcheckerService } from "../../services/spellchecker.service";
 import { DialogRef, DialogService } from "@ngneat/dialog";
 import { EntryVersionDto } from "../../data/suggestion";
 import { ReportWordService } from "../../services/report-word.service";
-import { ITextWithPosition } from "@farscrl/rumantsch-language-tools/lib/models/data-structures";
-import { ToastrService } from "ngx-toastr";
+import { ITextWithPosition } from "@farscrl/rumantsch-language-tools";
+import { ToastrService } from "@iqx-limited/ngx-toastr";
 
 import { MatomoTrackerDirective } from 'ngx-matomo-client/core';
 import { HighlightPipe } from '../../pipes/highlight.pipe';
@@ -14,6 +14,7 @@ import { HighlightPipe } from '../../pipes/highlight.pipe';
     selector: 'app-error-legacy',
     templateUrl: './error-legacy.component.html',
     styleUrls: ['./error-legacy.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatomoTrackerDirective, HighlightPipe]
 })
 export class ErrorLegacyComponent {

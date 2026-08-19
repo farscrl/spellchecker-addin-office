@@ -9,3 +9,16 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.spellcheck-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
