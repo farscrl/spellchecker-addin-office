@@ -33,7 +33,7 @@
     "@angular/core": "^22.1.2",
     "@angular/forms": "^22.1.2",
     "@angular/platform-browser": "^22.1.2",
-    "@angular/router": "^22.1.2",
+    "@angular/router": "^22.2.1",
     "@farscrl/rumantsch-language-tools": "^1.1.2",
     "@iharbeck/ngx-virtual-scroller": "^20.0.0",
     "@iqx-limited/ngx-toastr": "^3.0.0",
